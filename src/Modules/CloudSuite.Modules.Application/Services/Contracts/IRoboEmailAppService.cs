@@ -1,6 +1,6 @@
 namespace CloudSuite.Modules.Application.Services.Contracts
 {
-    public interface IRoleEmailAppService
+    public interface IRoboEmailAppService
     {
         
     }
