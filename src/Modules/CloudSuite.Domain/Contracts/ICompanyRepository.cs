@@ -1,4 +1,5 @@
 using CloudSuite.Domain.Models;
+using CloudSuite.Domain.ValueObjects;
 
 namespace CloudSuite.Domain.Contracts
 {
