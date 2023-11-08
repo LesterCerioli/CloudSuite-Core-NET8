@@ -11,46 +11,50 @@ namespace CloudSuite.Infrastructure.Repositories
         
         protected readonly CoreDbContext Db;
         protected readonly DbSet<Address> DbSet;
-        
+
         public AddressRepository(CoreDbContext context)
         {
             Db = context;
             DbSet = context.Addresses;
         }
 
-        
-
         public async Task Add(Address address)
         {
-            await Task.Run(() => {
+            await Task.Run(() => { 
                 DbSet.Add(address);
                 Db.SaveChanges();
             });
         }
 
-        public async Task<Address> GetByAddressLine(string AddressLine1)
+        public async Task<Address> GetByAddressLine(string addressLine1)
         {
-            return await DbSet.AsNoTracking().FirstOrDefaultAsync(c => c.AddressLine == accountDigit);
+            return await DbSet.FirstOrDefaultAsync(a => a.AddressLine1 == addressLine1);
         }
 
         public async Task<Address> GetByContactName(string contactName)
         {
-            throw new NotImplementedException();
+            return await DbSet.SingleOrDefaultAsync(a => a.ContractName == contactName);
         }
 
         public async Task<IEnumerable<Address>> GetList()
         {
-            throw new NotImplementedException();
+            return await DbSet.ToListAsync();
         }
 
         public void Remove(Address address)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(address);
         }
 
         public void Update(Address address)
         {
-            throw new NotImplementedException();
+            DbSet.Update(address);
         }
+
+        public void Dispose()
+        {
+            Db.Dispose();
+        }
+
     }
 }
