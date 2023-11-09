@@ -11,9 +11,13 @@ namespace CloudSuite.Domain.Models
 {
     public class AppSetting: Entity, IAggregateRoot
     {
-        public AppSetting(Guid id)
+
+        public AppSetting(Guid id,string? value, string? module, bool? isVisibleInCommonSettingPage)
         {
             Id = id;
+            Value = value;
+            Module = module;
+            IsVisibleInCommonSettingPage = isVisibleInCommonSettingPage;
         }
 
         [Required(ErrorMessage = "The {0} field is required.")]

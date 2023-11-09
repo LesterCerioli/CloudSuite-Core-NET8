@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
+using System.Diagnostics.Metrics;
 
 namespace CloudSuite.Domain.Models
 {
@@ -13,12 +14,14 @@ namespace CloudSuite.Domain.Models
     {
         private readonly List<Country> _countries;
 
-        public State(Guid id, string uf, string stateName)
+        public State(Guid id, string uf, string stateName, Country country, Guid countryId)
         {
             Id = id;
             _countries = new List<Country>();
             UF = uf;
             StateName = stateName;
+            Country = country;
+            CountryId = countryId;
         }
 
         public State()
@@ -30,7 +33,8 @@ namespace CloudSuite.Domain.Models
         [StringLength(100)]
         public string? StateName { get; private set; }
 
-        [Required(ErrorMessage ="Este cmapo é de preenchimento obrigatório.")]
+        [Required(ErrorMessage = "Este cmapo é de preenchimento obrigatório.")]
+
         public string? UF { get; private set; }
 
         public Country Country { get; private set; }

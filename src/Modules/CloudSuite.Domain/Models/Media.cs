@@ -1,3 +1,4 @@
+using CloudSuite.Domain.Enums;
 using NetDevPack.Domain;
 using System;
 using System.Collections.Generic;

@@ -14,15 +14,19 @@ namespace CloudSuite.Domain.Models
 
         private readonly List<City> _cities = new List<City>();
 
-        public Address(Guid id) {
+        public Address(Guid id, City city, District district, string contactName, string adressLine1) {
             Id = id;
             _districts = new List<District>();
             _cities = new List<City>();
+            City = city;
+            District = district;
+            ContactName = contactName;
+            AddressLine1 = adressLine1;
         }
 
         [Required(ErrorMessage = "The {0} field is required.")]
         [StringLength(100)]
-        public string? ContractName { get; private set; }
+        public string? ContactName { get; private set; }
 
         [Required(ErrorMessage = "The {0} field is required.")]
         [StringLength(450)]
