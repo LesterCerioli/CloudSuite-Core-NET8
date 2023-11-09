@@ -12,13 +12,12 @@ namespace CloudSuite.Domain.Models
     {
         private readonly List<State> _states;
 
-        public City(Guid id, string? cityName, State state, Guid stateId)
+        public City(Guid id, string? cityName, State state)
         {
             StateId = id;
             _states = new List<State>();
             CityName = cityName;
             State = state;
-            StateId = stateId;
         }
 
         [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
