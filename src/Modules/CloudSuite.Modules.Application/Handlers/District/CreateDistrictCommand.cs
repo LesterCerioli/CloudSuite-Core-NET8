@@ -8,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DistrictEntity = CloudSuite.Domain.Models.District;
+using StateEtinty = CloudSuite.Domain.Models.State;
 
 namespace CloudSuite.Modules.Application.Handlers.District
 {
     public class CreateDistrictCommand : IRequest<CreateDistrictResponse>
     {
         public Guid Id { get; set; }
-        public State State { get; set; }
+        public StateEtinty State { get; set; }
 
         public Guid StateId { get; private set; }
 

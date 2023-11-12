@@ -1,7 +1,4 @@
 ﻿using CloudSuite.Domain.Contracts;
-using CloudSuite.Modules.Application.Hadlers.Address;
-using CloudSuite.Modules.Application.Hadlers.AppSetting;
-using CloudSuite.Modules.Application.Validations.AppSetting;
 using CloudSuite.Modules.Application.Validations.City;
 using MediatR;
 using Microsoft.Extensions.Logging;

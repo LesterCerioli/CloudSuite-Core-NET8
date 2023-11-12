@@ -1,15 +1,7 @@
 ﻿using CloudSuite.Domain.Contracts;
-using CloudSuite.Modules.Application.Hadlers.Address.Responses;
 using CloudSuite.Modules.Application.Hadlers.Address;
-using CloudSuite.Modules.Application.Validations.Address;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CloudSuite.Modules.Application.Hadlers.AppSetting.Response;
 using System.Text.Json;
 using CloudSuite.Modules.Application.Validations.AppSetting;
 

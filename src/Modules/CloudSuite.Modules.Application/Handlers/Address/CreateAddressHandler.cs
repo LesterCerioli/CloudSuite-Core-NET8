@@ -29,7 +29,7 @@ namespace CloudSuite.Modules.Application.Hadlers.Address
                 try
                 {
                     var adressExistAdressLine = await _addressRepository.GetByAddressLine(command.AddressLine1);
-                    var adressExistContactName = await _addressRepository.GetByContactName(command.ContractName);
+                    var adressExistContactName = await _addressRepository.GetByContactName(command.ContactName);
 
                     if (adressExistAdressLine == null && adressExistContactName == null)
                     {
