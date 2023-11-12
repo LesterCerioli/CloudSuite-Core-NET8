@@ -1,0 +1,24 @@
+﻿using CloudSuite.Modules.Application.Handlers.Email.Request;
+using FluentValidation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CloudSuite.Modules.Application.Validations.Email
+{
+    public class CheckEmailExistByRecipientRequestValidation : AbstractValidator<CheckEmailExistByRecipientRequest>
+    {
+        public CheckEmailExistByRecipientRequestValidation() 
+        {
+            RuleFor(a => a.Recipient)
+                .NotEmpty()
+                .WithMessage("O campo Recipient é obrigatório.")
+                .Length(1, 450)
+                .WithMessage("O campo Recipient deve ter entre 1 e 450 caracteres.")
+                .EmailAddress()
+                .WithMessage("O campo Recipient deve ser um endereço de email válido.");
+        }
+    }
+}
