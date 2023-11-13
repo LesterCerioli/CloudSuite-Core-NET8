@@ -8,7 +8,7 @@ namespace CloudSuite.Domain.Contracts
 
         Task<Media> GetByFileName(string fileName);
 
-        Task<Media> GetByFileSize(int fileSize);
+        Task<Media> GetByFileSize(int? fileSize);
 
         Task<IEnumerable<Media>> GetList();
 

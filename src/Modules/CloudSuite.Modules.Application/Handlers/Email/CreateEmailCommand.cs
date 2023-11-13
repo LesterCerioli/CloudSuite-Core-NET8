@@ -38,9 +38,7 @@ namespace CloudSuite.Modules.Application.Handlers.Email
                 this.Sender,
                 this.Recipient,
                 this.SentDate,
-                this.IsRead,
-                this.SendAttempts,
-                this.CodeErrorEmail
+                this.IsRead
                 );
         }
 
