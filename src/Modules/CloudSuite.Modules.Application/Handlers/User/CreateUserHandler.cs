@@ -1,18 +1,9 @@
 ﻿using CloudSuite.Domain.Contracts;
-using CloudSuite.Modules.Application.Handlers.Media;
-using CloudSuite.Modules.Application.Handlers.Media.Responses;
 using CloudSuite.Modules.Application.Handlers.User.Responses;
-using CloudSuite.Modules.Application.Validations.Media;
 using CloudSuite.Modules.Application.Validations.User;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using NetDevPack.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace CloudSuite.Modules.Application.Handlers.User
 {

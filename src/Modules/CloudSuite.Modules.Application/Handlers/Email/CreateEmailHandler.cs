@@ -1,15 +1,9 @@
 ﻿using CloudSuite.Domain.Contracts;
-using CloudSuite.Modules.Application.Handlers.Country;
 using CloudSuite.Modules.Application.Handlers.Email.Responses;
 using CloudSuite.Modules.Application.Validations.Email;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace CloudSuite.Modules.Application.Handlers.Email
 {

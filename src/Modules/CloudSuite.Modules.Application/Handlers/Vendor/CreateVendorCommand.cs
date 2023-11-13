@@ -1,12 +1,7 @@
 ﻿using CloudSuite.Domain.ValueObjects;
 using CloudSuite.Modules.Application.Handlers.Vendor.Responses;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VendorEntity = CloudSuite.Domain.Models.Vendor;
 using EmailEntity = CloudSuite.Domain.Models.Email;
 using UserEntity = CloudSuite.Domain.Models.User;

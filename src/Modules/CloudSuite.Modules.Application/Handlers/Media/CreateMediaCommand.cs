@@ -1,12 +1,7 @@
 ﻿using CloudSuite.Domain.Enums;
 using CloudSuite.Modules.Application.Handlers.Media.Responses;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MediaEntity = CloudSuite.Domain.Models.Media;
 
 namespace CloudSuite.Modules.Application.Handlers.Media

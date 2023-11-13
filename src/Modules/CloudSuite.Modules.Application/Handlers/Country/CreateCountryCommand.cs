@@ -1,5 +1,4 @@
-﻿using CloudSuite.Domain.Models;
-using CloudSuite.Modules.Application.Handlers.Country.Responses;
+﻿using CloudSuite.Modules.Application.Handlers.Country.Responses;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 using CountryEntity = CloudSuite.Domain.Models.Country;

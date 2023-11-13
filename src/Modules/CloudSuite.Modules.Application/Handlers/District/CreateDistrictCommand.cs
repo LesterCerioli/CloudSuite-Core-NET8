@@ -1,12 +1,6 @@
-﻿using CloudSuite.Domain.Models;
-using CloudSuite.Modules.Application.Handlers.District.Responses;
+﻿using CloudSuite.Modules.Application.Handlers.District.Responses;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DistrictEntity = CloudSuite.Domain.Models.District;
 using StateEtinty = CloudSuite.Domain.Models.State;
 

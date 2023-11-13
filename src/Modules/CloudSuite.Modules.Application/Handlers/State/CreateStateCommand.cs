@@ -1,11 +1,5 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using CloudSuite.Domain.Models;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StateEntity = CloudSuite.Domain.Models.State;
 using CountryEntity = CloudSuite.Domain.Models.Country;
 using CloudSuite.Modules.Application.Handlers.State.Responses;

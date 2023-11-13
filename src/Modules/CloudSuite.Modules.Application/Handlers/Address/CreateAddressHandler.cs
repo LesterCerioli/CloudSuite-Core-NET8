@@ -3,7 +3,6 @@ using CloudSuite.Modules.Application.Hadlers.Address.Responses;
 using CloudSuite.Modules.Application.Validations.Address;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using NetDevPack.Messaging;
 using System.Text.Json;
 
 namespace CloudSuite.Modules.Application.Hadlers.Address

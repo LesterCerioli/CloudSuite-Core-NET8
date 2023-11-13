@@ -1,16 +1,9 @@
 ﻿using CloudSuite.Domain.Contracts;
 using CloudSuite.Modules.Application.Hadlers.City;
-using CloudSuite.Modules.Application.Validations.City;
 using CloudSuite.Modules.Application.Validations.Company;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using NetDevPack.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace CloudSuite.Modules.Application.Handlers.Company
 {

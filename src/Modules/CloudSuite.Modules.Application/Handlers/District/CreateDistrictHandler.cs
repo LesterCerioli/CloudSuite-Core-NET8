@@ -1,17 +1,9 @@
 ﻿using CloudSuite.Domain.Contracts;
-using CloudSuite.Modules.Application.Handlers.Country;
-using CloudSuite.Modules.Application.Handlers.Country.Responses;
 using CloudSuite.Modules.Application.Handlers.District.Responses;
-using CloudSuite.Modules.Application.Validations.Country;
 using CloudSuite.Modules.Application.Validations.District;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace CloudSuite.Modules.Application.Handlers.District
 {

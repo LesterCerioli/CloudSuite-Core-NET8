@@ -1,12 +1,7 @@
 ﻿using CloudSuite.Domain.Models;
 using CloudSuite.Domain.ValueObjects;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CompanyEntity = CloudSuite.Domain.Models.Company;
 
 namespace CloudSuite.Modules.Application.Handlers.Company

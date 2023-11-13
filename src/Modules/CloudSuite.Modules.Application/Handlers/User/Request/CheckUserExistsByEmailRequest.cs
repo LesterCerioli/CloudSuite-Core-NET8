@@ -1,10 +1,5 @@
 ﻿using CloudSuite.Modules.Application.Handlers.User.Responses;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EmailEntity = CloudSuite.Domain.Models.Email;
 
 namespace CloudSuite.Modules.Application.Handlers.User.Request

@@ -1,11 +1,6 @@
 ﻿using CloudSuite.Domain.Models;
 using MediatR;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CityEntity = CloudSuite.Domain.Models.City;
 
 namespace CloudSuite.Modules.Application.Hadlers.City
