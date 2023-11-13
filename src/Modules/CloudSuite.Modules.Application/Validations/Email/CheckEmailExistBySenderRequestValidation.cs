@@ -13,12 +13,12 @@ namespace CloudSuite.Modules.Application.Validations.Email
         public CheckEmailExistBySenderRequestValidation() 
         {
             RuleFor(a => a.Sender)
-                .NotEmpty()
-                .WithMessage("O campo Sender é obrigatório.")
-                .Length(1, 450)
-                .WithMessage("O campo Sender deve ter entre 1 e 450 caracteres.")
-                .EmailAddress()
-                .WithMessage("O campo Sender deve ser um endereço de email válido.");
+                 .NotEmpty()
+                 .WithMessage("O campo Sender é obrigatório.")
+                 .Length(1, 80)
+                 .WithMessage("O campo Sender deve ter entre 1 e 450 caracteres.")
+                 .EmailAddress()
+                 .WithMessage("O campo Sender deve ser um endereço de email válido.");
         }
     }
 }

@@ -13,10 +13,9 @@ namespace CloudSuite.Modules.Application.Validations.Vendor
         public CheckVendorExistsByCreationDateRequestValidation()
         {
             RuleFor(a => a.CreatedOn)
-                .NotEmpty()
-                .WithMessage("O campo CreatedOn é obrigatório.")
-                .NotNull()
-                .WithMessage("O campo CreatedOn não pode ser nulo.");
+                .LessThanOrEqualTo(DateTimeOffset.Now)
+                .WithMessage("O campo CreatedOn deve ser uma data e hora no passado ou presente.");
+
         }
     }
 }
