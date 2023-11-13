@@ -38,7 +38,16 @@ namespace CloudSuite.Modules.Application.Validations.Email
                 .EmailAddress()
                 .WithMessage("O campo Recipient deve ser um endereço de email válido.");
 
-            
+            RuleFor(a => a.SentDate)
+                .GreaterThan(DateTimeOffset.Now)
+                .WithMessage("A data deve estar no futuro.");
+
+            RuleFor(a => a.CodeErrorEmail)
+                .IsInEnum()
+                .WithMessage("O campo CodeErrorEmail deve ser um valor válido do enum CodeErrorEmail.");
+
+
+
         }
     }
 }

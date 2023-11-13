@@ -48,6 +48,14 @@ namespace CloudSuite.Modules.Application.Validations.User
                 .EmailAddress()
                 .WithMessage("O campo Recipient deve ser um endereço de email válido.");
 
+             RuleFor(a => a.Email.SentDate)
+                .GreaterThan(DateTimeOffset.Now)
+                .WithMessage("A data deve estar no futuro.");
+
+            RuleFor(a => a.Email.CodeErrorEmail)
+                .IsInEnum()
+                .WithMessage("O campo CodeErrorEmail deve ser um valor válido do enum CodeErrorEmail.");
+
             RuleFor(a => a.Telephone.TelephoneNumber)
                 .NotEmpty()
                 .WithMessage("O preenchimento do telefone é obrigatorio")
@@ -59,14 +67,8 @@ namespace CloudSuite.Modules.Application.Validations.User
                 .WithMessage("O número de telefone não pode ser nulo.");
 
             RuleFor(a => a.Telephone.TelephoneRegion)
-               .NotEmpty()
-               .WithMessage("O campo TelephoneRegion é obrigatório.")
                .Length(1, 100)
-               .WithMessage("O campo TelephoneRegion deve ter entre 1 e 100 caracteres.")
-               .Matches(@"^[a-zA-Z\s]*$")
-               .WithMessage("O campo TelephoneRegion deve conter apenas letras e espaços.")
-               .NotNull()
-               .WithMessage("O campo TelephoneRegion não pode ser nulo.");
+               .WithMessage("O campo TelephoneRegion deve ter entre 1 e 100 caracteres.");
 
             RuleFor(a => a.Vendor.Name)
                 .NotEmpty()
