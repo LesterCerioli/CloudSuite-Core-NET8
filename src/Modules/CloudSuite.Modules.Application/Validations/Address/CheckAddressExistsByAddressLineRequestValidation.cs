@@ -1,11 +1,5 @@
-﻿using CloudSuite.Modules.Application.Hadlers.Address;
-using CloudSuite.Modules.Application.Hadlers.Address.Requests;
+﻿using CloudSuite.Modules.Application.Hadlers.Address.Requests;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CloudSuite.Modules.Application.Validations.Address
 {
