@@ -33,7 +33,7 @@ namespace CloudSuite.Infrastructure.Repositories
 
         public async Task<Address> GetByContactName(string contactName)
         {
-            return await DbSet.SingleOrDefaultAsync(a => a.ContractName == contactName);
+            return await DbSet.SingleOrDefaultAsync(a => a.ContactName == contactName);
         }
 
         public async Task<IEnumerable<Address>> GetList()

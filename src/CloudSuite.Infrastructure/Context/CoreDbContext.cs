@@ -33,6 +33,8 @@ namespace CloudSuite.Infrastructure.Context
 
         public DbSet<Email> Emails { get; set; }
 
+        public DbSet<Company> Companies {get; set;}
+
         
         
 

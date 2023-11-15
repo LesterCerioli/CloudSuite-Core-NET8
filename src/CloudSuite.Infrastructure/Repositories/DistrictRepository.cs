@@ -1,33 +1,57 @@
+using System.Data.Common;
 using CloudSuite.Domain.Contracts;
 using CloudSuite.Domain.Models;
+using CloudSuite.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudSuite.Infrastructure.Repositories
 {
     public class DistrictRepository : IDistrictRepository
     {
-        public Task Add(District district)
+        protected readonly CoreDbContext Db; 
+        protected readonly DbSet<District> DbSet;
+        
+        public DistrictRepository(CoreDbContext context)
         {
-            throw new NotImplementedException();
+            Db = context;
+            DbSet = context.Districts;
+
         }
 
-        public Task<District> GetByName(string name)
+        
+
+        public async Task Add(District district)
         {
-            throw new NotImplementedException();
+            await Task.Run(() => { 
+                DbSet.Add(district);
+                Db.SaveChanges();
+            });
         }
 
-        public Task<IEnumerable<District>> GetList()
+        public async Task<District> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.Name == name);
+        }
+
+        public async Task<IEnumerable<District>> GetList()
+        {
+            return await DbSet.ToListAsync();
         }
 
         public void Remove(District district)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(district);
         }
 
         public void Update(District district)
         {
-            throw new NotImplementedException();
+            DbSet.Update(district);
+        }
+
+        public void Dispose()
+        {
+            Db.Dispose();
+
         }
     }
 }

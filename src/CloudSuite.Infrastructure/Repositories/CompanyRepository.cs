@@ -1,44 +1,67 @@
+using System.Data.Common;
 using CloudSuite.Domain.Contracts;
 using CloudSuite.Domain.Models;
 using CloudSuite.Domain.ValueObjects;
+using CloudSuite.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudSuite.Infrastructure.Repositories
 {
     public class CompanyRepository : ICompanyRepository
     {
-        public Task Add(Company company)
+        protected readonly CoreDbContext Db;
+        protected readonly DbSet<Company> DbSet;
+        
+        public CompanyRepository(CoreDbContext context)
         {
-            throw new NotImplementedException();
+            Db = context;
+            DbSet = context.Companies;
+
+        }
+        
+        public async Task Add(Company company)
+        {
+            await Task.Run(() => {
+                DbSet.Add(company);
+                Db.SaveChangesAsync();
+            });
+
+            
         }
 
-        public Task<IEnumerable<Company>> GetAll()
+        public async Task<IEnumerable<Company>> GetAll()
         {
-            throw new NotImplementedException();
+            return await DbSet.ToListAsync();
         }
 
-        public Task<Company> GetByCnpj(Cnpj cnpj)
+        public async Task<Company> GetByCnpj(Cnpj cnpj)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.Cnpj == cnpj);
         }
 
-        public Task<Company> GetByFantasyName(string fantasyName)
+        public async Task<Company> GetByFantasyName(string fantasyName)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.FantasyName == fantasyName);
         }
 
-        public Task<Company> GetByRegisterName(string registerName)
+        public async Task<Company> GetByRegisterName(string registerName)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.RegisterName == registerName);
         }
 
         public void Remove(Company company)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(company);
         }
 
         public void Update(Company company)
         {
-            throw new NotImplementedException();
+            DbSet.Update(company);
+        }
+
+        public void Dispose()
+        {
+            Db.Dispose();
         }
     }
 }
