@@ -29,7 +29,7 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor
                 {
                     var vendorCnpj = await _vendorRepository.GetByCnpj(command.Cnpj);
                     var vendorName = await _vendorRepository.GetByName(command.Name);
-                    var vendorCreationDate = await _vendorRepository.GetByCreationDate(command.CreatedOn);
+                    var vendorCreationDate = await _vendorRepository.GetByCreatedOn(command.CreatedOn);
 
                     if (vendorCnpj != null && vendorName != null && vendorCreationDate != null)
                     {

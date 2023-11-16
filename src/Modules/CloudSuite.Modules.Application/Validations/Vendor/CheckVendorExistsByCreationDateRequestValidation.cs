@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace CloudSuite.Modules.Application.Validations.Vendor
 {
-    public class CheckVendorExistsByCreationDateRequestValidation : AbstractValidator<CheckVendorExistsByCreationDateRequest>
+    public class CheckVendorExistsByCreationDateRequestValidation : AbstractValidator<CheckVendorExistsByCreatedOnRequest>
     {
         public CheckVendorExistsByCreationDateRequestValidation()
         {
