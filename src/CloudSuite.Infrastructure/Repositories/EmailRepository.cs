@@ -1,44 +1,64 @@
 using CloudSuite.Domain.Contracts;
 using CloudSuite.Domain.Enums;
 using CloudSuite.Domain.Models;
+using CloudSuite.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudSuite.Infrastructure.Repositories
 {
     public class EmailRepository : IEmailRepository
     {
-        public Task Add(Email email)
+        protected readonly DbSet<Email> DbSet;
+        protected readonly CoreDbContext Db;
+        
+        public EmailRepository(CoreDbContext context)
         {
-            throw new NotImplementedException();
+            Db = context;
+            DbSet = context.Emails; 
+        }
+        public async Task Add(Email email)
+        {
+            await Task.Run(() => { 
+                DbSet.Add(email);
+                Db.SaveChanges();
+            });
+            
         }
 
-        public Task<Email> GetByCodeErrorEmail(CodeErrorEmail codeErrorEmail)
+        public async Task<Email> GetByCodeErrorEmail(CodeErrorEmail codeErrorEmail)
         {
-            throw new NotImplementedException();
+            return DbSet.FirstOrDefault(a => a.CodeErrorEmail == codeErrorEmail);
         }
 
-        public Task<Email> GetByRecipient(string recipient)
+        public async Task<Email> GetByRecipient(string recipient)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.Recipient == recipient);
+            
         }
 
-        public Task<Email> GetBySender(string sender)
+        public async Task<Email> GetBySender(string sender)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.Sender == sender);
         }
 
-        public Task<IEnumerable<Email>> GetList()
+        public async Task<IEnumerable<Email>> GetList()
         {
-            throw new NotImplementedException();
+            return await DbSet.ToListAsync();
         }
 
         public void Remove(Email email)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(email);
         }
 
         public void Update(Email email)
         {
-            throw new NotImplementedException();
+            DbSet.Update(email);
+        }
+
+        public void Dispose()
+        {
+            Db.Dispose();
         }
     }
 }

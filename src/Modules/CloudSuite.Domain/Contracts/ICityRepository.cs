@@ -4,7 +4,7 @@ namespace CloudSuite.Domain.Contracts
 {
     public interface ICityRepository
     {
-        Task<City> GetByCItyName(string GetByCItyName);
+        Task<City> GetByCityName(string cityName);
 
         Task<IEnumerable<City>> GetList();
 

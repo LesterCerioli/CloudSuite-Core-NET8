@@ -1,39 +1,60 @@
+using System.Data.Common;
 using CloudSuite.Domain.Contracts;
 using CloudSuite.Domain.Models;
 using CloudSuite.Domain.ValueObjects;
+using CloudSuite.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudSuite.Infrastructure.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public Task Add(User user)
+        protected readonly CoreDbContext Db;
+        protected readonly DbSet<User> DbSet;
+        
+        public UserRepository(CoreDbContext context)
         {
-            throw new NotImplementedException();
+            Db = context;
+            DbSet = context.Users;
+
+        }
+        
+        public async Task Add(User user)
+        {
+            await Task.Run(() => { 
+                DbSet.Add(user);
+                Db.SaveChanges();
+            });
         }
 
-        public Task<User> GetByCpf(Cpf cpf)
+        public async Task<User> GetByCpf(Cpf cpf)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.Cpf == cpf);
         }
 
-        public Task<User> GetByEmail(Email email)
+        public async Task<User> GetByEmail(Email email)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.Email == email);
         }
 
-        public Task<IEnumerable<User>> GetList()
+        public async Task<IEnumerable<User>> GetList()
         {
-            throw new NotImplementedException();
+            return await DbSet.ToListAsync();
         }
 
         public void Remove(User user)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(user);
         }
 
         public void Update(User user)
         {
-            throw new NotImplementedException();
+            DbSet.Update(user);
+        }
+
+        public void Dispose()
+        {
+            Db.Dispose();
         }
     }
 }
