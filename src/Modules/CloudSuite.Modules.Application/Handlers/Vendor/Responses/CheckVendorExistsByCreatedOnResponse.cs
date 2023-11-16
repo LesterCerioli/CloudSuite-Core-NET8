@@ -3,12 +3,12 @@ using FluentValidation.Results;
 
 namespace CloudSuite.Modules.Application.Handlers.Vendor.Responses
 {
-    public class CheckVendorExistsByCreationDateResponse : Response
+    public class CheckVendorExistsByCreatedOnResponse : Response
     {
         public Guid RequestId { get; private set; }
         public bool Exists { get; set; }
 
-        public CheckVendorExistsByCreationDateResponse(Guid requestId, bool exists, ValidationResult result)
+        public CheckVendorExistsByCreatedOnResponse(Guid requestId, bool exists, ValidationResult result)
         {
             RequestId = requestId;
             Exists = exists;
@@ -18,7 +18,7 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor.Responses
             }
         }
 
-        public CheckVendorExistsByCreationDateResponse(Guid requestId, string falseValidation)
+        public CheckVendorExistsByCreatedOnResponse(Guid requestId, string falseValidation)
         {
             RequestId = requestId;
             Exists = false;

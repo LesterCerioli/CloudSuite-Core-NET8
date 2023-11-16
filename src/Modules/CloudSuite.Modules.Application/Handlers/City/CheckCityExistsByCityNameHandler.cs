@@ -26,7 +26,7 @@ namespace CloudSuite.Modules.Application.Hadlers.City
             {
                 try
                 {
-                    var cityName = await _cityRepository.GetByCItyName(request.CityName);
+                    var cityName = await _cityRepository.GetByCityName(request.CityName);
 
                     if (cityName != null)
                     {
