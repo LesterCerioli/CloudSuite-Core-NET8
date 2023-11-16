@@ -44,9 +44,9 @@ namespace CloudSuite.Modules.Application.Services.Implementations
             GC.SuppressFinalize(this);
         }
 
-        public async Task Save(CreateAddressCommand commandCreate)
+        public async Task SaveChangesAsync(CreateAddressCommand commandCreate)
         {
-            //await _addressRepository.Add(commandCreate.GetEntity());
+            await _addressRepository.Add(commandCreate.GetEntity());
         }
     }
 }
