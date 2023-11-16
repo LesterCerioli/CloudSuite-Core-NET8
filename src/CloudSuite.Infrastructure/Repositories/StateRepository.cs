@@ -1,38 +1,60 @@
+using System.Data.Common;
 using CloudSuite.Domain.Contracts;
 using CloudSuite.Domain.Models;
+using CloudSuite.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudSuite.Infrastructure.Repositories
 {
     public class StateRepository : IStateRepository
     {
-        public Task Add(State state)
+        protected readonly DbSet<State> DbSet;
+        protected readonly CoreDbContext Db;
+        
+        public StateRepository(CoreDbContext context)
         {
-            throw new NotImplementedException();
+            Db = context;
+            DbSet = context.States;
+
+        }
+        public async Task Add(State state)
+        {
+            await Task.Run(() => { 
+                DbSet.Add(state);
+                Db.SaveChanges();
+            });
+            
+            
         }
 
-        public Task<State> GetByName(string stateName)
+        public async Task<State> GetByName(string stateName)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.StateName == stateName);
         }
 
-        public Task<State> GetByUF(string uf)
+        public async Task<State> GetByUF(string uf)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.UF == uf);
         }
 
-        public Task<IEnumerable<State>> GetList()
+        public async Task<IEnumerable<State>> GetList()
         {
-            throw new NotImplementedException();
+            return await DbSet.ToListAsync();
         }
 
         public void Remove(State state)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(state);
         }
 
         public void Update(State state)
         {
-            throw new NotImplementedException();
+            DbSet.Update(state);
+        }
+
+        public void Dispose()
+        {
+            Db.Dispose();
         }
     }
 }

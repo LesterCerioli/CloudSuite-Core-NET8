@@ -1,44 +1,68 @@
 using CloudSuite.Domain.Contracts;
 using CloudSuite.Domain.Models;
 using CloudSuite.Domain.ValueObjects;
+using CloudSuite.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudSuite.Infrastructure.Repositories
 {
     public class VendorRepository : IVendorRepository
     {
-        public Task Add(Vendor vendor)
+        protected readonly CoreDbContext Db;
+        protected readonly DbSet<Vendor> DbSet;
+        
+        public VendorRepository(CoreDbContext context)
         {
-            throw new NotImplementedException();
+            Db = context;
+            DbSet = context.Vendors;
+
+        }
+        
+        public async Task Add(Vendor vendor)
+        {
+            await Task.Run(() => { 
+                DbSet.Add(vendor);
+                Db.SaveChanges();
+            });
         }
 
-        public Task<Vendor> GetByCnpj(Cnpj cnpj)
+        public async Task<Vendor> GetByCnpj(Cnpj cnpj)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.Cnpj == cnpj);
         }
 
-        public Task<Vendor> GetByCreationDate(DateTimeOffset creationDate)
+        
+
+        public async Task<Vendor> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.Name == name);
         }
 
-        public Task<Vendor> GetByName(string name)
+        public async Task<Vendor> GetByCreatedOn(DateTimeOffset? createdOn)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.CreatedOn == createdOn);
         }
-
-        public Task<IEnumerable<Vendor>> GetList()
+        
+        public async Task<IEnumerable<Vendor>> GetList()
         {
-            throw new NotImplementedException();
+            return await DbSet.ToListAsync();
         }
 
         public void Remove(Vendor vendor)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(vendor);
         }
 
         public void Update(Vendor vendor)
         {
-            throw new NotImplementedException();
+            DbSet.Update(vendor);
         }
+
+        public void Dispose()
+        {
+            Db.Dispose();
+        }
+
+        
     }
 }

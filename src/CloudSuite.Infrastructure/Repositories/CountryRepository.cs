@@ -1,38 +1,65 @@
+using System.Data.Common;
 using CloudSuite.Domain.Contracts;
 using CloudSuite.Domain.Models;
+using CloudSuite.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CloudSuite.Infrastructure.Repositories
 {
     public class CountryRepository : ICountryRepository
     {
-        public Task Add(Country country)
+        
+        protected readonly DbSet<Country> DbSet;
+        protected readonly CoreDbContext Db; 
+        
+        public CountryRepository(CoreDbContext context)
         {
-            throw new NotImplementedException();
+            Db = context;
+            DbSet = context.Countries;
+
         }
 
-        public Task<Country> GetByCode(string code3)
+        
+
+        public async Task Add(Country country)
         {
-            throw new NotImplementedException();
+            await Task.Run(() => {
+                DbSet.Add(country);
+                Db.SaveChanges();
+
+
+            });
+            
         }
 
-        public Task<Country> GetByName(string countryName)
+        public async Task<Country> GetByCode(string code3)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.Code3 == code3);
         }
 
-        public Task<IEnumerable<Country>> GetList()
+        public async Task<Country> GetByName(string countryName)
         {
-            throw new NotImplementedException();
+            return await DbSet.FirstOrDefaultAsync(a => a.CountryName == countryName);
+        }
+
+        public async Task<IEnumerable<Country>> GetList()
+        {
+            return await DbSet.ToListAsync();
         }
 
         public void Remove(Country country)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(country);
         }
 
         public void Update(Country country)
         {
-            throw new NotImplementedException();
+            DbSet.Update(country);
+        }
+
+        public void Dispose()
+        {
+            Db.Dispose();
         }
     }
 }

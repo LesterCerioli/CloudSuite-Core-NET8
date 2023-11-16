@@ -9,7 +9,7 @@ namespace CloudSuite.Domain.Contracts
 
         Task<Vendor> GetByName(string name);
         
-        Task<Vendor> GetByCreationDate(DateTimeOffset? creationDate);
+        Task<Vendor> GetByCreatedOn(DateTimeOffset? createdOn);
 
         Task<IEnumerable<Vendor>> GetList();
 
