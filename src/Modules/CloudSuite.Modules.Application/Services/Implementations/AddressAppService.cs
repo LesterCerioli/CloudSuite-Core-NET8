@@ -31,7 +31,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 
         public async Task<AddressViewModel> GetByContactName(string contactName)
         {
-            return _mapper.Map<Addre3ssViewModel>(await _addressRepository.GetByContactName(contactName));
+            return _mapper.Map<AddressViewModel>(await _addressRepository.GetByContactName(contactName));
         }
 
         public async Task Save(CreateAddressCommand commandCreate)
