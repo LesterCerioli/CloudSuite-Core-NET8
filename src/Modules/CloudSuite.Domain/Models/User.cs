@@ -11,8 +11,12 @@ namespace CloudSuite.Domain.Models
     public class User : Entity, IAggregateRoot
     {
         private readonly List<Vendor> _vendors;
+		private bool value1;
+		private object value2;
+		private string? email;
+		private bool value;
 
-        public User(string? fullName, Email email, Cpf cpf, Telephone telephone, Vendor vendor, bool? isDeleted, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, string? refreshTokenHash, string? culture, string? extensionData) {
+		public User(string? fullName, Email email, Cpf cpf, Telephone telephone, Vendor vendor, bool? isDeleted, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, string? refreshTokenHash, string? culture, string? extensionData) {
             FullName = fullName;
             Email = email;
             Cpf = cpf;
@@ -29,9 +33,27 @@ namespace CloudSuite.Domain.Models
             _vendors = new List<Vendor>();
         }
 
-        public User() { }
+        public User(string? fullName, Cpf cpf) { }
 
-        public const string SettingDataKey = "Settings";
+		public User(Cpf cpf, string? fullName, bool value1, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, string? refreshTokenHash, object value2)
+		{
+			Cpf = cpf;
+			FullName = fullName;
+			this.value1 = value1;
+			CreatedOn = createdOn;
+			LatestUpdatedOn = latestUpdatedOn;
+			RefreshTokenHash = refreshTokenHash;
+			this.value2 = value2;
+		}
+
+		public User(string? fullName, Cpf cpf, string? email, bool value, DateTimeOffset? createdOn) : this(fullName, cpf)
+		{
+			this.email = email;
+			this.value = value;
+			CreatedOn = createdOn;
+		}
+
+		public const string SettingDataKey = "Settings";
 
         public Guid UserGuid { get; set; }
 

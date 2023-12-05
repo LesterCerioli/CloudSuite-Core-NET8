@@ -10,8 +10,14 @@ namespace CloudSuite.Domain.Models
 {
     public class Media : Entity, IAggregateRoot
     {
+		public Media(string? caption, int? fileSize, string? fileName)
+		{
+			Caption = caption;
+			FileSize = fileSize;
+			FileName = fileName;
+		}
 
-        public Media(Guid id, string? caption, int? fileSize, string? fileName, MediaType mediaType) {
+		public Media(Guid id, string? caption, int? fileSize, string? fileName, MediaType mediaType) {
             Id = id;
             Caption = caption;
             FileSize = fileSize;

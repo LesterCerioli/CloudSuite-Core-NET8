@@ -11,7 +11,24 @@ namespace CloudSuite.Domain.Models
 {
     public class Company : Entity, IAggregateRoot
     {
-        public Company(Guid id, Cnpj cnpj, string? fantasyName, string? registerName, Address address) {
+		private object value;
+
+		public Company(Cnpj cnpj, string? fantasyName, string? registerName)
+		{
+			Cnpj = cnpj;
+			FantasyName = fantasyName;
+			RegisterName = registerName;
+		}
+
+		public Company(Cnpj cnpj, string? fantasyName, string? registerName, object value)
+		{
+			Cnpj = cnpj;
+			FantasyName = fantasyName;
+			RegisterName = registerName;
+			this.value = value;
+		}
+
+		public Company(Guid id, Cnpj cnpj, string? fantasyName, string? registerName, Address address) {
             AddressId = id;
             Cnpj = cnpj;
             FantasyName = fantasyName;

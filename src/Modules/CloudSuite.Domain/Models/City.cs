@@ -11,8 +11,20 @@ namespace CloudSuite.Domain.Models
     public class City : Entity, IAggregateRoot
     {
         private readonly List<State> _states;
+		private object value;
 
-        public City(Guid id, string? cityName, State state)
+		public City(string? cityName)
+		{
+			CityName = cityName;
+		}
+
+		public City(string? cityName, object value)
+		{
+			CityName = cityName;
+			this.value = value;
+		}
+
+		public City(Guid id, string? cityName, State state)
         {
             StateId = id;
             _states = new List<State>();

@@ -10,7 +10,10 @@ namespace CloudSuite.Domain.Models
 {
     public class Vendor : Entity, IAggregateRoot
     {
-        public Vendor(Guid userId, string? name, string? slug, string? description, Cnpj cnpj, Email email, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, bool? isActive, bool? isDeleted)
+		private bool value1;
+		private bool value2;
+
+		public Vendor(Guid userId, string? name, string? slug, string? description, Cnpj cnpj, Email email, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, bool? isActive, bool? isDeleted)
         {
             UserId = userId;
             Name = name;
@@ -29,7 +32,19 @@ namespace CloudSuite.Domain.Models
 
         }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
+		public Vendor(string? name, string? slug, string? description, Cnpj cnpj, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, bool value1, bool value2)
+		{
+			Name = name;
+			Slug = slug;
+			Description = description;
+			Cnpj = cnpj;
+			CreatedOn = createdOn;
+			LatestUpdatedOn = latestUpdatedOn;
+			this.value1 = value1;
+			this.value2 = value2;
+		}
+
+		[Required(ErrorMessage = "The {0} field is required.")]
         [StringLength(450)]
         public string? Name { get; private set; }
 

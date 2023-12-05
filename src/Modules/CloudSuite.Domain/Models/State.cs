@@ -29,7 +29,14 @@ namespace CloudSuite.Domain.Models
 
         }
 
-        [Required(ErrorMessage="Este campo é de preenchimento obrigatório.")]
+		public State(Guid id, string? uF, string? stateName)
+		{
+			Id = id;
+			UF = uF;
+			StateName = stateName;
+		}
+
+		[Required(ErrorMessage="Este campo é de preenchimento obrigatório.")]
         [StringLength(100)]
         public string? StateName { get; private set; }
 

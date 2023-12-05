@@ -22,7 +22,14 @@ namespace CloudSuite.Domain.Models
 
         public District() { }
 
-        public IReadOnlyCollection<State> States => _states.AsReadOnly();
+		public District(string? name, string? type, string? location)
+		{
+			Name = name;
+			Type = type;
+			Location = location;
+		}
+
+		public IReadOnlyCollection<State> States => _states.AsReadOnly();
 
         public State State { get; set; }
 

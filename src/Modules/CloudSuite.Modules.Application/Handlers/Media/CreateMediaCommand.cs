@@ -8,30 +8,28 @@ namespace CloudSuite.Modules.Application.Handlers.Media
 {
     public class CreateMediaCommand : IRequest<CreateMediaResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
+                
+        public string? Caption { get; private set; }
 
-        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
-        [StringLength(450)]
-        public string? Caption { get; set; }
+        public int? FileSize { get; private set; }
 
-        [Required(ErrorMessage = "Este campo é obrigatório.")]
-        public int? FileSize { get; set; }
+        public string? FileName { get; private set; }
 
-        [Required(ErrorMessage = "Este campo é de preencimento obrigatório.")]
-        [StringLength(450)]
-        public string? FileName { get; set; }
-
-        public MediaType MediaType { get; set; }
+        public CreateMediaCommand()
+        {
+            Id = Guid.NewGuid();
+        }
 
 
-        public MediaEntity GetEntity()
+		public MediaEntity GetEntity()
         {
             return new MediaEntity(
-                this.Id,
+                
                 this.Caption,
                 this.FileSize,
-                this.FileName,
-                this.MediaType
+                this.FileName
+                
                 );
         }
 

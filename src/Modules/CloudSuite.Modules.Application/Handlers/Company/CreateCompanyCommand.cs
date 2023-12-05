@@ -10,31 +10,28 @@ namespace CloudSuite.Modules.Application.Handlers.Company
     {
         public Guid Id { get; set; }
 
-        public Cnpj Cnpj { get; set; }
+        public string? Cnpj { get; set; }
 
-        public Guid CnpjID { get; private set; }
+        public string? FantasyName { get; set; }
 
-        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
-        [MaxLength(100)]
-        public string? FantasyName { get; private set; }
+        public string? RegisterName { get; set; }
 
-        [Required(ErrorMessage = "Este campo é de preencimento obrigatório.")]
-        [MaxLength(100)]
-        public string? RegisterName { get; private set; }
-
-        public Address Address { get; private set; }
-
-        public Guid AddressId { get; private set; }
+        public CreateCompanyCommand()
+        {
+            Id = Guid.NewGuid();
+        }
 
 
-        public CompanyEntity GetEntity()
+
+
+		public CompanyEntity GetEntity()
         {
             return new CompanyEntity(
-                   this.AddressId,
-                   this.Cnpj,
+                   
+                   new Cnpj(this.Cnpj),
                    this.FantasyName,
-                   this.RegisterName,
-                   this.Address
+                   this.RegisterName
+                   
                 );
         }
 
