@@ -27,9 +27,7 @@ jobs:
       projects: 'test/**/*.csproj'
       nobuild: true
   
-  
-  - script: .\reportgenerator -reports:$(Build.SourcesDirectory)\test\**\coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)\coverlet\reports -reporttypes:"HtmlInline_AzurePipelines;Cobertura"
-    displayName: Create reports
+   
       
   
   - task: PublishCodeCoverageResults@1
@@ -60,8 +58,7 @@ jobs:
       nobuild: true
   
   
-  - script: .\reportgenerator -reports:$(Build.SourcesDirectory)\test\**\coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)\coverlet\reports -reporttypes:"HtmlInline_AzurePipelines;Cobertura"
-    displayName: Create reports
+  
       
   
   - task: PublishCodeCoverageResults@1
