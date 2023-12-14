@@ -36,7 +36,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 
         public async Task Save(CreateAddressCommand commandCreate)
         {
-            throw new NotImplementedException();
+            await _addressRepository.Add(commandCreate.GetEntity());
         }
 
         public void Dispoise()
