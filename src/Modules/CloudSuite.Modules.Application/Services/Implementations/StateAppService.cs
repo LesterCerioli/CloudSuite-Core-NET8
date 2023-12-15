@@ -4,8 +4,6 @@ using CloudSuite.Modules.Application.Handlers.State;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Security.Cryptography.X509Certificates;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
 {

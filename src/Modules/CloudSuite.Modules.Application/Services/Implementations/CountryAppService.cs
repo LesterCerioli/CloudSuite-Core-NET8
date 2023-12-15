@@ -1,7 +1,5 @@
 using AutoMapper;
 using CloudSuite.Domain.Contracts;
-using CloudSuite.Domain.ValueObjects;
-using CloudSuite.Modules.Application.Handlers.Company;
 using CloudSuite.Modules.Application.Handlers.Country;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;

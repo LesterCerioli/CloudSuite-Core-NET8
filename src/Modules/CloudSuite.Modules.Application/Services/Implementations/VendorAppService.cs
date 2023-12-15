@@ -37,6 +37,11 @@ namespace CloudSuite.Modules.Application.Services.Implementations
             return _mapper.Map<VendorViewModel>(await _vendorRepository.GetByName(name));
         }
 
+        public void Dispoise()
+        {
+            GC.SuppressFinalize(this);
+        }
+
         public async Task Save(CreateVendorCommand commandCreate)
         {
             await _vendorRepository.Add(commandCreate.GetEntity());
