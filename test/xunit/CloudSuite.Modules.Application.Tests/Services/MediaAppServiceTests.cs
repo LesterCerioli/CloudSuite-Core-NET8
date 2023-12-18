@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CloudSuite.Modules.Application.Tests.Services
 {
-    internal class MediaAppServiceTests
+    public class MediaAppServiceTests
     {
     }
 }

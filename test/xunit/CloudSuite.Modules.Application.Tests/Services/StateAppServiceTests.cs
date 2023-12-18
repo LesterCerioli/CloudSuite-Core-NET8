@@ -33,7 +33,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object,
                 mediatorHandlerMock.Object);
 
-            var country = new Country("Brazil", "736872364", true, false, true, false, true);
+            var country = new Country(Guid.NewGuid(),"Brazil", "736872364", true, false, true, false, true);
             var stateEntity = new State(Guid.NewGuid(), uf, stateName, country, Guid.NewGuid());
 
             stateRepositoryMock.Setup(repo => repo.GetByStateName(stateName)).ReturnsAsync(stateEntity);

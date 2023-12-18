@@ -1,4 +1,8 @@
 ﻿using AutoMapper;
+using CloudSuite.Domain.Contracts;
+using CloudSuite.Domain.Models;
+using CloudSuite.Modules.Application.Hadlers.City;
+using CloudSuite.Modules.Application.ViewModel;
 using Moq;
 using NetDevPack.Mediator;
 using System;
@@ -27,7 +31,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mediatorHandlerMock.Object,
                 mapperMock.Object);
 
-            var state = new State(Guid.NewGuid(), "Ba", "Bahia", new Country("Brazil", "736872364", true, false, true, false, true), Guid.NewGuid());
+            var state = new State(Guid.NewGuid(), "Ba", "Bahia", new Country(Guid.NewGuid(),"Brazil", "736872364", true, false, true, false, true), Guid.NewGuid());
             var cityEntity = new City(state.Id, cityName, state);
             cityRepositoryMock.Setup(repo => repo.GetByCityName(cityName)).ReturnsAsync(cityEntity);
 
