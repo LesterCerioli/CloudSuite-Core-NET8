@@ -16,14 +16,13 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 
         public AddressAppService(
             IAddressRepository addressRepository,
-            IMapper mapper,
-            IMediatorHandler mediator
+            IMediatorHandler mediator,
+            IMapper mapper
         )
         {
             _addressRepository = addressRepository;
-            _mapper = mapper;
             _mediator = mediator;
-
+            _mapper = mapper;
         }
         public async Task<AddressViewModel> GetByAddressLine(string addressLine1)
         {
