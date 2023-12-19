@@ -7,6 +7,7 @@ using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModel;
 using CloudSuite.Modules.Application.ViewModels;
 using Microsoft.Extensions.Logging;
+using NetDevPack.Mediator;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
 {
@@ -14,13 +15,13 @@ namespace CloudSuite.Modules.Application.Services.Implementations
     {
         private readonly ICompanyRepository _companyRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
+        private readonly IMediatorHandler _mediator;
 
-        public CompanyAppService(ICompanyRepository companyRepository, IMapper mapper, ILogger logger)
+        public CompanyAppService(ICompanyRepository companyRepository, IMapper mapper, IMediatorHandler mediator)
         {
             _companyRepository = companyRepository;
             _mapper = mapper;
-            _logger = logger;
+            _mediator = mediator;
         }
 
         public async Task<CompanyViewModel> GetByCnpj(Cnpj cnpj)

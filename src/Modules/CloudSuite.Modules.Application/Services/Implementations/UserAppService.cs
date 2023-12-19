@@ -6,6 +6,7 @@ using CloudSuite.Modules.Application.Handlers.User;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;
 using Microsoft.Extensions.Logging;
+using NetDevPack.Mediator;
 using System;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
@@ -14,13 +15,13 @@ namespace CloudSuite.Modules.Application.Services.Implementations
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
+        private readonly IMediatorHandler _mediator;
 
-        public UserAppService(IUserRepository userRepository, IMapper mapper, ILogger logger)
+        public UserAppService(IUserRepository userRepository, IMapper mapper, IMediatorHandler mediator)
         {
             _userRepository = userRepository;
             _mapper = mapper;
-            _logger = logger;
+            _mediator = mediator;
         }
 
         public async Task<UserViewModel> GetByCpf(Cpf cpf)

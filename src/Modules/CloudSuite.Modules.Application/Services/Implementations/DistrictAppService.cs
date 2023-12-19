@@ -3,7 +3,9 @@ using CloudSuite.Domain.Contracts;
 using CloudSuite.Modules.Application.Handlers.District;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;
+using MediatR;
 using Microsoft.Extensions.Logging;
+using NetDevPack.Mediator;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
 {
@@ -11,13 +13,13 @@ namespace CloudSuite.Modules.Application.Services.Implementations
     {
         private readonly IDistrictRepository _districtRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
+        private readonly IMediatorHandler _mediator;
 
-        public DistrictAppService(IDistrictRepository districtRepository, IMapper mapper, ILogger logger)
+        public DistrictAppService(IDistrictRepository districtRepository, IMapper mapper, IMediatorHandler mediator)
         {
             _districtRepository = districtRepository;
             _mapper = mapper;
-            _logger = logger;
+            _mediator = mediator;
         }
 
         public async Task<DistrictViewModel> GetByName(string name)

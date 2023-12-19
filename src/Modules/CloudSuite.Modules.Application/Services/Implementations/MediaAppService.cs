@@ -4,6 +4,7 @@ using CloudSuite.Modules.Application.Handlers.Media;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;
 using Microsoft.Extensions.Logging;
+using NetDevPack.Mediator;
 using System.Xml.Linq;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
@@ -13,13 +14,13 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 
         private readonly IMediaRepository _mediaRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
+        private readonly IMediatorHandler _mediator;
 
-        public MediaAppService(IMediaRepository mediaRepository, IMapper mapper, ILogger logger)
+        public MediaAppService(IMediaRepository mediaRepository, IMapper mapper, IMediatorHandler mediator)
         {
             _mediaRepository = mediaRepository;
             _mapper = mapper;
-            _logger = logger;
+            _mediator = mediator;
         }
 
         public async Task<MediaViewModel> GetByCaption(string caption)

@@ -6,6 +6,7 @@ using CloudSuite.Modules.Application.Handlers.Vendor;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;
 using Microsoft.Extensions.Logging;
+using NetDevPack.Mediator;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
 {
@@ -13,13 +14,13 @@ namespace CloudSuite.Modules.Application.Services.Implementations
     {
         private readonly IVendorRepository _vendorRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
+        private readonly IMediatorHandler _mediator;
 
-        public VendorAppService(IVendorRepository vendorRepository, IMapper mapper, ILogger logger)
+        public VendorAppService(IVendorRepository vendorRepository, IMapper mapper, IMediatorHandler mediator)
         {
             _vendorRepository = vendorRepository;
             _mapper = mapper;
-            _logger = logger;
+            _mediator = mediator;
         }
 
         public async Task<VendorViewModel> GetByCnpj(Cnpj cnpj)

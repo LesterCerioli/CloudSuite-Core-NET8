@@ -5,6 +5,7 @@ using CloudSuite.Modules.Application.Handlers.Email;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;
 using Microsoft.Extensions.Logging;
+using NetDevPack.Mediator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,13 @@ namespace CloudSuite.Modules.Application.Services.Implementations
     {
         private readonly IEmailRepository _emailRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
+        private readonly IMediatorHandler _mediator;
 
-        public RoboEmailAppService(IEmailRepository emailRepository, IMapper mapper, ILogger logger)
+        public RoboEmailAppService(IEmailRepository emailRepository, IMapper mapper, IMediatorHandler mediator)
         {
             _emailRepository = emailRepository;
             _mapper = mapper;
-            _logger = logger;
+            _mediator = mediator;
         }
 
         public async Task<EmailViewModel> GetByCodeErrorEmail(CodeErrorEmail codeErrorEmail)

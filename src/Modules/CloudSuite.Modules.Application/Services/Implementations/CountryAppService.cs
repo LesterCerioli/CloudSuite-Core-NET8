@@ -4,6 +4,7 @@ using CloudSuite.Modules.Application.Handlers.Country;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;
 using Microsoft.Extensions.Logging;
+using NetDevPack.Mediator;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
 {
@@ -11,13 +12,13 @@ namespace CloudSuite.Modules.Application.Services.Implementations
     {
         private readonly ICountryRepository _countryRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
+        private readonly IMediatorHandler _mediator;
 
-        public CountryAppService(ICountryRepository countryRepository, IMapper mapper, ILogger logger)
+        public CountryAppService(ICountryRepository countryRepository, IMapper mapper, IMediatorHandler mediator)
         {
             _countryRepository = countryRepository;
             _mapper = mapper;
-            _logger = logger;
+            _mediator = mediator;
         }
 
         public async Task<CountryViewModel> GetByName(string countryName)
