@@ -9,7 +9,7 @@ trigger:
 jobs:
 
 
-- job: Linux On-premise
+- job: LinuxOnpremise
   pool:
     name: 'DK3'
   steps:
