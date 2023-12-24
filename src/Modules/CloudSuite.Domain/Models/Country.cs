@@ -49,6 +49,8 @@ namespace CloudSuite.Domain.Models
 
         public IReadOnlyCollection<State> States => _states.AsReadOnly();
 
+        public State State { get; private set; }
+        
         public Guid StateId { get; private set; }
     }
 }

@@ -8,7 +8,23 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(i => i.Id);
+
+            builder.Property(i => i.Id)
+                .HasColumnName("Id");
+
+            builder.Property(i => i.FullName)
+                .HasColumnName("FullName")
+                .HasColumnType("varchar(100)")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder.Property(i => i.IsDeleted)
+                .HasColumnName("IsDeleted")
+                .HasColumnType("bit")
+                .IsRequired();
+
+            
         }
     }
 }
