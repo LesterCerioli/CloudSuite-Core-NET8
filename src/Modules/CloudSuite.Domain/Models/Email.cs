@@ -32,5 +32,6 @@ namespace CloudSuite.Domain.Models
         public int? SendAttempts { get; private set; } // Number of send attempts
 
         public CodeErrorEmail CodeErrorEmail { get; private set; }
+        public Guid CodeErrorEmailId { get; private set; } // Adicionei esta propriedade para armazenar a chave estrangeira
     }
 }
