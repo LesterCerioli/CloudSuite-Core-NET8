@@ -1,3 +1,6 @@
+using CloudSuite.Domain.Models;
+using Dapper.FluentMap.Dommel.Mapping;
+
 namespace CloudSuite.Infrastructure.Mappings.Dapper
 {
     public class UserDapperMapping : DommelEntityMap<User>
@@ -16,12 +19,7 @@ namespace CloudSuite.Infrastructure.Mappings.Dapper
             Map(p => p.EmailId).ToColumn("EmailId");
             Map(p => p.RefreshTokenHash).ToColumn("RefreshTokenHash");
 
-            // Map other fields as needed
-
-            // Map relationship with Email
-            References(p => p.Email).Column("EmailId").Reference();
-
-            // If there are other relationships, map them as needed
+            
         }
         
     }

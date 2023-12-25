@@ -1,4 +1,5 @@
 using CloudSuite.Domain.Models;
+using Dapper.FluentMap.Dommel.Mapping;
 
 namespace CloudSuite.Infrastructure.Mappings.Dapper
 {

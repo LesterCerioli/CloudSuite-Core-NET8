@@ -1,3 +1,6 @@
+using CloudSuite.Domain.Models;
+using Dapper.FluentMap.Dommel.Mapping;
+
 namespace CloudSuite.Infrastructure.Mappings.Dapper
 {
     public class VendorDapperMapping : DommelEntityMap<Vendor>
@@ -16,15 +19,7 @@ namespace CloudSuite.Infrastructure.Mappings.Dapper
             Map(p => p.IsActive).ToColumn("IsActive");
             Map(p => p.IsDeleted).ToColumn("IsDeleted");
 
-            // Map other fields as needed
-
-            // Map relationship with Email
-            References(p => p.Email).Column("EmailId").Reference();
-
-            // Map relationship with User
-            References(p => p.User).Column("UserId").Reference();
-
-            // If there are other relationships, map them as needed
+            
         }
         
     }

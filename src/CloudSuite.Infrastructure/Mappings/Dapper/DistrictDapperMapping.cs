@@ -1,3 +1,6 @@
+using CloudSuite.Domain.Models;
+using Dapper.FluentMap.Dommel.Mapping;
+
 namespace CloudSuite.Infrastructure.Mappings.Dapper
 {
     public class DistrictDapperMapping : DommelEntityMap<District>
@@ -12,8 +15,7 @@ namespace CloudSuite.Infrastructure.Mappings.Dapper
             Map(p => p.CityId).ToColumn("CityId");
 
             
-            // Mapping a relationship
-            References(p => p.City).Column("CityId").Reference();
+            
 
             
         }

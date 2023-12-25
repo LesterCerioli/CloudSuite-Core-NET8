@@ -1,3 +1,6 @@
+using CloudSuite.Domain.Models;
+using Dapper.FluentMap.Dommel.Mapping;
+
 namespace CloudSuite.Infrastructure.Mappings.Dapper
 {
     public class StateDapperMapping : DommelEntityMap<State>
@@ -13,7 +16,7 @@ namespace CloudSuite.Infrastructure.Mappings.Dapper
             // Map other fields as needed
 
             // Map relationship with Country
-            References(p => p.Country).Column("CountryId").Reference();
+            //References(p => p.Country).Column("CountryId").Reference();
 
             // If there are other relationships, map them as needed
         }
