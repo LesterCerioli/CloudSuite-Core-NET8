@@ -8,7 +8,20 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
     {
         public void Configure(EntityTypeBuilder<City> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(b => b.Id);
+
+            builder.Property(b => b.Id)
+                .HasColumnName("Id");
+
+            builder.Property(b => b.CityName)
+                .HasColumnName("CityName")
+                .HasColumnType("varchar(50)")
+                .IsRequired();
+
+            builder.HasOne(p => p.State)
+                .WithMany()
+                .HasForeignKey(p => p.StateId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

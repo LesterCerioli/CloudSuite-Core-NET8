@@ -34,6 +34,8 @@ namespace CloudSuite.Domain.Models
 
         public City City { get; private set; }
 
+        public Guid CityId {get; private set;}
+        
         public District District { get; private set; }
 
         public Guid DistrictId { get; private set; }

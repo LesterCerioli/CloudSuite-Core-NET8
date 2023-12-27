@@ -10,11 +10,11 @@ namespace CloudSuite.Domain.Models
     public class District : Entity, IAggregateRoot
     {
 
-        private readonly List<State> _states;
+        private readonly List<City> _cities;
         public District(Guid id, string name, string type, string location)
         {
             Id = id;
-            _states = new List<State>(0);
+            _cities = new List<City>(0);
             Name = name;
             Type = type;
             Location = location;
@@ -22,11 +22,11 @@ namespace CloudSuite.Domain.Models
 
         public District() { }
 
-        public IReadOnlyCollection<State> States => _states.AsReadOnly();
+        public IReadOnlyCollection<City> Cities => _cities.AsReadOnly();
 
-        public State State { get; set; }
+        public City City { get; private set; }
 
-        public Guid StateId { get; private set; }
+        public Guid CityId { get; private set; }
 
         [Required(ErrorMessage = "The {0} field is required.")]
         [StringLength(450)]
