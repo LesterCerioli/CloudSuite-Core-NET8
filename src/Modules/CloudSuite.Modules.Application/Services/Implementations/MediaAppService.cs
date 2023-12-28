@@ -1,51 +1,7 @@
-using AutoMapper;
-using CloudSuite.Domain.Contracts;
-using CloudSuite.Modules.Application.Handlers.Media;
-using CloudSuite.Modules.Application.Services.Contracts;
-using CloudSuite.Modules.Application.ViewModels;
-using Microsoft.Extensions.Logging;
-using NetDevPack.Mediator;
-using System.Xml.Linq;
-
 namespace CloudSuite.Modules.Application.Services.Implementations
 {
-    public class MediaAppService : IMediaAppService
+    public class MediaAppService
     {
-
-        private readonly IMediaRepository _mediaRepository;
-        private readonly IMapper _mapper;
-        private readonly IMediatorHandler _mediator;
-
-        public MediaAppService(IMediaRepository mediaRepository, IMapper mapper, IMediatorHandler mediator)
-        {
-            _mediaRepository = mediaRepository;
-            _mapper = mapper;
-            _mediator = mediator;
-        }
-
-        public async Task<MediaViewModel> GetByCaption(string caption)
-        {
-            return _mapper.Map<MediaViewModel>(await _mediaRepository.GetByCaption(caption));
-        }
-
-        public async Task<MediaViewModel> GetByFileName(string fileName)
-        {
-            return _mapper.Map<MediaViewModel>(await _mediaRepository.GetByFileName(fileName));
-        }
-
-        public async Task<MediaViewModel> GetByFileSize(int? fileSize)
-        {
-            return _mapper.Map<MediaViewModel>(await _mediaRepository.GetByFileSize(fileSize));
-        }
-
-        public void Dispoise()
-        {
-            GC.SuppressFinalize(this);
-        }
-
-        public async Task Save(CreateMediaCommand commandCreate)
-        {
-            await _mediaRepository.Add(commandCreate.GetEntity());
-        }
+        
     }
 }

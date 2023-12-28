@@ -4,7 +4,6 @@ using CloudSuite.Modules.Application.Hadlers.Address;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModel;
 using Microsoft.Extensions.Logging;
-using NetDevPack.Mediator;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
 {
@@ -12,17 +11,18 @@ namespace CloudSuite.Modules.Application.Services.Implementations
     {
         private readonly IAddressRepository _addressRepository;
         private readonly IMapper _mapper;
-        private readonly IMediatorHandler _mediator;
+        private readonly ILogger _logger;
 
         public AddressAppService(
             IAddressRepository addressRepository,
-            IMediatorHandler mediator,
-            IMapper mapper
+            IMapper mapper,
+            ILogger logger
         )
         {
             _addressRepository = addressRepository;
-            _mediator = mediator;
             _mapper = mapper;
+            _logger = logger;
+
         }
         public async Task<AddressViewModel> GetByAddressLine(string addressLine1)
         {
@@ -36,7 +36,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 
         public async Task Save(CreateAddressCommand commandCreate)
         {
-            await _addressRepository.Add(commandCreate.GetEntity());
+            throw new NotImplementedException();
         }
 
         public void Dispoise()

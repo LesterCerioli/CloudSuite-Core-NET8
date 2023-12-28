@@ -8,6 +8,7 @@ namespace CloudSuite.Domain.Contracts
 
         Task<Address> GetByAddressLine(string addressLine1);
 
+
         Task<IEnumerable<Address>> GetList();
 
         Task Add(Address address);
