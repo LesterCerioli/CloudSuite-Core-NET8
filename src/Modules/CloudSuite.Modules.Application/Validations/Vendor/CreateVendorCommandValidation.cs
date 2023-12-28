@@ -116,19 +116,7 @@ namespace CloudSuite.Modules.Application.Validations.Vendor
                 .Length(1, 450)
                 .WithMessage("O campo RefreshTokenHash deve ter entre 1 e 450 caracteres.");
 
-            RuleFor(a => a.User.Culture)
-               .NotEmpty()
-               .WithMessage("O campo Culture é obrigatório.")
-               .Length(1, 450)
-               .WithMessage("O campo Culture deve ter entre 1 e 450 caracteres.")
-               .NotNull()
-               .WithMessage("O campo Culture não pode ser nulo.");
-
-            RuleFor(a => a.User.ExtensionData)
-               .Length(1, 100)
-               .WithMessage("O campo ExtensionData deve ter entre 1 e 100 caracteres.")
-               .NotNull()
-               .WithMessage("O campo ExtensionData não pode ser nulo.");
+                    
 
 
             RuleFor(a => a.Cnpj)
