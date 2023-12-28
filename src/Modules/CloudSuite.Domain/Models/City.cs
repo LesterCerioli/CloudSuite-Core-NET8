@@ -20,8 +20,8 @@ namespace CloudSuite.Domain.Models
             State = state;
         }
 
-        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
-        [MaxLength(100)]
+        [Required(ErrorMessage = "Este campo ï¿½ de preenchimento obrigatï¿½rio.")]
+        [MaxLength(50)]
 
         public string? CityName { get; private set; }
 
