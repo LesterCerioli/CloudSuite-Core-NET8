@@ -1,3 +1,4 @@
+using CloudSuite.Modules.Application.Hadlers.City;
 using CloudSuite.Modules.Application.ViewModel;
 
 namespace CloudSuite.Modules.Application.Services.Contracts
@@ -6,7 +7,7 @@ namespace CloudSuite.Modules.Application.Services.Contracts
     {
         Task<CityViewModel> GetByCityName(string cityName);
 
-        //Task Save(CreareCityCommand commandCreate);
+        Task Save(CreateCityCommand commandCreate);
         
     }
 }

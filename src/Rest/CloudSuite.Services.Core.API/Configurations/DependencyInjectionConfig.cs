@@ -1,4 +1,6 @@
-﻿namespace CloudSuite.Services.Core.API.Configurations
+﻿using CloudSuite.Infrastructure.CrossCutting;
+
+namespace CloudSuite.Services.Core.API.Configurations
 {
 	public static class DependencyInjectionConfig
 	{

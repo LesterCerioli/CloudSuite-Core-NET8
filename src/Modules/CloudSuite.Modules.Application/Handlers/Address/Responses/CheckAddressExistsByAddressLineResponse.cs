@@ -13,17 +13,17 @@ namespace CloudSuite.Modules.Application.Hadlers.Address.Responses
         {
             RequestId = requestId;
             Exists = exists;
-            foreach (var item in result.Errors)
-            {
-                this.AddError(item.ErrorMessage);
-            }
-        }
+			foreach (var item in result.Errors)
+			{
+				this.AddError(item.ErrorMessage);
+			}
+		}
 
         public CheckAddressExistsByAddressLineResponse(Guid requestId, string falseValidation)
         {
-            RequestId = requestId;
-            Exists = false;
-            this.AddError(falseValidation);
-        }
+			RequestId = requestId;
+			Exists = false;
+			this.AddError(falseValidation);
+		}
     }
 }

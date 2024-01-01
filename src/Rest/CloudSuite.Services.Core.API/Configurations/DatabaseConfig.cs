@@ -1,4 +1,7 @@
-﻿namespace CloudSuite.Services.Core.API.Configurations
+﻿using CloudSuite.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
+
+namespace CloudSuite.Services.Core.API.Configurations
 {
 	public static class DatabaseConfig
 	{
@@ -6,7 +9,7 @@
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddDbContext<AchePacientesContext>(options =>
+            services.AddDbContext<CoreDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
 

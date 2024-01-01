@@ -1,4 +1,6 @@
-﻿using CloudSuite.Modules.Application.Hadlers.City;
+﻿using CloudSuite.Modules.Application.Hadlers.Address.Requests;
+using CloudSuite.Modules.Application.Hadlers.City;
+using CloudSuite.Modules.Application.Hadlers.City.Request;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,42 +28,45 @@ namespace CloudSuite.Services.Core.API.Controllers.v1
         [HttpPost("create")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Post([FromBody] CreateCityCommand createCommand)
+        public async Task<IActionResult> Post([FromBody] CreateCityCommand commandCreate)
         {
+			var result = await _mediator.Send(commandCreate);
+			if (result.Errors.Any())
+			{
+				return BadRequest(result);
+			}
+
+			else
+			{
+				return Ok(result);
+			}
 
 		}
 
-
-        // GET: api/<CityController>
-        [HttpGet]
-		public IEnumerable<string> Get()
+		[HttpGet]
+		[Route("exists/addressLine1/{cityName}")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		public async Task<IActionResult> CityExists([FromRoute] string cityName)
 		{
-			return new string[] { "value1", "value2" };
+			var result = _mediator.Send(new CheckCityExistsByCityNameRequest(cityName));
+			if (result.Result.Errors.Any())
+			{
+				return BadRequest(result);
+			}
+			if (result.Result.Exists)
+			{
+				return Ok(result);
+			}
+
+			else
+			{
+				return Ok(result);
+			}
+
 		}
 
-		// GET api/<CityController>/5
-		[HttpGet("{id}")]
-		public string Get(int id)
-		{
-			return "value";
-		}
-
-		// POST api/<CityController>
-		[HttpPost]
-		public void Post([FromBody] string value)
-		{
-		}
-
-		// PUT api/<CityController>/5
-		[HttpPut("{id}")]
-		public void Put(int id, [FromBody] string value)
-		{
-		}
-
-		// DELETE api/<CityController>/5
-		[HttpDelete("{id}")]
-		public void Delete(int id)
-		{
-		}
+		
 	}
 }

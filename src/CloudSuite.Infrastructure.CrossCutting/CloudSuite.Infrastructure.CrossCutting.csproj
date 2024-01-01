@@ -2,11 +2,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CloudSuite.Infrastructure\CloudSuite.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modules\CloudSuite.Modules.Application\CloudSuite.Modules.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.8.0" />
-    <PackageReference Include="MediatR" Version="12.1.1" />
+    <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
@@ -21,6 +22,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <SonarQubeConfigPath>sonarqube.xml</SonarQubeConfigPath>
   </PropertyGroup>
 
 </Project>
