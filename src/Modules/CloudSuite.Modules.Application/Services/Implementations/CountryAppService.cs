@@ -21,7 +21,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		public CountryAppService(
 			ICountryRepository countryRepository,
 			IMapper mapper,
-			ILogger logger)
+			ILogger<ICountryAppService> logger)
 		{
 			_countryRepository = countryRepository;
 			_mapper = mapper;

@@ -17,7 +17,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		public VendorAppService(
 			IVendorRepository vendorRepository,
 			IMapper mapper,
-			ILogger logger)
+			ILogger<IVendorAppService> logger)
 		{
 			_vendorRepository = vendorRepository;
 			_mapper = mapper;

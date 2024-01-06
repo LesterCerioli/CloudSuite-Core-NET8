@@ -24,6 +24,17 @@ namespace CloudSuite.Infrastructure.CrossCutting
 
             // Application
             services.AddScoped<ICityAppService, CityAppService>();
-        }
+            services.AddScoped<IAddressAppService, AddressAppService>();
+            services.AddScoped<ICompanyAppService, CompanyAppService>();
+            services.AddScoped<ICountryAppService, CountryAppService>();
+            services.AddScoped<IDistrictAppService, DistrictAppService>();
+            services.AddScoped<IEmailAppService, EmailAppService>();
+            services.AddScoped<IMediaAppService, MediaAppService>();
+            services.AddScoped<IStateAppService, StateAppService>();
+            services.AddScoped<IUserAppService, UserAppService>();
+            services.AddScoped<IVendorAppService, VendorAppService>();
+
+
+		}
 	}
 }
