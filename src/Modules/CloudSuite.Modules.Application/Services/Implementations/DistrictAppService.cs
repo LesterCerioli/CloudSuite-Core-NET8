@@ -17,7 +17,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		public DistrictAppService(
 			IDistrictRepository districtRepository,
 			IMapper mapper,
-			ILogger logger)
+			ILogger<IDistrictAppService> logger)
 		{
 			_districtRepository = districtRepository;
 			_mapper = mapper;

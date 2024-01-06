@@ -16,7 +16,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		public CityAppService(
 			ICityRepository cityRepository,
 			IMapper mapper,
-			ILogger logger)
+			ILogger<ICityAppService> logger)
 		{
 			_cityRepository = cityRepository;
 			_mapper = mapper;

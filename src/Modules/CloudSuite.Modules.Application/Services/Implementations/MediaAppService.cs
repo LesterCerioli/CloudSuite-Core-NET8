@@ -16,7 +16,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		public MediaAppService(
 			IMediaRepository mediaRepository,
 			IMapper mapper,
-			ILogger logger)
+			ILogger<IMediaAppService> logger)
 		{
 			_mediaRepository = mediaRepository;
 			_mapper = mapper;

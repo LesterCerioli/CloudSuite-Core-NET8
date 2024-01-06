@@ -13,8 +13,8 @@ namespace CloudSuite.Services.Core.API.Configurations
                 s.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Ache Pacientes",
-                    Description = "Ache Pacientes API Swagger surface",
+                    Title = "CloudSuite Core",
+                    Description = "CloudSuite Core API Swagger surface",
                     Contact = new OpenApiContact { Name = "Eduardo Pires" }
 
                 });
