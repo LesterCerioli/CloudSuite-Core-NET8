@@ -28,6 +28,8 @@ builder.Services.AddHealthCheckConfigurations();
 builder.Services.AddSwaggerDocVersion();
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
+builder.Services.AddDbContext<CoreDbContext>(options =>
+	options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONECTIONSTRING")));
 
 
 var configuration = new MapperConfiguration(cfg =>
