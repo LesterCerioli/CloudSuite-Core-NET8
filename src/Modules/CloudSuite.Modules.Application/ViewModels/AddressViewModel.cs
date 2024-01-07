@@ -18,10 +18,6 @@ namespace CloudSuite.Modules.Application.ViewModel
         [StringLength(450)]
         public string? AddressLine1 { get; set; }
 
-        [DisplayName("Cidade")]
-        public string? City { get; set; }
-        
-        [DisplayName("Bairro")]
-        public string? District { get; set; }
+               
     }
 }

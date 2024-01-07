@@ -16,7 +16,6 @@ namespace CloudSuite.Modules.Application.ViewModel
         [DisplayName("NomeCidade")]
         public string? CityName { get; set; }
 
-        [DisplayName("Estado")]
-        public string? State { get; set; }
+        
     }
 }

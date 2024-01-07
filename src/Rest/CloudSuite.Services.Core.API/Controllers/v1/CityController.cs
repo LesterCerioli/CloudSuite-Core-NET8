@@ -1,13 +1,9 @@
-﻿using CloudSuite.Modules.Application.Hadlers.Address.Requests;
+﻿using CloudSuite.Modules.Application.Hadlers.City.Request;
 using CloudSuite.Modules.Application.Hadlers.City;
-using CloudSuite.Modules.Application.Hadlers.City.Request;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.AspNetCore.Authorization;
 
 namespace CloudSuite.Services.Core.API.Controllers.v1
 {
@@ -20,26 +16,26 @@ namespace CloudSuite.Services.Core.API.Controllers.v1
 
 		public CityController(ILogger<CityController> logger, IMediator mediator)
 		{
-            _logger = logger;
-            _mediator = mediator;
-        }
+			_logger = logger;
+			_mediator = mediator;
+		}
 
-        [AllowAnonymous]
-        [HttpPost("create")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Post([FromBody] CreateCityCommand commandCreate)
-        {
+		[AllowAnonymous]
+		[HttpPost("create")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		public async Task<IActionResult> Post([FromBody] CreateCityCommand commandCreate)
+		{
 			var result = await _mediator.Send(commandCreate);
-			if (result.Errors.Any())
+			if (result.Errors.Any()) 
 			{
 				return BadRequest(result);
 			}
-
 			else
 			{
 				return Ok(result);
 			}
+			
 
 		}
 
@@ -50,23 +46,8 @@ namespace CloudSuite.Services.Core.API.Controllers.v1
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		public async Task<IActionResult> CityExists([FromRoute] string cityName)
 		{
-			var result = _mediator.Send(new CheckCityExistsByCityNameRequest(cityName));
-			if (result.Result.Errors.Any())
-			{
-				return BadRequest(result);
-			}
-			if (result.Result.Exists)
-			{
-				return Ok(result);
-			}
-
-			else
-			{
-				return Ok(result);
-			}
+			
 
 		}
-
-		
 	}
 }

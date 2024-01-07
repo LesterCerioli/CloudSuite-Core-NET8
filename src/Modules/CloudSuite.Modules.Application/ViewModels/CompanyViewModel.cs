@@ -22,5 +22,10 @@ namespace CloudSuite.Modules.Application.ViewModels
 		[MaxLength(100)]
 		[DisplayName("Razao Social")]
 		public string? RegisterName { get; set; }
+
+		[Required(ErrorMessage = "Este campo é de preencimento obrigatório.")]
+		[MaxLength(14)]
+		[DisplayName("Cnpj")]
+		public string? Cnpj { get; set; }
 	}
 }

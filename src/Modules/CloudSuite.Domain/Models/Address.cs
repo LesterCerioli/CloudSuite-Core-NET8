@@ -14,7 +14,14 @@ namespace CloudSuite.Domain.Models
 
         private readonly List<City> _cities = new List<City>();
 
-        public Address(Guid id, City city, District district, string contactName, string adressLine1) {
+		public Address(Guid id, string? contactName, string? addressLine1)
+		{
+			Id = id;
+			ContactName = contactName;
+			AddressLine1 = addressLine1;
+		}
+
+		public Address(Guid id, City city, District district, string contactName, string adressLine1) {
             Id = id;
             _districts = new List<District>();
             _cities = new List<City>();

@@ -1,25 +1,27 @@
 ﻿using CloudSuite.Modules.Application.Core;
 using FluentValidation.Results;
 
-namespace CloudSuite.Modules.Application.Hadlers.City
+namespace CloudSuite.Modules.Application.Hadlers.City.Responses
 {
-    public class CreateCityResponse : Response
+    public class CheckCitExistsyByCityNameResponse : Response
     {
         public Guid RequestId { get; private set; }
+        public bool Exists { get; set; }
 
-        public CreateCityResponse(Guid requestId, ValidationResult result)
+        public CheckCitExistsyByCityNameResponse(Guid requestId, bool exists, ValidationResult result)
         {
             RequestId = requestId;
-
+            Exists = exists;
             foreach (var item in result.Errors)
             {
                 this.AddError(item.ErrorMessage);
             }
         }
 
-        public CreateCityResponse(Guid requestId, string falseValidation)
+        public CheckCitExistsyByCityNameResponse(Guid requestId, string falseValidation)
         {
             RequestId = requestId;
+            Exists = false;
             this.AddError(falseValidation);
         }
     }
