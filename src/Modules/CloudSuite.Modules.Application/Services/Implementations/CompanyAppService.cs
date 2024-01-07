@@ -17,7 +17,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		public CompanyAppService(
 			ICompanyRepository companyRepository,
 			IMapper mapper,
-			ILogger logger)
+			ILogger<ICompanyAppService> logger)
 		{
 			_logger = logger;
 			_companyRepository = companyRepository;

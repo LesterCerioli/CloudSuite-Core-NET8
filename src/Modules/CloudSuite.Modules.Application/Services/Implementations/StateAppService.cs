@@ -16,7 +16,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		public StateAppService(
 			IStateRepository stateRepository,
 			IMapper mapper,
-			ILogger logger)
+			ILogger<IStateAppService> logger)
 		{
 			_stateRepository = stateRepository;
 			_mapper = mapper;

@@ -18,7 +18,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		public UserAppService(
 			IUserRepository userRepository,
 			IMapper mapper,
-			ILogger logger)
+			ILogger<IUserAppService> logger)
 		{
 			_userRepository = userRepository;
 			_mapper = mapper;

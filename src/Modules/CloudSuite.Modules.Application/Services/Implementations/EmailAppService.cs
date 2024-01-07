@@ -22,7 +22,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		public EmailAppService(
 			IEmailRepository emailRepository,
 			IMapper mapper,
-			ILogger logger)
+			ILogger<IEmailAppService> logger)
 		{
 			_emailRepository = emailRepository;
 			_mapper = mapper;

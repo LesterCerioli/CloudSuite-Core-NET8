@@ -22,7 +22,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		public AddressAppService(
 			IAddressRepository addressRepository,
 			IMapper mapper,
-			ILogger logger)
+			ILogger<IAddressAppService> logger)
 		{
 			_addressRepository = addressRepository;
             _mapper = mapper;
