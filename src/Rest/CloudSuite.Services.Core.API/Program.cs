@@ -1,5 +1,6 @@
 using AutoMapper;
 using CloudSuite.Domain.Contracts;
+using CloudSuite.Infrastructure.Context;
 using CloudSuite.Infrastructure.CrossCutting.DependencyInjector;
 using CloudSuite.Infrastructure.CrossCutting.HealthChecks;
 using CloudSuite.Infrastructure.CrossCutting.Middlewares;
@@ -8,9 +9,13 @@ using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.Services.Implementations;
 using CloudSuite.Services.Core.API.Configurations;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NetDevPack.Mediator;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<CoreDbContext>(options =>
+	options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONECTIONSTRING")));
 
 // Add services to the container.
 
@@ -53,17 +58,17 @@ builder.Services.AddTransient<IVendorRepository, VendorRepository>();
 builder.Services.AddTransient<IMediatorHandler, MediatorHandler>();
 builder.Services.AddSingleton<IMapper>(configuration.CreateMapper());
 
-builder.Services.AddCors(options =>
-{
-	options.AddPolicy("my-cors",
-						  policy =>
-						  {
-							  policy
-							  .AllowAnyOrigin()
-							  .AllowAnyHeader()
-							  .AllowAnyMethod();
-						  });
-});
+//builder.Services.AddCors(options =>
+//{
+	//options.AddPolicy("my-cors",
+						  //policy =>
+						  //{
+							  //policy
+							  //.AllowAnyOrigin()
+							  //.AllowAnyHeader()
+							  //.AllowAnyMethod();
+						  //});
+//});
 var app = builder.Build();
 
 
@@ -74,9 +79,24 @@ if (app.Environment.IsDevelopment())
 	app.UseHttpLogging();
 }
 //app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
+app.UseCors(x => x
+.AllowAnyOrigin()
+.AllowAnyMethod()
+.AllowAnyHeader()
+);
+app.UseHttpsRedirection();
+
 app.UseAuthorization();
+
 app.MapControllers();
-app.UseCors("my-cors");
 
 app.Run();
+
+
+
+
+
+
