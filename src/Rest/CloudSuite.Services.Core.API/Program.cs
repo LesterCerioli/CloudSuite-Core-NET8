@@ -36,6 +36,10 @@ var configuration = new MapperConfiguration(cfg =>
 {
 });
 
+configBuilder.AddEntityFrameworkConfig(options =>
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+);
+
 builder.Services.AddTransient<IAddressAppService, AddressAppService>();
 builder.Services.AddTransient<ICityAppService, CityAppService>();
 builder.Services.AddTransient<ICompanyAppService, CompanyAppService>();
