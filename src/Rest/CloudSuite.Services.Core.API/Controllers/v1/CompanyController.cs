@@ -8,6 +8,14 @@ namespace CloudSuite.Services.Core.API.Controllers.v1
 	[ApiController]
 	public class CompanyController : ControllerBase
 	{
+
+		public CompanyController()
+		{
+
+		}
+
+
+
 		// GET: api/<CompanyController>
 		[HttpGet]
 		public IEnumerable<string> Get()

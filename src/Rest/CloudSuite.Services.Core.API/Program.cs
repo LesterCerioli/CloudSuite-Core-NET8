@@ -36,6 +36,8 @@ var configuration = new MapperConfiguration(cfg =>
 {
 });
 
+
+
 builder.Services.AddTransient<IAddressAppService, AddressAppService>();
 builder.Services.AddTransient<ICityAppService, CityAppService>();
 builder.Services.AddTransient<ICompanyAppService, CompanyAppService>();
