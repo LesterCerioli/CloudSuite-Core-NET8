@@ -10,22 +10,18 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 {
 	public class DistrictAppService : IDistrictAppService
 	{
-		private readonly IDistrictRepository _districtRepository;
-		private readonly IMapper _mapper;
-		private readonly ILogger _logger;
+        private readonly IDistrictRepository _districtRepository;
+        private readonly IMediatorHandler _mediator;
+        private readonly IMapper _mapper;
 
-		public DistrictAppService(
-			IDistrictRepository districtRepository,
-			IMapper mapper,
-			ILogger<IDistrictAppService> logger)
-		{
-			_districtRepository = districtRepository;
-			_mapper = mapper;
-			_logger = logger;
-		}
+        public DistrictAppService(IDistrictRepository districtRepository, IMediatorHandler mediator, IMapper mapper)
+        {
+            _districtRepository = districtRepository;
+            _mediator = mediator;
+            _mapper = mapper;
+        }
 
-
-		public async Task<DistrictViewModel> GetByName(string name)
+        public async Task<DistrictViewModel> GetByName(string name)
 		{
 			return _mapper.Map<DistrictViewModel>(await _districtRepository.GetByName(name));
 				
