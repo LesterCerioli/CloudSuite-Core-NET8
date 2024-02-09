@@ -21,9 +21,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
     public class VendorAppServiceTests
     {
         [Theory]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
+        [InlineData("igor moreira", "up", "descricao de venda de carro", "48417537000188", true, false)]
+        [InlineData("elton santos", "down", "descricao de venda moto", "25112871000128", true, false)]
+        [InlineData("mateus costa", "left", "descricao de venda celular", "65463845000169", true, false)]
         public async Task GetByCnpj_ShouldReturnsCompanyViewModel(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted)
         {
 
@@ -67,9 +67,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("wiuye")]
-        [InlineData("wiuye")]
-        [InlineData("wiuye")]
+        [InlineData("36775033000150")]
+        [InlineData("51536379000190")]
+        [InlineData("24868087000181")]
         public async Task GetByCnpj_ShouldHandleNullRepositoryResult(string cnpj)
         {
             // Arrange
@@ -93,9 +93,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("wiuye")]
-        [InlineData("wiuye")]
-        [InlineData("wiuye")]
+        [InlineData("92299046000171")]
+        [InlineData("84498645000196")]
+        [InlineData("13754238000154")]
         public async Task GetByCnpj_ShouldHandleInvalidMappingResult(string cnpj)
         {
             // Arrange
@@ -116,9 +116,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
+        [InlineData("flora matos", "down", "descricao de venda de um apartamento", "92155393000120", true, false)]
+        [InlineData("vanessa lopes", "slug1", "descricao de venda de uma chacara", "73549653000106", true, false)]
+        [InlineData("davi barbosa", "left", "descricao de venda", "54814207000129", true, false)]
         public async Task GetByCreatedOn_ShouldReturnsCompanyViewModel(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted)
         {
 
@@ -162,9 +162,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("wiuye")]
-        [InlineData("wiuye")]
-        [InlineData("wiuye")]
+        [InlineData("02-04-2023")]
+        [InlineData("19-08-2023")]
+        [InlineData("09-11-2023")]
         public async Task GetByCreatedOn_ShouldHandleNullRepositoryResult(string cnpj)
         {
             // Arrange
@@ -188,9 +188,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("wiuye")]
-        [InlineData("wiuye")]
-        [InlineData("wiuye")]
+        [InlineData("25-12-2023")]
+        [InlineData("14-03-2023")]
+        [InlineData("01-07-2023")]
         public async Task GetByCreatedOn_ShouldHandleInvalidMappingResult(string cnpj)
         {
             // Arrange
@@ -212,9 +212,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
 
         [Theory]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
+        [InlineData("igor moreira", "up", "descricao de venda de carro", "48417537000188", true, false)]
+        [InlineData("elton santos", "down", "descricao de venda moto", "25112871000128", true, false)]
+        [InlineData("mateus costa", "left", "descricao de venda celular", "65463845000169", true, false)]
         public async Task GetByName_ShouldReturnsCompanyViewModel(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted)
         {
 
@@ -258,9 +258,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("wiuye")]
-        [InlineData("wiuye")]
-        [InlineData("wiuye")]
+        [InlineData("igor moreira")]
+        [InlineData("debora moreira")]
+        [InlineData("lucas vinicus")]
         public async Task GetByName_ShouldHandleNullRepositoryResult(string name)
         {
             // Arrange
@@ -284,7 +284,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("wiuye")]
+        [InlineData("gabriela santos")]
         [InlineData("wiuye")]
         [InlineData("wiuye")]
         public async Task GetByName_ShouldHandleInvalidMappingResult(string name)
@@ -307,9 +307,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
-        [InlineData("igor", "up", "descricao de venda", "53343512000117", true, false)]
+        [InlineData("flora matos", "down", "descricao de venda de um apartamento", "92155393000120", true, false)]
+        [InlineData("vanessa lopes", "slug1", "descricao de venda de uma chacara", "73549653000106", true, false)]
+        [InlineData("davi barbosa", "left", "descricao de venda", "54814207000129", true, false)]
         public async Task Save_ShouldAddCompanyToRepository(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted)
         {
             // Arrange
@@ -339,10 +339,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("8575", 8722, "998w", MediaType.Image)]
-        [InlineData("8575", 8722, "998w", MediaType.File)]
-        [InlineData("8575", 8722, "998w", MediaType.Video)]
-        public async Task Save_ShouldHandleNullRepositoryResult(string caption, int fileSize, string fileName, MediaType mediaType)
+        [InlineData("igor moreira", "up", "descricao de venda de carro", "48417537000188", true, false)]
+        [InlineData("elton santos", "down", "descricao de venda moto", "25112871000128", true, false)]
+        [InlineData("mateus costa", "left", "descricao de venda celular", "65463845000169", true, false)]
+        public async Task Save_ShouldHandleNullRepositoryResult(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted)
         {
             //Arrange
             var vendorRepositoryMock = new Mock<IVendorRepository>();
@@ -371,10 +371,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("8575", 8722, "998w", MediaType.Image)]
-        [InlineData("8575", 8722, "998w", MediaType.File)]
-        [InlineData("8575", 8722, "998w", MediaType.Video)]
-        public async Task Save_ShouldHandleInvalidMappingResult(string caption, int fileSize, string fileName, MediaType mediaType)
+        [InlineData("igor moreira", "up", "descricao de venda de carro", "48417537000188", true, false)]
+        [InlineData("elton santos", "down", "descricao de venda moto", "25112871000128", true, false)]
+        [InlineData("mateus costa", "left", "descricao de venda celular", "65463845000169", true, false)]
+        public async Task Save_ShouldHandleInvalidMappingResult(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted)
         {
 
             //Arrange
