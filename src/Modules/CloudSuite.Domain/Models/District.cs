@@ -11,9 +11,8 @@ namespace CloudSuite.Domain.Models
     {
 
         private readonly List<City> _cities;
-        public District(Guid id, string name, string type, string location)
+        public District(string name, string type, string location)
         {
-            Id = id;
             _cities = new List<City>(0);
             Name = name;
             Type = type;
@@ -22,21 +21,16 @@ namespace CloudSuite.Domain.Models
 
         public District() { }
 
-        public IReadOnlyCollection<City> Cities => _cities.AsReadOnly();
-
         public City City { get; private set; }
 
         public Guid CityId { get; private set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
         public string? Name { get; private set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
         public string? Type {  get; private set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(100)]
         public string? Location { get; private set; }
+
+        public IReadOnlyCollection<City> Cities => _cities.AsReadOnly();
     }
 }

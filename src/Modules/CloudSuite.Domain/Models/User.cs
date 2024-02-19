@@ -30,9 +30,8 @@ namespace CloudSuite.Domain.Models
 
         public const string SettingDataKey = "Settings";
 
-        public Guid UserGuid { get; set; }
+        public Guid UserGuid { get; private set; }
 
-        [Required(ErrorMessage ="The {0} field is required.")]
         public string? FullName { get; private set; }
 
         public Email Email { get; private set; }
@@ -43,16 +42,14 @@ namespace CloudSuite.Domain.Models
 
         public Telephone Telephone { get; private set; }
 
-        
         public bool? IsDeleted { get; private set; }
 
         public DateTimeOffset? CreatedOn { get; private set; }
 
         public DateTimeOffset? LatestUpdatedOn { get; private set; }
 
-        [StringLength(50)]
         public string? RefreshTokenHash { get; private set; }
         
-        public IList<UserRole> Roles { get; set; } = new List<UserRole>();
+        public IList<UserRole> Roles { get; private set; } = new List<UserRole>();
     }
 }

@@ -19,16 +19,12 @@ namespace CloudSuite.Domain.Models
             Address = address;
         }
 
-        public Cnpj Cnpj { get; set; }
+        public Company() { }
 
-        public Guid CnpjID { get; private set; }
+        public Cnpj Cnpj { get; private set; }
 
-        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
-        [MaxLength(100)]
         public string? FantasyName { get; private set; }
 
-        [Required(ErrorMessage = "Este campo é de preencimento obrigatório.")]
-        [MaxLength(100)]
         public string? RegisterName { get; private set; }
 
         public Address Address { get; private set; }

@@ -14,8 +14,7 @@ namespace CloudSuite.Domain.Models
 
         private readonly List<City> _cities = new List<City>();
 
-        public Address(Guid id, City city, District district, string contactName, string adressLine1) {
-            Id = id;
+        public Address(City city, District district, string contactName, string adressLine1) {
             _districts = new List<District>();
             _cities = new List<City>();
             City = city;
@@ -24,12 +23,10 @@ namespace CloudSuite.Domain.Models
             AddressLine1 = adressLine1;
         }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(100)]
+        public Address(){ }
+
         public string? ContactName { get; private set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
         public string? AddressLine1 { get; private set; }
 
         public City City { get; private set; }

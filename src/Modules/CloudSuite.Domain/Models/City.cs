@@ -20,15 +20,14 @@ namespace CloudSuite.Domain.Models
             State = state;
         }
 
-        [Required(ErrorMessage = "Este campo � de preenchimento obrigat�rio.")]
-        [MaxLength(50)]
+        public City(){ }
 
         public string? CityName { get; private set; }
-
-        public IReadOnlyCollection<State> States => _states.AsReadOnly();
 
         public State State { get; private set; }
 
         public Guid StateId { get; private set; }
+
+        public IReadOnlyCollection<State> States => _states.AsReadOnly();
     }
 }

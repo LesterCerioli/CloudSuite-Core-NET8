@@ -5,7 +5,7 @@ namespace CloudSuite.Domain.Models
 {
     public class Email : Entity, IAggregateRoot
     {
-        public Email(string? subject, string? body, string? sender, string? recipient, DateTimeOffset? sentDate, bool? isRead)
+        public Email(string? subject, string? body, string? sender, string? recipient, DateTimeOffset? sentDate, bool? isRead, int sendAttempts?, CodeErrorEmail codeErrorEmail)
         {
             Subject = subject;
             Body = body;
@@ -13,9 +13,11 @@ namespace CloudSuite.Domain.Models
             Recipient = recipient;
             SentDate = sentDate;
             IsRead = isRead;
+            SendAttempts = sendAttempts;
+            CodeErrorEmail = codeErrorEmail;
         }
 
-        public Email() {}
+        public Email(){ }
         
         public string? Subject { get; private set; } // Email subject
         
@@ -32,6 +34,7 @@ namespace CloudSuite.Domain.Models
         public int? SendAttempts { get; private set; } // Number of send attempts
 
         public CodeErrorEmail CodeErrorEmail { get; private set; }
+
         public Guid CodeErrorEmailId { get; private set; } // Adicionei esta propriedade para armazenar a chave estrangeira
     }
 }

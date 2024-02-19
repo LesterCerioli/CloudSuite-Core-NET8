@@ -12,9 +12,8 @@ namespace CloudSuite.Domain.Models
     {
         private readonly List<State> _states;
 
-        public Country(Guid id, string? countryName, string? code3, bool? isBillingEnabled, bool? isShippingEnabled, bool? isCityEnabled, bool? isZipCodeEnabled, bool? isDistrictEnabled)
+        public Country(string? countryName, string? code3, bool? isBillingEnabled, bool? isShippingEnabled, bool? isCityEnabled, bool? isZipCodeEnabled, bool? isDistrictEnabled)
         {
-            Id = id;
             CountryName = countryName;
             Code3 = code3;
             IsBillingEnabled = isBillingEnabled;
@@ -26,14 +25,9 @@ namespace CloudSuite.Domain.Models
 
         }
 
-        public Country() { }
+        public Country(){ }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
         public string? CountryName { get; private set; }
-
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
 
         public string? Code3 { get; private set; }
 
@@ -47,10 +41,10 @@ namespace CloudSuite.Domain.Models
 
         public bool? IsDistrictEnabled { get; private set; }
 
-        public IReadOnlyCollection<State> States => _states.AsReadOnly();
-
         public State State { get; private set; }
         
         public Guid StateId { get; private set; }
+
+        public IReadOnlyCollection<State> States => _states.AsReadOnly();
     }
 }

@@ -11,25 +11,21 @@ namespace CloudSuite.Domain.Models
     public class Media : Entity, IAggregateRoot
     {
 
-        public Media(Guid id, string? caption, int? fileSize, string? fileName, MediaType mediaType) {
-            Id = id;
+        public Media(string? caption, int? fileSize, string? fileName, MediaType mediaType) {
             Caption = caption;
             FileSize = fileSize;
             FileName = fileName;
             MediaType = mediaType;
         }
 
-        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
-        [StringLength(450)]
-        public string? Caption { get; set; }
+        public Media() { }
 
-        [Required(ErrorMessage ="Este campo é obrigatório.")]
-        public int? FileSize { get; set; }
+        public string? Caption { get; private set; }
 
-        [Required(ErrorMessage ="Este campo é de preencimento obrigatório.")]
-        [StringLength(450)]
-        public string? FileName { get; set; }
+        public int? FileSize { get; private set; }
 
-        public MediaType MediaType { get; set; }
+        public string? FileName { get; private set; }
+
+        public MediaType MediaType { get; private set; }
     }
 }

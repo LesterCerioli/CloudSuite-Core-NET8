@@ -29,16 +29,10 @@ namespace CloudSuite.Domain.Models
 
         }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
         public string? Name { get; private set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
         public string? Slug { get; private set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(100)]
         public string? Description { get; private set; }
 
         public Cnpj Cnpj { get; private set; }
@@ -57,10 +51,10 @@ namespace CloudSuite.Domain.Models
 
         public bool? IsDeleted { get; private set; }
 
-        public IList<User> Users { get; set; } = new List<User>();
-
         public User User { get; private set; }
 
         public Guid UserId { get; private set; }
+
+        public IList<User> Users { get; set; } = new List<User>();
     }
 }

@@ -14,9 +14,8 @@ namespace CloudSuite.Domain.Models
     {
         private readonly List<Country> _countries;
 
-        public State(Guid id, string uf, string stateName, Country country, Guid countryId)
+        public State(string uf, string stateName, Country country, Guid countryId)
         {
-            Id = id;
             _countries = new List<Country>();
             UF = uf;
             StateName = stateName;
@@ -29,11 +28,7 @@ namespace CloudSuite.Domain.Models
 
         }
 
-        [Required(ErrorMessage="Este campo é de preenchimento obrigatório.")]
-        [StringLength(100)]
         public string? StateName { get; private set; }
-
-        [Required(ErrorMessage = "Este cmapo é de preenchimento obrigatório.")]
 
         public string? UF { get; private set; }
 

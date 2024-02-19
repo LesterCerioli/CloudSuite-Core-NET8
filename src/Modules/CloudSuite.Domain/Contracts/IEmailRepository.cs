@@ -17,8 +17,6 @@ namespace CloudSuite.Domain.Contracts
 
         void Update(Email email);
 
-        void Remove(Email email);
-
-         
+        void Remove(Email email); 
     }
 }
