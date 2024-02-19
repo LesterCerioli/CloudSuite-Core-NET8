@@ -12,14 +12,22 @@ namespace CloudSuite.Modules.Application.ViewModels
 {
 	public class UserViewModel
 	{
-		[Required(ErrorMessage = "The {0} field is required.")]
-		public string? FullName { get; private set; }
+		[Key]
+        public Guid Id { get; set; }
 
-		[DisplayName("Email")]
+        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
+        [StringLength(100)]
+        [DisplayName("Nome Completo")]
+        public string? FullName { get; set; }
+
+        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
+        [StringLength(100)]
+        [DisplayName("Email")]
 		public string Email { get; set; }
 
-
-		[DisplayName("Cpf")]
+        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
+        [StringLength(100)]
+        [DisplayName("Cpf")]
 		public string Cpf { get; set; }
 
 		[DisplayName("Telefone")]
@@ -29,9 +37,7 @@ namespace CloudSuite.Modules.Application.ViewModels
 		public DateTimeOffset CreatedOn { get; set; }
 
 		[DisplayName("Data Atualizacao")]
-		public DateTimeOffset LatestUpdatedOn { get; private set; }
-
-		
+		public DateTimeOffset LatestUpdatedOn { get; set; }	
 		
 	}
 }

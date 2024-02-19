@@ -12,7 +12,7 @@ namespace CloudSuite.Modules.Application.ViewModels
 	public class EmailViewModel
 	{
 		[Key]
-		public Guid Id { get; private set; }
+		public Guid Id { get; set; }
 
 		[DisplayName("Assunto")]
 		public string Subject { get; set; } // Email subject
@@ -30,9 +30,9 @@ namespace CloudSuite.Modules.Application.ViewModels
 		public DateTimeOffset? SentDate { get; set; } // Date and time when the email was sent
 
 		[DisplayName("Tentativas de Envio")]
-		public int SendAttempts { get; private set; } // Number of send attempts
+		public int SendAttempts { get; set; } // Number of send attempts
 
 		[DisplayName("Código de Erro")]
-		public string CodeErrorEmail { get; private set; }
+		public string CodeErrorEmail { get; set; }
 	}
 }

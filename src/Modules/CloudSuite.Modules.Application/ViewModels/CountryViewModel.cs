@@ -11,7 +11,7 @@ namespace CloudSuite.Modules.Application.ViewModels
 	public class CountryViewModel
 	{
 		[Key]
-		public Guid Id { get; private set; }
+		public Guid Id { get; set; }
 
 		[Required(ErrorMessage = "The {0} field is required.")]
 		[StringLength(450)]
@@ -21,7 +21,6 @@ namespace CloudSuite.Modules.Application.ViewModels
 		[Required(ErrorMessage = "The {0} field is required.")]
 		[StringLength(450)]
 		[DisplayName("Código")]
-
 		public string Code3 { get; set; }
 
 		

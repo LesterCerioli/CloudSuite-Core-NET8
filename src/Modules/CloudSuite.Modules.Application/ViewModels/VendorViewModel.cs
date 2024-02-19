@@ -13,19 +13,19 @@ namespace CloudSuite.Modules.Application.ViewModels
 	public class VendorViewModel
 	{
 		[Key]
-		public Guid Id { get; private set; }
+		public Guid Id { get; set; }
 
-		[Required(ErrorMessage = "The {0} field is required.")]
+		[Required(ErrorMessage = "The field is required.")]
 		[StringLength(450)]
 		[DisplayName("Nome")]
 		public string Name { get; set; }
 
-		[Required(ErrorMessage = "The {0} field is required.")]
+		[Required(ErrorMessage = "The field is required.")]
 		[StringLength(450)]
 		[DisplayName("Slug")]
 		public string Slug { get; set; }
 
-		[Required(ErrorMessage = "The {0} field is required.")]
+		[Required(ErrorMessage = "The field is required.")]
 		[StringLength(100)]
 		[DisplayName("Descricao")]
 		public string Description { get; set; }
@@ -37,9 +37,9 @@ namespace CloudSuite.Modules.Application.ViewModels
 		public string Email { get; set; }
 
 		[DisplayName("Data Criacao")]
-		public DateTimeOffset CreatedOn { get; private set; }
+		public DateTimeOffset CreatedOn { get; set; }
 
 		[DisplayName("Data Atualizacao")]
-		public DateTimeOffset LatestUpdatedOn { get; private set; }
+		public DateTimeOffset LatestUpdatedOn { get; set; }
 	}
 }
