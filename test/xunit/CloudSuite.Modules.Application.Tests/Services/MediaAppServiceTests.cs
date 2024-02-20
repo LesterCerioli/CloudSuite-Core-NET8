@@ -213,7 +213,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createMediaCommand = new CreateMediaCommand()
             {
-
+                Caption = caption,
+                FileSize = fileSize,
+                FileName = fileName,
+                MediaType = mediaType
 
             };
 
@@ -243,8 +246,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createMediaCommand = new CreateMediaCommand()
             {
-
-
+                Caption = caption,
+                FileSize = fileSize,
+                FileName = fileName,
+                MediaType = mediaType
             };
 
             mediaRepositoryMock.Setup(repo => repo.Add(It.IsAny<Media>())).Throws(new NullReferenceException());
@@ -274,8 +279,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createMediaCommand = new CreateMediaCommand()
             {
-
-
+                Caption = caption,
+                FileSize = fileSize,
+                FileName = fileName,
+                MediaType = mediaType
             };
 
             // Act       

@@ -38,7 +38,13 @@ namespace CloudSuite.Modules.Application.Tests.Services
             {
                 Id = countryEntity.Id,
                 CountryName = countryName,
-                Code3 = code3
+                Code3 = code3,
+                IsBillingEnabled = isBillingEnabled,
+                IsShippingEnabled = isShippingEnabled,
+                IsCityEnabled = isCityEnabled,
+                IsZipCodeEnabled = isZipCodeEnabled,
+                IsDistrictEnabled = isDistrictEnabled,
+                StateId = Guid.NewGuid()
             };
 
             mapperMock.Setup(mapper => mapper.Map<CountryViewModel>(countryEntity)).Returns(expectedViewModel);
@@ -120,8 +126,14 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createCountryCommand = new CreateCountryCommand()
             {
-
-
+                CountryName = countryName,
+                Code3 = code3,
+                IsBillingEnabled = isBillingEnabled,
+                IsShippingEnabled = isShippingEnabled,
+                IsCityEnabled = isCityEnabled,
+                IsZipCodeEnabled = isZipCodeEnabled,
+                IsDistrictEnabled = isDistrictEnabled,
+                StateId = Guid.NewGuid()
             };
 
             // Act
@@ -150,8 +162,14 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createCountryCommand = new CreateCountryCommand()
             {
-
-
+                CountryName = countryName,
+                Code3 = code3,
+                IsBillingEnabled = isBillingEnabled,
+                IsShippingEnabled = isShippingEnabled,
+                IsCityEnabled = isCityEnabled,
+                IsZipCodeEnabled = isZipCodeEnabled,
+                IsDistrictEnabled = isDistrictEnabled,
+                StateId = Guid.NewGuid()
             };
 
             countryRepositoryMock.Setup(repo => repo.Add(It.IsAny<Country>())).Throws(new NullReferenceException());
@@ -182,8 +200,14 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createCountryCommand = new CreateCountryCommand()
             {
-
-
+                CountryName = countryName,
+                Code3 = code3,
+                IsBillingEnabled = isBillingEnabled,
+                IsShippingEnabled = isShippingEnabled,
+                IsCityEnabled = isCityEnabled,
+                IsZipCodeEnabled = isZipCodeEnabled,
+                IsDistrictEnabled = isDistrictEnabled,
+                StateId = Guid.NewGuid()
             };
 
             // Act       

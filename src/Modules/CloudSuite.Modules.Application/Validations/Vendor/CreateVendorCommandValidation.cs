@@ -116,12 +116,6 @@ namespace CloudSuite.Modules.Application.Validations.Vendor
                 .Length(1, 450)
                 .WithMessage("O campo RefreshTokenHash deve ter entre 1 e 450 caracteres.");
 
-                    
-
-
-            RuleFor(a => a.Cnpj)
-                .Must(cnpj => IsValidCnpj(cnpj.CnpjNumber))
-                .WithMessage("O campo Cnpj é inválido.");
 
             RuleFor(a => a.User.Cpf)
                 .Must(cpf => IsValidCpf(cpf.CpfNumber))

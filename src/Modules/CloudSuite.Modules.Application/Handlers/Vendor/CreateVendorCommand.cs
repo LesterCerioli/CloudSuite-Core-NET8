@@ -18,7 +18,7 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor
 
         public string? Description { get; set; }
 
-        public Cnpj Cnpj { get; set; }
+        public string Cnpj { get; set; }
 
         public Guid CnpjId { get; set; }
 
@@ -50,7 +50,7 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor
                 this.Name,
                 this.Slug,
                 this.Description,
-                this.Cnpj,
+                new Cnpj(this.Cnpj),
                 this.Email,
                 this.CreatedOn,
                 this.LatestUpdatedOn,
