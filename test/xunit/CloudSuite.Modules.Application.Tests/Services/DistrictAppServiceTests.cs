@@ -31,8 +31,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var districtAppService = new DistrictAppService(
                 districtRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var districtEntity = new District(name, type, location);
@@ -69,8 +69,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var districtAppService = new DistrictAppService(
                 districtRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             districtRepositoryMock.Setup(repo => repo.GetByName(It.IsAny<string>()))
@@ -96,8 +96,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var districtAppService = new DistrictAppService(
                 districtRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             districtRepositoryMock.Setup(repo => repo.GetByName(It.IsAny<string>()))
@@ -120,8 +120,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var districtAppService = new DistrictAppService(
                 districtRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createDistrictCommand = new CreateDistrictCommand()
@@ -150,8 +150,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var districtAppService = new DistrictAppService(
                 districtRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createDistrictCommand = new CreateDistrictCommand()
@@ -181,8 +181,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var districtAppService = new DistrictAppService(
                 districtRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createDistrictCommand = new CreateDistrictCommand()

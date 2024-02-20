@@ -33,12 +33,12 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var email = new Email("warning", "text message", "apple", "juninho", DateTimeOffset.Now, true, 3, CodeErrorEmail.NetworkError);
-            var userEntity = new User("user name", email, new Cpf("06536709586"), new Telephone("71988890834"), true, "837429834798328347923923847");
+            var userEntity = new User("user name", email, new Cpf("06536709586"), new Telephone("71988890834"), true, DateTimeOffset.Now, DateTimeOffset.Now, "hnes094hje09udsnf");
 
             var vendorEntity = new Vendor(userEntity.Id, name, slug, description, new Cnpj(cnpj), email, DateTimeOffset.Now, DateTimeOffset.Now, isActive, isDeleted);
 
@@ -79,8 +79,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             vendorRepositoryMock.Setup(repo => repo.GetByCnpj(It.IsAny<Cnpj>())).ReturnsAsync((Vendor)null); // Simulate null result from the repository
@@ -105,8 +105,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             vendorRepositoryMock.Setup(repo => repo.GetByCnpj(It.IsAny<Cnpj>())).ThrowsAsync(new ArgumentException("Invalid data")); // Simulate null result from the repository
@@ -116,10 +116,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("flora matos", "down", "descricao de venda de um apartamento", "92155393000120", true, false)]
-        [InlineData("vanessa lopes", "slug1", "descricao de venda de uma chacara", "73549653000106", true, false)]
-        [InlineData("davi barbosa", "left", "descricao de venda", "54814207000129", true, false)]
-        public async Task GetByCreatedOn_ShouldReturnsCompanyViewModel(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted)
+        [InlineData("flora matos", "down", "descricao de venda de um apartamento", "92155393000120", true, false, "02-04-2023", "02-04-2023")]
+        [InlineData("vanessa lopes", "slug1", "descricao de venda de uma chacara", "73549653000106", true, false, "02-04-2023", "02-04-2023")]
+        [InlineData("davi barbosa", "left", "descricao de venda", "54814207000129", true, false, "02-04-2023", "02-04-2023")]
+        public async Task GetByCreatedOn_ShouldReturnsCompanyViewModel(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted, DateTimeOffset createdOn, DateTimeOffset lastupdate)
         {
 
             var vendorRepositoryMock = new Mock<IVendorRepository>();
@@ -128,16 +128,16 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var email = new Email("warning", "text message", "apple", "juninho", DateTimeOffset.Now, true, 3, CodeErrorEmail.NetworkError);
-            var userEntity = new User("user name", email, new Cpf("06536709586"), new Telephone("71988890834"), true, "837429834798328347923923847");
+            var userEntity = new User("user name", email, new Cpf("06536709586"), new Telephone("71988890834"), true, createdOn, lastupdate, "hnes094hje09udsnf");
 
-            var vendorEntity = new Vendor(userEntity.Id, name, slug, description, new Cnpj(cnpj), email, DateTimeOffset.Now, DateTimeOffset.Now, isActive, isDeleted);
+            var vendorEntity = new Vendor(userEntity.Id, name, slug, description, new Cnpj(cnpj), email, createdOn, lastupdate, isActive, isDeleted);
 
-            vendorRepositoryMock.Setup(repo => repo.GetByCreatedOn(DateTimeOffset.Now)).ReturnsAsync(vendorEntity);
+            vendorRepositoryMock.Setup(repo => repo.GetByCreatedOn(createdOn)).ReturnsAsync(vendorEntity);
 
 
             var expectedViewModel = new VendorViewModel()
@@ -148,14 +148,14 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 Description = description,
                 Cnpj = cnpj,
                 Email = email.Body,
-                CreatedOn = DateTimeOffset.Now,
-                LatestUpdatedOn = DateTimeOffset.Now
+                CreatedOn = createdOn,
+                LatestUpdatedOn = lastupdate
             };
 
             mapperMock.Setup(mapper => mapper.Map<VendorViewModel>(vendorEntity)).Returns(expectedViewModel);
 
             // Act
-            var result = await vendorAppService.GetByCreatedOn(DateTimeOffset.Now);
+            var result = await vendorAppService.GetByCreatedOn(createdOn);
 
             // Assert
             Assert.Equal(expectedViewModel, result);
@@ -174,8 +174,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             vendorRepositoryMock.Setup(repo => repo.GetByCreatedOn(It.IsAny<DateTimeOffset>())).ReturnsAsync((Vendor)null); // Simulate null result from the repository
@@ -200,8 +200,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             vendorRepositoryMock.Setup(repo => repo.GetByCreatedOn(It.IsAny<DateTimeOffset>())).ThrowsAsync(new ArgumentException("Invalid data")); // Simulate null result from the repository
@@ -224,14 +224,14 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var email = new Email("warning", "text message", "apple", "juninho", DateTimeOffset.Now, true, 3, CodeErrorEmail.NetworkError);
-            var userEntity = new User("user name", email, new Cpf("06536709586"), new Telephone("71988890834"), true, "837429834798328347923923847");
-
-            var vendorEntity = new Vendor(userEntity.Id, name, slug, description, new Cnpj(cnpj), email, DateTimeOffset.Now, DateTimeOffset.Now, isActive, isDeleted);
+            var vendorEntity = new Vendor(new Guid(), name, slug, description, new Cnpj(cnpj), email, DateTimeOffset.Now, DateTimeOffset.Now, isActive, isDeleted);
+            var userEntity = new User("user name", email, new Cpf("06536709586"), new Telephone("71988890834"), true, DateTimeOffset.Now, DateTimeOffset.Now, "iueh39d0xjd903");
+;
 
             vendorRepositoryMock.Setup(repo => repo.GetByName(name)).ReturnsAsync(vendorEntity);
 
@@ -258,9 +258,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("igor moreira")]
-        [InlineData("debora moreira")]
-        [InlineData("lucas vinicus")]
+        [InlineData("igor")]
+        [InlineData("debora")]
+        [InlineData("lucas")]
         public async Task GetByName_ShouldHandleNullRepositoryResult(string name)
         {
             // Arrange
@@ -270,14 +270,14 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             vendorRepositoryMock.Setup(repo => repo.GetByName(It.IsAny<string>())).ReturnsAsync((Vendor)null); // Simulate null result from the repository
 
             // Act
-            var result = await vendorAppService.GetByCnpj(name);
+            var result = await vendorAppService.GetByName(name);
 
             // Assert
             Assert.Null(result);
@@ -296,8 +296,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             vendorRepositoryMock.Setup(repo => repo.GetByName(It.IsAny<string>())).ThrowsAsync(new ArgumentException("Invalid data")); // Simulate null result from the repository
@@ -319,8 +319,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var email = new Email("warning", "text message", "apple", "juninho", DateTimeOffset.Now, true, 3, CodeErrorEmail.NetworkError);
@@ -351,8 +351,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var email = new Email("warning", "text message", "apple", "juninho", DateTimeOffset.Now, true, 3, CodeErrorEmail.NetworkError);
@@ -384,8 +384,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var vendorAppService = new VendorAppService(
                 vendorRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var email = new Email("warning", "text message", "apple", "juninho", DateTimeOffset.Now, true, 3, CodeErrorEmail.NetworkError);

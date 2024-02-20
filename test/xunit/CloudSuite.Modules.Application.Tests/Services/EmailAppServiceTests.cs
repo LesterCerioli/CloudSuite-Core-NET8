@@ -31,8 +31,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var emailEntity = new Email(subject, body, sender, recipient, sentDate, isRead, sendAttempts, codeErrorEmail);
@@ -74,8 +74,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             emailRepositoryMock.Setup(repo => repo.GetByCodeErrorEmail(It.IsAny<CodeErrorEmail>())).ReturnsAsync((Email)null); // Simulate null result from the repository
@@ -100,8 +100,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             emailRepositoryMock.Setup(repo => repo.GetByCodeErrorEmail(It.IsAny<CodeErrorEmail>())).ThrowsAsync(new ArgumentException("Invalid data")); // Simulate null result from the repository
@@ -123,8 +123,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var emailEntity = new Email(subject, body, sender, recipient, sentDate, isRead, sendAttempts, codeErrorEmail);
@@ -166,8 +166,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             emailRepositoryMock.Setup(repo => repo.GetByRecipient(It.IsAny<string>())).ReturnsAsync((Email)null); // Simulate null result from the repository
@@ -192,8 +192,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             emailRepositoryMock.Setup(repo => repo.GetByRecipient(It.IsAny<string>())).ThrowsAsync(new ArgumentException("Invalid data")); // Simulate null result from the repository
@@ -215,8 +215,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var emailEntity = new Email(subject, body, sender, recipient, sentDate, isRead, sendAttempts, codeErrorEmail);
@@ -258,8 +258,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             emailRepositoryMock.Setup(repo => repo.GetBySender(It.IsAny<string>())).ReturnsAsync((Email)null); // Simulate null result from the repository
@@ -284,14 +284,14 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             emailRepositoryMock.Setup(repo => repo.GetBySender(It.IsAny<string>())).ThrowsAsync(new ArgumentException("Invalid data")); // Simulate null result from the repository
 
             // Assert
-            await Assert.ThrowsAsync<ArgumentException>(() => emailAppService.GetByRecipient(sender));
+            await Assert.ThrowsAsync<ArgumentException>(() => emailAppService.GetBySender(sender));
         }
 
         [Theory]
@@ -307,8 +307,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createEmailCommand = new CreateEmailCommand()
@@ -344,8 +344,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createEmailCommand = new CreateEmailCommand()
@@ -382,8 +382,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var emailAppService = new EmailAppService(
                 emailRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createEmailCommand = new CreateEmailCommand()

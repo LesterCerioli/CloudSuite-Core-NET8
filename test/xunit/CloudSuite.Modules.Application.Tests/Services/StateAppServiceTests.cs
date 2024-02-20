@@ -32,8 +32,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new StateAppService(
                 stateRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var country = new Country("Brazil", "BRA", true, true, true, true, true);
@@ -73,8 +73,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var stateAppService = new StateAppService(
                 stateRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             stateRepositoryMock.Setup(repo => repo.GetByName(It.IsAny<string>())).ReturnsAsync((State)null); // Simulate null result from the repository
@@ -99,8 +99,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var stateAppService = new StateAppService(
                 stateRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             stateRepositoryMock.Setup(repo => repo.GetByName(It.IsAny<string>())).ThrowsAsync(new ArgumentException("Invalid data")); // Simulate null result from the repository
@@ -121,8 +121,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new StateAppService(
                 stateRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var country = new Country("Brazil", "BRA", true, true, true, true, true);
@@ -162,8 +162,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var stateAppService = new StateAppService(
                 stateRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             stateRepositoryMock.Setup(repo => repo.GetByUF(It.IsAny<string>())).ReturnsAsync((State)null); // Simulate null result from the repository
@@ -188,8 +188,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var stateAppService = new StateAppService(
                 stateRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             stateRepositoryMock.Setup(repo => repo.GetByUF(It.IsAny<string>())).ThrowsAsync(new ArgumentException("Invalid data")); // Simulate null result from the repository
@@ -211,8 +211,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var stateAppService = new StateAppService(
                 stateRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createStateCommand = new CreateStateCommand()
@@ -241,8 +241,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var stateAppService = new StateAppService(
                 stateRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createStateCommand = new CreateStateCommand()
@@ -272,8 +272,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var stateAppService = new StateAppService(
                 stateRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createStateCommand = new CreateStateCommand()

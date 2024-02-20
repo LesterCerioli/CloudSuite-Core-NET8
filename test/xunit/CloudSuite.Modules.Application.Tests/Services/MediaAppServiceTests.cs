@@ -32,8 +32,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new MediaAppService(
                 mediaRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var mediaEntity = new Media(caption, fileSize, fileName, mediaType);
@@ -71,8 +71,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new MediaAppService(
                 mediaRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             mediaRepositoryMock.Setup(repo => repo.GetByFileName(It.IsAny<string>())).ReturnsAsync((Media)null); // Simulate null result from the repository
@@ -97,8 +97,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new MediaAppService(
                 mediaRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             mediaRepositoryMock.Setup(repo => repo.GetByFileName(It.IsAny<string>())).ThrowsAsync(new ArgumentException("Invalid data")); // Simulate null result from the repository
@@ -119,8 +119,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new MediaAppService(
                 mediaRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var mediaEntity = new Media(caption, fileSize, fileName, mediaType);
@@ -158,8 +158,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new MediaAppService(
                 mediaRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             mediaRepositoryMock.Setup(repo => repo.GetByFileSize(It.IsAny<int>())).ReturnsAsync((Media)null); // Simulate null result from the repository
@@ -184,8 +184,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new MediaAppService(
                 mediaRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             mediaRepositoryMock.Setup(repo => repo.GetByFileSize(It.IsAny<int>())).ThrowsAsync(new ArgumentException("Invalid data")); // Simulate null result from the repository
@@ -207,8 +207,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new MediaAppService(
                 mediaRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createMediaCommand = new CreateMediaCommand()
@@ -237,8 +237,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new MediaAppService(
                 mediaRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createMediaCommand = new CreateMediaCommand()
@@ -268,8 +268,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var mediaAppService = new MediaAppService(
                 mediaRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createMediaCommand = new CreateMediaCommand()

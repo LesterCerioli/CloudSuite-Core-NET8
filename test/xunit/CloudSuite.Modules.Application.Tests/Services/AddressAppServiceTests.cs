@@ -27,14 +27,14 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var dasAppService = new AddressAppService(
                 addressRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
                 var country = new Country("Brazil", "BRA", true, true, true, true, true);
                 var state = new State("Ba", "Bahia", country, country.Id);
                 var districtentity = new District("fourteen district", "two", "location");
-                var cityEntity = new City("são paulo", state);
+                var cityEntity = new City(state.Id,"são paulo", state);
 
 
             var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);
@@ -72,8 +72,8 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var addressAppService = new AddressAppService(
                 addressRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             addressRepositoryMock.Setup(repo => repo.GetByContactName(It.IsAny<string>()))
@@ -99,8 +99,8 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var addressAppService = new AddressAppService(
                 addressRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             addressRepositoryMock.Setup(repo => repo.GetByContactName(It.IsAny<string>()))
@@ -122,14 +122,14 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var dasAppService = new AddressAppService(
                 addressRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var country = new Country("Brazil", "BRA", true, true, true, true, true);
             var state = new State("Ba", "Bahia", country, country.Id);
             var districtentity = new District("fourteen district", "two", "location");
-            var cityEntity = new City("são paulo", state);
+            var cityEntity = new City(state.Id, "são paulo", state);
 
 
             var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);
@@ -167,8 +167,8 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var addressAppService = new AddressAppService(
                 addressRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             addressRepositoryMock.Setup(repo => repo.GetByAddressLine(It.IsAny<string>()))
@@ -194,8 +194,8 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var addressAppService = new AddressAppService(
                 addressRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             addressRepositoryMock.Setup(repo => repo.GetByAddressLine(It.IsAny<string>()))
@@ -218,14 +218,14 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var addressAppService = new AddressAppService(
                 addressRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var country = new Country("Brazil", "BRA", true, true, true, true, true);
             var state = new State("Ba", "Bahia", country, country.Id);
             var districtentity = new District("fourteen district", "two", "location");
-            var cityEntity = new City("são paulo", state);
+            var cityEntity = new City(state.Id, "são paulo", state);
 
 
             var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);
@@ -256,14 +256,14 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var addressAppService = new AddressAppService(
                 addressRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var country = new Country("Brazil", "BRA", true, true, true, true, true);
             var state = new State("Ba", "Bahia", country, country.Id);
             var districtentity = new District("fourteen district", "two", "location");
-            var cityEntity = new City("são paulo", state);
+            var cityEntity = new City(state.Id, "são paulo", state);
 
 
             var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);
@@ -295,14 +295,14 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var companyAppService = new CompanyAppService(
                 companyRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var country = new Country("Brazil", "BRA", true, true, true, true, true);
             var state = new State("Ba", "Bahia", country, country.Id);
             var districtentity = new District("fourteen district", "two", "location");
-            var cityEntity = new City("são paulo", state);
+            var cityEntity = new City(state.Id, "são paulo", state);
 
 
             var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);

@@ -30,14 +30,12 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var cityAppService = new CityAppService(
                 cityRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
             var country = new Country("Brazil", "BRA", true, true, true, true, true);
             var state = new State("Ba", "Bahia", country, country.Id);
-
-
-            var cityEntity = new City(cityname, state);
+            var cityEntity = new City(state.Id, "são paulo", state);
 
             cityRepositoryMock.Setup(repo => repo.GetByCityName(cityname)).ReturnsAsync(cityEntity);
 
@@ -71,8 +69,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var cityAppService = new CityAppService(
                 cityRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
                 );
 
             cityRepositoryMock.Setup(repo => repo.GetByCityName(It.IsAny<string>()))
@@ -98,8 +96,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var cityAppService = new CityAppService(
                 cityRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
                 );
 
             cityRepositoryMock.Setup(repo => repo.GetByCityName(It.IsAny<string>()))
@@ -122,8 +120,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var cityAppService = new CityAppService(
                 cityRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
                 );
 
             var createCityCommand = new CreateCityCommand()
@@ -152,8 +150,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var cityAppService = new CityAppService(
                 cityRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
                 );
 
             var createCityCommand = new CreateCityCommand()
@@ -183,8 +181,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var cityAppService = new CityAppService(
                 cityRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
                 );
 
             var createCityCommand = new CreateCityCommand()

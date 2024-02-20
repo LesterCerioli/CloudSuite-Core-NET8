@@ -26,8 +26,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var companyAppService = new CountryAppService(
                 countryRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );          
 
             var countryEntity = new Country(countryName, code3, isBillingEnabled, isShippingEnabled, isCityEnabled, isZipCodeEnabled, isDistrictEnabled);
@@ -63,8 +63,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var companyAppService = new CountryAppService(
                 countryRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             countryRepositoryMock.Setup(repo => repo.GetByName(It.IsAny<string>()))
@@ -90,8 +90,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var countryAppService = new CountryAppService(
                 countryRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             countryRepositoryMock.Setup(repo => repo.GetByName(It.IsAny<string>()))
@@ -114,8 +114,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var countryAppService = new CountryAppService(
                 countryRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createCountryCommand = new CreateCountryCommand()
@@ -144,8 +144,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var countryAppService = new CountryAppService(
                 countryRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createCountryCommand = new CreateCountryCommand()
@@ -176,8 +176,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var countryAppService = new CountryAppService(
                 countryRepositoryMock.Object,
-                mediatorHandlerMock.Object,
-                mapperMock.Object
+                mapperMock.Object,
+                mediatorHandlerMock.Object
             );
 
             var createCountryCommand = new CreateCountryCommand()
