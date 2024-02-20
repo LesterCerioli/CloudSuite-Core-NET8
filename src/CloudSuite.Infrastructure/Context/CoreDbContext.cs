@@ -26,7 +26,6 @@ namespace CloudSuite.Infrastructure.Context
 
         public DbSet<Media> Medias { get; set; }
 
-        
         public DbSet<User> Users { get; set; }
 
         public DbSet<Vendor> Vendors { get; set; }
