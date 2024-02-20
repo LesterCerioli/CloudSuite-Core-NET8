@@ -12,25 +12,21 @@ namespace CloudSuite.Domain.Models
     {
         private readonly List<Vendor> _vendors;
 
-        public User(string? fullName, Email email, Cpf cpf, Telephone telephone, Vendor vendor, bool? isDeleted, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, string? refreshTokenHash, string? culture, string? extensionData) {
+        public User(string? fullName, Email email, Cpf cpf, Telephone telephone, bool? isDeleted, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, string? refreshTokenHash) {
             FullName = fullName;
             Email = email;
             Cpf = cpf;
             Telephone = telephone;
             IsDeleted = isDeleted;  
-            CreatedOn = createdOn;
             LatestUpdatedOn = latestUpdatedOn;
             RefreshTokenHash = refreshTokenHash;
             CreatedOn = DateTimeOffset.Now;
-            LatestUpdatedOn = DateTimeOffset.Now;
             _vendors = new List<Vendor>();
         }
 
         public User() { }
 
         public const string SettingDataKey = "Settings";
-
-        public Guid UserGuid { get; private set; }
 
         public string? FullName { get; private set; }
 

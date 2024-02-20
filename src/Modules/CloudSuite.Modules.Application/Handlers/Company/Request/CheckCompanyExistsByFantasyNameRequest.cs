@@ -6,7 +6,8 @@ namespace CloudSuite.Modules.Application.Handlers.Company.Request
     public class CheckCompanyExistsByFantasyNameRequest : IRequest<CheckCompanyExistsByFantasyNameResponse>
     {
         public Guid Id { get; private set; }
-        public string? FantasyName { get; private set; }
+
+        public string? FantasyName { get; set; }
 
         public CheckCompanyExistsByFantasyNameRequest(string fantasyName)
         {
@@ -14,7 +15,6 @@ namespace CloudSuite.Modules.Application.Handlers.Company.Request
             FantasyName = fantasyName;
         }
 
-        public CheckCompanyExistsByFantasyNameRequest() { }
     }
 
 }

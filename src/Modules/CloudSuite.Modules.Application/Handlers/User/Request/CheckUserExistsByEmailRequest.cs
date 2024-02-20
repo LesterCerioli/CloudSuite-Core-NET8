@@ -6,9 +6,9 @@ namespace CloudSuite.Modules.Application.Handlers.User.Request
 {
     public class CheckUserExistsByEmailRequest : IRequest<CheckUserExistsByEmailResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public EmailEntity Email { get; private set; }
+        public EmailEntity Email { get; set; }
 
         public CheckUserExistsByEmailRequest(EmailEntity email)
         {
@@ -16,7 +16,6 @@ namespace CloudSuite.Modules.Application.Handlers.User.Request
             Email = email;
         }
 
-        public CheckUserExistsByEmailRequest() { }
     }
 }
 

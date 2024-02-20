@@ -6,7 +6,8 @@ namespace CloudSuite.Modules.Application.Handlers.Company.Request
     public class CheckCompanyExistsByRegisterNameRequest : IRequest<CheckCompanyExistsByRegisterNameResponse>
     {
         public Guid Id { get; private set; }
-        public string? RegisterName { get; private set; }
+
+        public string? RegisterName { get; set; }
 
         public CheckCompanyExistsByRegisterNameRequest(string registerName)
         {
@@ -14,6 +15,5 @@ namespace CloudSuite.Modules.Application.Handlers.Company.Request
             RegisterName = registerName;
         }
 
-        public CheckCompanyExistsByRegisterNameRequest() { }
     }
 }

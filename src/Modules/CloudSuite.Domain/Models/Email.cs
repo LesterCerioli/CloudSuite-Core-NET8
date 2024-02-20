@@ -5,7 +5,7 @@ namespace CloudSuite.Domain.Models
 {
     public class Email : Entity, IAggregateRoot
     {
-        public Email(string? subject, string? body, string? sender, string? recipient, DateTimeOffset? sentDate, bool? isRead, int sendAttempts?, CodeErrorEmail codeErrorEmail)
+        public Email(string? subject, string? body, string? sender, string? recipient, DateTimeOffset? sentDate, bool? isRead, int sendAttempts, CodeErrorEmail codeErrorEmail)
         {
             Subject = subject;
             Body = body;

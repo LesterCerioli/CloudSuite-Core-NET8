@@ -4,7 +4,7 @@ namespace CloudSuite.Modules.Application.Hadlers.City.Request
 {
     public class CheckCityExistsByCityNameRequest : IRequest<CheckCitExistsyByCityNameResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
         public string? CityName { get; set; }
 
@@ -13,8 +13,6 @@ namespace CloudSuite.Modules.Application.Hadlers.City.Request
             Id = Guid.NewGuid();
             CityName = cityName;
         }
-
-        public CheckCityExistsByCityNameRequest() { }
 
     }
 }

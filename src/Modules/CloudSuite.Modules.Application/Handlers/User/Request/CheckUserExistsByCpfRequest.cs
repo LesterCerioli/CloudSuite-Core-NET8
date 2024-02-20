@@ -6,9 +6,9 @@ namespace CloudSuite.Modules.Application.Handlers.User.Request
 {
     public class CheckUserExistsByCpfRequest : IRequest<CheckUserExistsByCpfResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public Cpf Cpf { get; private set; }
+        public Cpf Cpf { get; set; }
 
         public CheckUserExistsByCpfRequest(Cpf cpf)
         {
@@ -16,6 +16,5 @@ namespace CloudSuite.Modules.Application.Handlers.User.Request
             Cpf = cpf;
         }
 
-        public CheckUserExistsByCpfRequest() { }
     }
 }

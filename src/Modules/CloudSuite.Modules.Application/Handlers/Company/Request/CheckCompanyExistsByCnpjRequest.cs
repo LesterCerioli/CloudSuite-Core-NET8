@@ -5,7 +5,7 @@ namespace CloudSuite.Modules.Application.Handlers.Company.Request
 {
     public class CheckCompanyExistsByCnpjRequest : IRequest<CheckCompanyExistsByCnpjResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
         public Cnpj Cnpj { get; set; }
 
@@ -15,6 +15,5 @@ namespace CloudSuite.Modules.Application.Handlers.Company.Request
             Cnpj = cnpj;
         }
 
-        public CheckCompanyExistsByCnpjRequest() { }
     }
 }

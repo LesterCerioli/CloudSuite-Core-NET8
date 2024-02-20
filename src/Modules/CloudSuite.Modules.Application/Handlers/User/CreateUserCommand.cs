@@ -4,7 +4,6 @@ using MediatR;
 using System.ComponentModel.DataAnnotations;
 using UserEntity = CloudSuite.Domain.Models.User;
 using EmailEntity = CloudSuite.Domain.Models.Email;
-using VendorEntity = CloudSuite.Domain.Models.Vendor;
 
 
 namespace CloudSuite.Modules.Application.Handlers.User
@@ -12,50 +11,42 @@ namespace CloudSuite.Modules.Application.Handlers.User
     public class CreateUserCommand : IRequest<CreateUserResponse>
     {
 
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        public string? FullName { get; private set; }
+        public string? FullName { get; set; }
 
-        public EmailEntity Email { get; private set; }
+        public EmailEntity Email { get; set; }
 
-        public Cpf Cpf { get; private set; }
+        public string Cpf { get; set; }
 
-        public Telephone Telephone { get; private set; }
+        public string Telephone { get; set; }
 
-        public VendorEntity Vendor { get; private set; }
+        public bool? IsDeleted { get; set; }
 
-        public bool? IsDeleted { get; private set; }
+        public DateTimeOffset? CreatedOn { get; set; }
 
-        public DateTimeOffset? CreatedOn { get; private set; }
+        public DateTimeOffset? LatestUpdatedOn { get; set; }
 
-        public DateTimeOffset? LatestUpdatedOn { get; private set; }
+        public string? RefreshTokenHash { get; set; }
 
-        [StringLength(450)]
-        public string? RefreshTokenHash { get; private set; }
+        public Guid VendorId { get; set; }
 
-        [StringLength(450)]
-        public string? Culture { get; private set; }
-
-        public string? ExtensionData { get; private set; }
-
-        public Guid VendorId { get; private set; }
-
+        public CreateUserCommand()
+        {
+            Id = Guid.NewGuid();
+        }
 
         public UserEntity GetEntity()
         {
             return new UserEntity(
                 this.FullName,
                 this.Email,
-                this.Cpf,
-                this.Telephone,
-                this.Vendor,
+                new Cpf(this.Cpf),
+                new Telephone(this.Telephone),
                 this.IsDeleted,
                 this.CreatedOn,
                 this.LatestUpdatedOn,
-                this.RefreshTokenHash,
-                this.Culture,
-                this.ExtensionData
+                this.RefreshTokenHash
                 );
         }
 

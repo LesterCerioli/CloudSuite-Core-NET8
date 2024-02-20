@@ -5,9 +5,9 @@ namespace CloudSuite.Modules.Application.Handlers.Country.Request
 {
     public class CheckCountryExistsByCountryNameRequest : IRequest<CheckCountryExistsByCountryNameResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public string? CountryName { get; private set; }
+        public string? CountryName { get; set; }
 
         public CheckCountryExistsByCountryNameRequest(string countryName)
         {
@@ -15,6 +15,5 @@ namespace CloudSuite.Modules.Application.Handlers.Country.Request
             CountryName = countryName;
         }
 
-        public CheckCountryExistsByCountryNameRequest() { }
     }
 }

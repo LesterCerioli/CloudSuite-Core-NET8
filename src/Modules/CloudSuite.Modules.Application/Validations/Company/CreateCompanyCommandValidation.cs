@@ -86,12 +86,6 @@ namespace CloudSuite.Modules.Application.Validations.Company
                 .NotNull()
                 .WithMessage("O campo Location não pode ser nulo.");
                        
-                       
-            
-                RuleFor(a => a.Cnpj)
-                    .Must(cnpj => IsValid(cnpj.CnpjNumber))
-                    .WithMessage("O campo Cnpj é inválido.");
-
 
           
         }

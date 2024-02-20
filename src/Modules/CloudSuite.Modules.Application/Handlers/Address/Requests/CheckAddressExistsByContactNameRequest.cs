@@ -7,7 +7,7 @@ namespace CloudSuite.Modules.Application.Hadlers.Address.Requests
     {
         public Guid Id { get; private set; }
 
-        public string? ContactName { get; private set; }
+        public string? ContactName { get; set; }
 
         public CheckAddressExistsByContactNameRequest(string contactName)
         {
@@ -15,6 +15,5 @@ namespace CloudSuite.Modules.Application.Hadlers.Address.Requests
             ContactName = contactName;
         }
 
-        public CheckAddressExistsByContactNameRequest() { }
     }
 }

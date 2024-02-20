@@ -5,7 +5,7 @@ namespace CloudSuite.Modules.Application.Handlers.Media.Request
 {
     public class CheckMediaExistsByFileSizeRequest : IRequest<CheckMediaExistsByFileSizeResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
         public int? FileSize { get; set; }
 
@@ -15,6 +15,5 @@ namespace CloudSuite.Modules.Application.Handlers.Media.Request
             FileSize = fileSize;
         }
 
-        public CheckMediaExistsByFileSizeRequest() { }
     }
 }

@@ -5,7 +5,7 @@ namespace CloudSuite.Modules.Application.Handlers.Media.Request
 {
     public class CheckMediaExistsByCaptionRequest : IRequest<CheckMediaExistsByCaptionResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
         public string? Caption { get; set; }
 
@@ -15,6 +15,5 @@ namespace CloudSuite.Modules.Application.Handlers.Media.Request
             Caption = caption;
         }
 
-        public CheckMediaExistsByCaptionRequest() { }
     }
 }

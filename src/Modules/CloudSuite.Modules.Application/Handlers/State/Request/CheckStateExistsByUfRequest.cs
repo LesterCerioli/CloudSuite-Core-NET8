@@ -5,9 +5,9 @@ namespace CloudSuite.Modules.Application.Handlers.State.Request
 {
     public class CheckStateExistsByUfRequest : IRequest<CheckStateExistsByUfResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public string? UF { get; private set; }
+        public string? UF { get; set; }
 
         public CheckStateExistsByUfRequest(string uf)
         {
@@ -15,6 +15,5 @@ namespace CloudSuite.Modules.Application.Handlers.State.Request
             UF = uf;
         }
 
-        public CheckStateExistsByUfRequest() { }
     }
 }

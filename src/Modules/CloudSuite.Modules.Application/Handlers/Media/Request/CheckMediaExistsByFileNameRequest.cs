@@ -5,7 +5,7 @@ namespace CloudSuite.Modules.Application.Handlers.Media.Request
 {
     public class CheckMediaExistsByFileNameRequest : IRequest<CheckMediaExistsByFileNameResponse>   
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
         public string? FileName { get; set; }
 
@@ -15,6 +15,5 @@ namespace CloudSuite.Modules.Application.Handlers.Media.Request
             FileName = fileName;
         }
 
-        public CheckMediaExistsByFileNameRequest() { }
     }
 }

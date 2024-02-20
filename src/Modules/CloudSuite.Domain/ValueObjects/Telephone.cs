@@ -11,8 +11,12 @@ namespace CloudSuite.Domain.ValueObjects
 {
     public class Telephone : ValueObject
     {
-        [Required(ErrorMessage = "O preenchimento do telefone é obrigatorio")]
-        [MinLength(10)]
+        private string telefone;
+
+        public Telephone(string? telephoneNumber)
+        {
+            this.telefone = telephoneNumber;
+        }
         public string TelephoneNumber { get; private set; }
 
         public string TelephoneRegion { get; private set; }

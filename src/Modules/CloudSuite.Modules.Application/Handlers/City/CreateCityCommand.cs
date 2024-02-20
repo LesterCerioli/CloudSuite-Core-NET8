@@ -8,18 +8,18 @@ namespace CloudSuite.Modules.Application.Hadlers.City
     public class CreateCityCommand : IRequest<CreateCityResponse>
     {
 
-        public Guid Id { get; set; }
-        
-        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
-        [MaxLength(100)]
+        public Guid Id { get; private set; }
 
-        public string? CityName { get; private set; }
+        public string? CityName { get; set; }
 
-        public State State { get; private set; }
+        public State State { get; set; }
 
-        public Guid StateId { get; private set; }
+        public Guid StateId { get; set; }
 
-
+        public CreateCityCommand()
+        {
+            Id = Guid.NewGuid();
+        }
 
         public CityEntity GetEntity()
         {

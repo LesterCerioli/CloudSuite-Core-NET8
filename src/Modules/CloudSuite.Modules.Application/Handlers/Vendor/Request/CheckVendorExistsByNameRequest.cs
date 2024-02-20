@@ -5,9 +5,9 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor.Request
 {
     public class CheckVendorExistsByNameRequest : IRequest<CheckVendorExistsByNameResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public string? Name { get; private set; }
+        public string? Name { get; set; }
 
         public CheckVendorExistsByNameRequest(string name)
         {
@@ -15,6 +15,5 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor.Request
             Name = name;
         }
 
-        public CheckVendorExistsByNameRequest() { }
     }
 }

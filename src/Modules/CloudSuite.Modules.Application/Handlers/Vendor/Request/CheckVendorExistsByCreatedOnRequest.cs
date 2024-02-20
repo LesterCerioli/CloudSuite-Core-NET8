@@ -5,9 +5,9 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor.Request
 {
     public class CheckVendorExistsByCreatedOnRequest : IRequest<CheckVendorExistsByCreatedOnResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public DateTimeOffset? CreatedOn { get; private set; }
+        public DateTimeOffset? CreatedOn { get; set; }
 
         public CheckVendorExistsByCreatedOnRequest(DateTimeOffset createdOn)
         {
@@ -15,6 +15,5 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor.Request
             CreatedOn = createdOn;
         }
 
-        public CheckVendorExistsByCreatedOnRequest() { }
     }
 }

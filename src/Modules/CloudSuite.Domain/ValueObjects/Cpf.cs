@@ -68,7 +68,7 @@ namespace CloudSuite.Domain.ValueObjects
         
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            throw new NotImplementedException();
+            yield return CpfNumber;
         }
     }
 }

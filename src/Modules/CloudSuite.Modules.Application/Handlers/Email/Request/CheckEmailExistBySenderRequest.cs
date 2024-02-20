@@ -5,7 +5,7 @@ namespace CloudSuite.Modules.Application.Handlers.Email.Request
 {
     public class CheckEmailExistBySenderRequest : IRequest<CheckEmailExistBySenderResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
         public string? Sender { get; set; }
 
@@ -13,10 +13,6 @@ namespace CloudSuite.Modules.Application.Handlers.Email.Request
         {
             Id = Guid.NewGuid();
             Sender = sender;
-        }
-        public CheckEmailExistBySenderRequest()
-        {
-
         }
     }
 }
