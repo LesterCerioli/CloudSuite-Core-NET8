@@ -24,6 +24,18 @@ namespace CloudSuite.Domain.Models
             IsDeleted = isDeleted;
         }
 
+        public Vendor(string? name, string? slug, string? description, Cnpj cnpj, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, bool? isActive, bool? isDeleted)
+        {
+            Name = name;
+            Slug = slug;
+            Description = description;
+            Cnpj = cnpj;
+            CreatedOn = createdOn;
+            LatestUpdatedOn = latestUpdatedOn;
+            IsActive = isActive;
+            IsDeleted = isDeleted;
+        }
+
         public Vendor()
         {
 
@@ -36,8 +48,6 @@ namespace CloudSuite.Domain.Models
         public string? Description { get; private set; }
 
         public Cnpj Cnpj { get; private set; }
-
-        public Guid CnpjId { get; private set; }
 
         public Email Email { get; private set; }
 

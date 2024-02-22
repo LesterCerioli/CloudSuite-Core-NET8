@@ -25,6 +25,21 @@ namespace CloudSuite.Domain.Models
 
         }
 
+        public Country(string? countryName, string? code3, bool? isBillingEnabled, bool? isShippingEnabled, bool? isCityEnabled, bool? isZipCodeEnabled, bool? isDistrictEnabled, State state, Guid stateId)
+        {
+            CountryName = countryName;
+            Code3 = code3;
+            IsBillingEnabled = isBillingEnabled;
+            IsShippingEnabled = isShippingEnabled;
+            IsCityEnabled = isCityEnabled;
+            IsZipCodeEnabled = isZipCodeEnabled;
+            IsDistrictEnabled = isDistrictEnabled;
+            State = state;
+            StateId = stateId;
+            _states = new List<State>();
+
+        }
+
         public Country(){ }
 
         public string? CountryName { get; private set; }

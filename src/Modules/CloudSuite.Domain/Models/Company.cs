@@ -19,6 +19,13 @@ namespace CloudSuite.Domain.Models
             Address = address;
         }
 
+        public Company(Cnpj cnpj, string? fantasyName, string? registerName)
+        {
+            Cnpj = cnpj;
+            FantasyName = fantasyName;
+            RegisterName = registerName;
+        }
+
         public Company() { }
 
         public Cnpj Cnpj { get; private set; }

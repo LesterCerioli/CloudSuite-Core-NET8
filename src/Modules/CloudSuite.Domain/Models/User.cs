@@ -24,6 +24,18 @@ namespace CloudSuite.Domain.Models
             _vendors = new List<Vendor>();
         }
 
+        public User(string? fullName, Cpf cpf, Telephone telephone, bool? isDeleted, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, string? refreshTokenHash)
+        {
+            FullName = fullName;
+            Cpf = cpf;
+            Telephone = telephone;
+            IsDeleted = isDeleted;
+            LatestUpdatedOn = latestUpdatedOn;
+            RefreshTokenHash = refreshTokenHash;
+            CreatedOn = DateTimeOffset.Now;
+            _vendors = new List<Vendor>();
+        }
+
         public User() { }
 
         public const string SettingDataKey = "Settings";

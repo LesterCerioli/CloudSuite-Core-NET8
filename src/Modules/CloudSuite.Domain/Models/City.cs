@@ -20,6 +20,12 @@ namespace CloudSuite.Domain.Models
             State = state;
         }
 
+        public City(string? cityName)
+        {
+            _states = new List<State>();
+            CityName = cityName;
+        }
+
         public City(){ }
 
         public string? CityName { get; private set; }

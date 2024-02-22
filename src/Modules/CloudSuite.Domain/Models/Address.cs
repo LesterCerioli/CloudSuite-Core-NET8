@@ -21,6 +21,16 @@ namespace CloudSuite.Domain.Models
             District = district;
             ContactName = contactName;
             AddressLine1 = adressLine1;
+            DistrictId = district.Id;
+            CityId = city.Id;
+        }
+
+        public Address(string contactName, string adressLine1)
+        {
+            _districts = new List<District>();
+            _cities = new List<City>();
+            ContactName = contactName;
+            AddressLine1 = adressLine1;
         }
 
         public Address(){ }
