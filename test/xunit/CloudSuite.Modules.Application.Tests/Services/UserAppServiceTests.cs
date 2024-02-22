@@ -206,7 +206,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
             // Assert
             await Assert.ThrowsAsync<ArgumentException>(() => userAppService.GetByEmail(emailentity));
         }
-        /*
+        
         [Theory]
         [InlineData("genivaldo lopes", "33803834066", "31987656532", true, "10-10-2023", "02-06-2022", "7654696756", "culture12", "extensionData5")]
         [InlineData("clara santos", "33803834066", "77988890834", true, "10-10-2023", "11-05-2021", "94387594857", "culture13", "extensionData6")]
@@ -229,8 +229,13 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createUserCommand = new CreateUserCommand()
             {
-
-
+                FullName = fullname,
+                Cpf = cpf,
+                Telephone = telephone,
+                IsDeleted = isDeleted,
+                CreatedOn = createdOn,
+                LatestUpdatedOn = latestUpdatedOn,
+                RefreshTokenHash = refreshTokenHash
             };
 
             // Act
@@ -242,7 +247,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
         [Theory]
         [InlineData("lucas santos", "06536709586", "71987657684", true, "10-10-2023", "11-12-2023", "76578576587", "culture12", "extensionData7")]
-        [InlineData("thiago santos", "06536709586", "77988890834", false, "15-01-2023", "11-12-2020", "4323678980975", "culture13", "extensionData6")]
+        [InlineData("thiago santos", "06536709586", "77988890834", false, "11-12-2023", "10-12-2023", "4323678980975", "culture13", "extensionData6")]
         [InlineData("adalberto santos", "06536709586", "81987687690", true, "10-12-2023", "11-12-2022", "3967358098897", "culture14", "extensionData5")]
         public async Task Save_ShouldHandleNullRepositoryResult(string fullname, string cpf, string telephone, bool isDeleted, DateTimeOffset createdOn, DateTimeOffset latestUpdatedOn, string refreshTokenHash, string culture, string? extensionData)
 
@@ -262,8 +267,13 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createUserCommand = new CreateUserCommand()
             {
-
-
+                FullName = fullname,
+                Cpf = cpf,
+                Telephone = telephone,
+                IsDeleted = isDeleted,
+                CreatedOn = createdOn,
+                LatestUpdatedOn = latestUpdatedOn,
+                RefreshTokenHash = refreshTokenHash
             };
 
             userRepositoryMock.Setup(repo => repo.Add(It.IsAny<User>())).Throws(new NullReferenceException());
@@ -275,7 +285,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
         [Theory]
         [InlineData("lucas santos", "06536709586", "71987657684", true, "10-10-2023", "11-12-2023", "76578576587", "culture12", "extensionData7")]
-        [InlineData("thiago santos", "06536709586", "77988890834", false, "15-01-2023", "11-12-2020", "4323678980975", "culture13", "extensionData6")]
+        [InlineData("thiago santos", "06536709586", "77988890834", false, "11-12-2023", "10-12-2023", "4323678980975", "culture13", "extensionData6")]
         [InlineData("adalberto santos", "06536709586", "81987687690", true, "10-12-2023", "11-12-2022", "3967358098897", "culture14", "extensionData5")]
         public async Task Save_ShouldHandleInvalidMappingResult(string fullname, string cpf, string telephone, bool isDeleted, DateTimeOffset createdOn, DateTimeOffset latestUpdatedOn, string refreshTokenHash, string culture, string? extensionData)
 
@@ -294,8 +304,13 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createUserCommand = new CreateUserCommand()
             {
-
-
+                FullName = fullname,
+                Cpf = cpf,
+                Telephone = telephone,
+                IsDeleted = isDeleted,
+                CreatedOn = createdOn,
+                LatestUpdatedOn = latestUpdatedOn,
+                RefreshTokenHash = refreshTokenHash
             };
 
             // Act       
@@ -305,6 +320,5 @@ namespace CloudSuite.Modules.Application.Tests.Services
             await Assert.ThrowsAsync<ArgumentException>(() => userAppService.Save(createUserCommand));
         }
 
-        */
     }
 }

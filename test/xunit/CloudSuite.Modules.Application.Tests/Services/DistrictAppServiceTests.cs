@@ -126,8 +126,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createDistrictCommand = new CreateDistrictCommand()
             {
-
-
+                Name = name,
+                Type = type,
+                Location = location
             };
 
             // Act
@@ -156,8 +157,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createDistrictCommand = new CreateDistrictCommand()
             {
-
-
+                Name = name,
+                Type = type,
+                Location = location
             };
 
             districtRepositoryMock.Setup(repo => repo.Add(It.IsAny<District>())).Throws(new NullReferenceException());
@@ -187,8 +189,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createDistrictCommand = new CreateDistrictCommand()
             {
-
-
+                Name = name,
+                Type = type,
+                Location = location
             };
 
             // Act       

@@ -132,8 +132,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 IsShippingEnabled = isShippingEnabled,
                 IsCityEnabled = isCityEnabled,
                 IsZipCodeEnabled = isZipCodeEnabled,
-                IsDistrictEnabled = isDistrictEnabled,
-                StateId = Guid.NewGuid()
+                IsDistrictEnabled = isDistrictEnabled
             };
 
             // Act
@@ -168,8 +167,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 IsShippingEnabled = isShippingEnabled,
                 IsCityEnabled = isCityEnabled,
                 IsZipCodeEnabled = isZipCodeEnabled,
-                IsDistrictEnabled = isDistrictEnabled,
-                StateId = Guid.NewGuid()
+                IsDistrictEnabled = isDistrictEnabled
             };
 
             countryRepositoryMock.Setup(repo => repo.Add(It.IsAny<Country>())).Throws(new NullReferenceException());
@@ -206,8 +204,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 IsShippingEnabled = isShippingEnabled,
                 IsCityEnabled = isCityEnabled,
                 IsZipCodeEnabled = isZipCodeEnabled,
-                IsDistrictEnabled = isDistrictEnabled,
-                StateId = Guid.NewGuid()
+                IsDistrictEnabled = isDistrictEnabled
             };
 
             // Act       

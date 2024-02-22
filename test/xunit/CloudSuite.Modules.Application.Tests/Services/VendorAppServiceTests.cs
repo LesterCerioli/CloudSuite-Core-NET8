@@ -10,6 +10,7 @@ using Moq;
 using NetDevPack.Mediator;
 using System;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Xunit;
 
 namespace CloudSuite.Modules.Application.Tests.Services
@@ -301,12 +302,12 @@ namespace CloudSuite.Modules.Application.Tests.Services
             // Assert
             await Assert.ThrowsAsync<ArgumentException>(() => vendorAppService.GetByName(name));
         }
-        /*
+        
         [Theory]
-        [InlineData("flora matos", "down", "descricao de venda de um apartamento", "92155393000120", true, false)]
-        [InlineData("vanessa lopes", "slug1", "descricao de venda de uma chacara", "73549653000106", true, false)]
-        [InlineData("davi barbosa", "left", "descricao de venda", "54814207000129", true, false)]
-        public async Task Save_ShouldAddCompanyToRepository(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted)
+        [InlineData("flora matos", "down", "descricao de venda de um apartamento", "92155393000120", true, false, "10-10-2023", "02-06-2022")]
+        [InlineData("vanessa lopes", "slug1", "descricao de venda de uma chacara", "73549653000106", true, false, "10-10-2023", "02-06-2022")]
+        [InlineData("davi barbosa", "left", "descricao de venda", "54814207000129", true, false, "10-10-2023", "02-06-2022")]
+        public async Task Save_ShouldAddCompanyToRepository(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted, DateTimeOffset createdOn, DateTimeOffset lastUpdateOn)
         {
             // Arrange
             var vendorRepositoryMock = new Mock<IVendorRepository>();
@@ -323,8 +324,14 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createVendorCommand = new CreateVendorCommand()
             {
-
-
+                Name = name,
+                Slug = slug,
+                Description = description,
+                Cnpj = cnpj,
+                CreatedOn = createdOn,
+                LatestUpdatedOn = lastUpdateOn,
+                IsActive = isActive,
+                IsDeleted = isDeleted
             };
 
             // Act
@@ -335,10 +342,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("igor moreira", "up", "descricao de venda de carro", "48417537000188", true, false)]
-        [InlineData("elton santos", "down", "descricao de venda moto", "25112871000128", true, false)]
-        [InlineData("mateus costa", "left", "descricao de venda celular", "65463845000169", true, false)]
-        public async Task Save_ShouldHandleNullRepositoryResult(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted)
+        [InlineData("igor moreira", "up", "descricao de venda de carro", "48417537000188", true, false, "10-10-2023", "02-06-2022")]
+        [InlineData("elton santos", "down", "descricao de venda moto", "25112871000128", true, false, "10-10-2023", "02-06-2022")]
+        [InlineData("mateus costa", "left", "descricao de venda celular", "65463845000169", true, false, "10-10-2023", "02-06-2022")]
+        public async Task Save_ShouldHandleNullRepositoryResult(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted, DateTimeOffset createdOn, DateTimeOffset lastUpdateOn)
         {
             //Arrange
             var vendorRepositoryMock = new Mock<IVendorRepository>();
@@ -355,8 +362,14 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createVendorCommand = new CreateVendorCommand()
             {
-
-
+                Name = name,
+                Slug = slug,
+                Description = description,
+                Cnpj = cnpj,
+                CreatedOn = createdOn,
+                LatestUpdatedOn = lastUpdateOn,
+                IsActive = isActive,
+                IsDeleted = isDeleted
             };
 
             vendorRepositoryMock.Setup(repo => repo.Add(It.IsAny<Vendor>())).Throws(new NullReferenceException());
@@ -365,12 +378,12 @@ namespace CloudSuite.Modules.Application.Tests.Services
             await Assert.ThrowsAsync<NullReferenceException>(() => vendorAppService.Save(createVendorCommand));
 
         }
-        */
+        
         [Theory]
-        [InlineData("igor moreira", "up", "descricao de venda de carro", "48417537000188", true, false)]
-        [InlineData("elton santos", "down", "descricao de venda moto", "25112871000128", true, false)]
-        [InlineData("mateus costa", "left", "descricao de venda celular", "65463845000169", true, false)]
-        public async Task Save_ShouldHandleInvalidMappingResult(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted)
+        [InlineData("igor moreira", "up", "descricao de venda de carro", "48417537000188", true, false, "10-10-2023", "02-06-2022")]
+        [InlineData("elton santos", "down", "descricao de venda moto", "25112871000128", true, false, "10-10-2023", "02-06-2022")]
+        [InlineData("mateus costa", "left", "descricao de venda celular", "65463845000169", true, false, "10-10-2023", "02-06-2022")]
+        public async Task Save_ShouldHandleInvalidMappingResult(string name, string slug, string description, string cnpj, bool isActive, bool isDeleted, DateTimeOffset createdOn, DateTimeOffset lastUpdateOn)
         {
 
             //Arrange
@@ -388,7 +401,14 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createVendorCommand = new CreateVendorCommand()
             {
-
+                Name = name,
+                Slug = slug,
+                Description = description,
+                Cnpj = cnpj,
+                CreatedOn = createdOn,
+                LatestUpdatedOn = lastUpdateOn,
+                IsActive = isActive,
+                IsDeleted = isDeleted
 
             };
 

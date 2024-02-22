@@ -108,10 +108,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("Arraial do cabo", "Rio de janeiro")]
-        [InlineData("São bernardo", "São Paulo")]
-        [InlineData("Cabo frio", "Rio de Janeiro")]
-        public async Task Save_ShouldAddCompanyToRepository(string cityname, string statename)
+        [InlineData("Arraial do cabo")]
+        [InlineData("São bernardo")]
+        [InlineData("Cabo frio")]
+        public async Task Save_ShouldAddCompanyToRepository(string cityname)
         {
             // Arrange
             var cityRepositoryMock = new Mock<ICityRepository>();
@@ -126,7 +126,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createCityCommand = new CreateCityCommand()
             {
-               
+                CityName = cityname
 
             };
 
@@ -138,10 +138,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("Praia do forte", "Bahia")]
-        [InlineData("Guapamirim", "São Paulo")]
-        [InlineData("Duque de caxias", "Rio de Janeiro")]
-        public async Task Save_ShouldHandleNullRepositoryResult(string cityname, string statename)
+        [InlineData("Praia do forte")]
+        [InlineData("Guapamirim")]
+        [InlineData("Duque de caxias")]
+        public async Task Save_ShouldHandleNullRepositoryResult(string cityname)
         {
             //Arrange
             var cityRepositoryMock = new Mock<ICityRepository>();
@@ -156,7 +156,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createCityCommand = new CreateCityCommand()
             {
-
+                CityName = cityname
 
             };
 
@@ -168,10 +168,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("Salvador", "Bahia")]
-        [InlineData("São Paulo", "São Paulo")]
-        [InlineData("Rio de Janeiro", "Rio de Janeiro")]
-        public async Task Save_ShouldHandleInvalidMappingResult(string cityname, string statename)
+        [InlineData("Salvador")]
+        [InlineData("São Paulo")]
+        [InlineData("Rio de Janeiro")]
+        public async Task Save_ShouldHandleInvalidMappingResult(string cityname)
         {
 
             //Arrange
@@ -187,7 +187,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createCityCommand = new CreateCityCommand()
             {
-
+                CityName = cityname
 
             };
 

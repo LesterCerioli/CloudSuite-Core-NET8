@@ -293,7 +293,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
             // Assert
             await Assert.ThrowsAsync<ArgumentException>(() => companyAppService.GetByRegisterName(registerName));
         }
-/*
+
         [Theory]
         [InlineData("71900468000180", "riot", "riot games")]
         [InlineData("31239661000106", "naugthy dog", "naugthy dog inc")]
@@ -313,7 +313,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createCityCommand = new CreateCompanyCommand()
             {
-
+                Cnpj = cnpj,
+                FantasyName = fantasyName,
+                RegisterName = registerName
 
             };
 
@@ -343,8 +345,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createCompanyCommand = new CreateCompanyCommand()
             {
-
-
+                Cnpj = cnpj,
+                FantasyName = fantasyName,
+                RegisterName = registerName
             };
 
             companyRepositoryMock.Setup(repo => repo.Add(It.IsAny<Company>())).Throws(new NullReferenceException());
@@ -353,7 +356,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
             await Assert.ThrowsAsync<NullReferenceException>(() => companyAppService.Save(createCompanyCommand));
 
         }
-*/
+
         [Theory]
         [InlineData("71900468000180", "riot", "riot games")]
         [InlineData("31239661000106", "naugthy dog", "naugthy dog inc")]
@@ -374,8 +377,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createCompanyCommand = new CreateCompanyCommand()
             {
-
-
+                Cnpj = cnpj,
+                FantasyName = fantasyName,
+                RegisterName = registerName
             };
 
             // Act       

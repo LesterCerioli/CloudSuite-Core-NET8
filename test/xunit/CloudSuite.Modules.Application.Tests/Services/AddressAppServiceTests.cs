@@ -206,10 +206,10 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("Salvador", "district1", "igor moreira", "rua das flores")]
-        [InlineData("Sao paulo", "district2", "Beltrão", "rua azul")]
-        [InlineData("Fortaleza", "district3", "francisco coins", "rua twitch")]
-        public async Task Save_ShouldAddCompanyToRepository(string city, string district, string contactName, string addressLine1)
+        [InlineData("Salvador", "district1")]
+        [InlineData("Sao paulo", "district2")]
+        [InlineData("Fortaleza", "district3")]
+        public async Task Save_ShouldAddCompanyToRepository(string contactName, string addressLine1)
         {
             // Arrange
             var addressRepositoryMock = new Mock<IAddressRepository>();
@@ -232,8 +232,8 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var createAddressCommand = new CreateAddressCommand()
             {
-
-
+                ContactName = contactName,
+                AddressLine1 = addressLine1
             };
 
             // Act
@@ -270,8 +270,8 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var createAddressCommand = new CreateAddressCommand()
             {
-
-
+                ContactName = contactName,
+                AddressLine1 = addressLine1
             };
 
             addressRepositoryMock.Setup(repo => repo.Add(It.IsAny<Address>())).Throws(new NullReferenceException());
@@ -289,12 +289,12 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
         {
 
             //Arrange
-            var companyRepositoryMock = new Mock<ICompanyRepository>();
+            var addressRepositoryMock = new Mock<IAddressRepository>();
             var mediatorHandlerMock = new Mock<IMediatorHandler>();
             var mapperMock = new Mock<IMapper>();
 
-            var companyAppService = new CompanyAppService(
-                companyRepositoryMock.Object,
+            var addressAppService = new AddressAppService(
+                addressRepositoryMock.Object,
                 mapperMock.Object,
                 mediatorHandlerMock.Object
             );
@@ -307,17 +307,17 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
 
             var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);
 
-            var createCompanyCommand = new CreateCompanyCommand()
+            var createAddressCommand = new CreateAddressCommand()
             {
-
-
+                ContactName = contactName,
+                AddressLine1 = addressLine1
             };
 
             // Act       
-            companyRepositoryMock.Setup(repo => repo.Add(It.IsAny<Company>())).Throws(new ArgumentException("Invalid data"));
+            addressRepositoryMock.Setup(repo => repo.Add(It.IsAny<Address>())).Throws(new ArgumentException("Invalid data"));
 
             // Act and Assert
-            await Assert.ThrowsAsync<ArgumentException>(() => companyAppService.Save(createCompanyCommand));
+            await Assert.ThrowsAsync<ArgumentException>(() => addressAppService.Save(createAddressCommand));
         }
 
     }

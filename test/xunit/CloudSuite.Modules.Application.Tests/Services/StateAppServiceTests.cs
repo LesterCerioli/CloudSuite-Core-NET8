@@ -217,8 +217,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createStateCommand = new CreateStateCommand()
             {
-
-
+                StateName = stateName,
+                UF = uf
             };
 
             // Act
@@ -247,8 +247,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createStateCommand = new CreateStateCommand()
             {
-
-
+                StateName = stateName,
+                UF = uf
             };
 
             stateRepositoryMock.Setup(repo => repo.Add(It.IsAny<State>())).Throws(new NullReferenceException());
@@ -278,8 +278,8 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var createStateCommand = new CreateStateCommand()
             {
-
-
+                StateName = stateName,
+                UF = uf
             };
 
             // Act       
