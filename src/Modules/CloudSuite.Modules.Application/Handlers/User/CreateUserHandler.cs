@@ -27,10 +27,10 @@ namespace CloudSuite.Modules.Application.Handlers.User
             {
                 try
                 {
-                    var userEmail = await _userRepository.GetByEmail(command.Email);
+                   // var userEmail = await _userRepository.GetByEmail(command.Email);
                     var UserCpf = await _userRepository.GetByCpf(new Cpf(command.Cpf));
 
-                    if (userEmail != null && UserCpf != null)
+                    if (UserCpf != null)
                     {
                         return await Task.FromResult(new CreateUserResponse(command.Id, validationResult));
                     }

@@ -20,12 +20,6 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor
 
         public string Cnpj { get; set; }
 
-        public Guid CnpjId { get; set; }
-
-        public EmailEntity Email { get; set; }
-
-        public Guid EmailId { get; set; }
-
         public DateTimeOffset? CreatedOn { get; set; }
 
         public DateTimeOffset? LatestUpdatedOn { get; set; }
@@ -33,10 +27,6 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor
         public bool? IsActive { get; set; }
 
         public bool? IsDeleted { get; set; }
-
-        public UserEntity User { get; set; }
-
-        public Guid UserId { get; set; }
 
         public CreateVendorCommand()
         {
@@ -46,12 +36,10 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor
         public VendorEntity GetEntity()
         {
             return new VendorEntity(
-                this.UserId,
                 this.Name,
                 this.Slug,
                 this.Description,
                 new Cnpj(this.Cnpj),
-                this.Email,
                 this.CreatedOn,
                 this.LatestUpdatedOn,
                 this.IsActive,

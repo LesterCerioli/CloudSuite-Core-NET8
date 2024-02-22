@@ -17,45 +17,6 @@ namespace CloudSuite.Modules.Application.Validations.User
                .NotNull()
                .WithMessage("O campo FullName não pode ser nulo.");
 
-            RuleFor(a => a.Email.Subject)
-                .Length(1, 100)
-                .WithMessage("O campo Subject deve ter entre 1 e 450 caracteres.");
-
-            RuleFor(a => a.Email.Body)
-                .Length(1, 3000)
-                .WithMessage("O campo Body deve ter entre 1 e 3000 caracteres.");
-
-            RuleFor(a => a.Email.Sender)
-                .NotEmpty()
-                .WithMessage("O campo Sender é obrigatório.")
-                .Length(1, 450)
-                .WithMessage("O campo Sender deve ter entre 1 e 450 caracteres.")
-                .EmailAddress()
-                .WithMessage("O campo Sender deve ser um endereço de email válido.");
-
-            RuleFor(a => a.Email.Recipient)
-                .NotEmpty()
-                .WithMessage("O campo Recipient é obrigatório.")
-                .Length(1, 450)
-                .WithMessage("O campo Recipient deve ter entre 1 e 450 caracteres.")
-                .EmailAddress()
-                .WithMessage("O campo Recipient deve ser um endereço de email válido.");
-
-             RuleFor(a => a.Email.SentDate)
-                .GreaterThan(DateTimeOffset.Now)
-                .WithMessage("A data deve estar no futuro.");
-
-            RuleFor(a => a.Email.SendAttempts)
-               .NotNull()
-               .WithMessage("O campo SendAttempts é obrigatório.")
-               .InclusiveBetween(0, int.MaxValue)
-               .WithMessage("O campo SendAttempts deve ser um número inteiro positivo.");
-
-            RuleFor(a => a.Email.CodeErrorEmail)
-                .IsInEnum()
-                .WithMessage("O campo CodeErrorEmail deve ser um valor válido do enum CodeErrorEmail.");
-
-
             RuleFor(a => a.CreatedOn)
                 .LessThanOrEqualTo(DateTimeOffset.Now)
                 .WithMessage("O campo CreatedOn deve ser uma data e hora no passado ou presente.");

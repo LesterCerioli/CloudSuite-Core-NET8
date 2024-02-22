@@ -23,8 +23,6 @@ namespace CloudSuite.Modules.Application.Handlers.Country
 
         public bool? IsDistrictEnabled { get; set; }
 
-        public Guid StateId { get; set; }
-
         public CreateCountryCommand()
         {
             Id = Guid.NewGuid();

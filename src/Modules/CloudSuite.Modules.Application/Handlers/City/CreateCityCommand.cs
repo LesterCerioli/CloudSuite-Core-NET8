@@ -12,10 +12,6 @@ namespace CloudSuite.Modules.Application.Hadlers.City
 
         public string? CityName { get; set; }
 
-        public State State { get; set; }
-
-        public Guid StateId { get; set; }
-
         public CreateCityCommand()
         {
             Id = Guid.NewGuid();
@@ -24,9 +20,7 @@ namespace CloudSuite.Modules.Application.Hadlers.City
         public CityEntity GetEntity()
         {
             return new CityEntity(
-                this.StateId,
-                this.CityName,
-                this.State
+                this.CityName
                 );
         }
     }

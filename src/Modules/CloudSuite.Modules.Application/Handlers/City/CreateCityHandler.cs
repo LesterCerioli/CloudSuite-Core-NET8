@@ -31,7 +31,7 @@ namespace CloudSuite.Modules.Application.Hadlers.City
                     if (cityCityName == null)
                     {
                         await _cityRepository.Add(command.GetEntity());
-                        return new CreateCityResponse(command.StateId, validationResult);
+                        return new CreateCityResponse(command.Id, validationResult);
                     }
 
                     return new CreateCityResponse(command.Id, "City already registered"); ;

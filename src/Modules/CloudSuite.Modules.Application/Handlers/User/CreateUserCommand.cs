@@ -1,9 +1,7 @@
 ﻿using CloudSuite.Domain.ValueObjects;
 using CloudSuite.Modules.Application.Handlers.User.Responses;
 using MediatR;
-using System.ComponentModel.DataAnnotations;
 using UserEntity = CloudSuite.Domain.Models.User;
-using EmailEntity = CloudSuite.Domain.Models.Email;
 
 
 namespace CloudSuite.Modules.Application.Handlers.User
@@ -14,8 +12,6 @@ namespace CloudSuite.Modules.Application.Handlers.User
         public Guid Id { get; private set; }
 
         public string? FullName { get; set; }
-
-        public EmailEntity Email { get; set; }
 
         public string Cpf { get; set; }
 
@@ -29,8 +25,6 @@ namespace CloudSuite.Modules.Application.Handlers.User
 
         public string? RefreshTokenHash { get; set; }
 
-        public Guid VendorId { get; set; }
-
         public CreateUserCommand()
         {
             Id = Guid.NewGuid();
@@ -40,7 +34,6 @@ namespace CloudSuite.Modules.Application.Handlers.User
         {
             return new UserEntity(
                 this.FullName,
-                this.Email,
                 new Cpf(this.Cpf),
                 new Telephone(this.Telephone),
                 this.IsDeleted,

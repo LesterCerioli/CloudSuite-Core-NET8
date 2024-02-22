@@ -30,13 +30,19 @@ namespace CloudSuite.Modules.Application.ViewModels
         [DisplayName("Cpf")]
 		public string Cpf { get; set; }
 
-		[DisplayName("Telefone")]
+        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
+        [StringLength(100)]
+        [DisplayName("Telefone")]
 		public string Telephone { get; set; }
 
-		[DisplayName("Data Criacao")]
+        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
+        [StringLength(100)]
+        [DisplayName("Data Criacao")]
 		public DateTimeOffset CreatedOn { get; set; }
 
-		[DisplayName("Data Atualizacao")]
+        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
+        [StringLength(100)]
+        [DisplayName("Data Atualizacao")]
 		public DateTimeOffset LatestUpdatedOn { get; set; }	
 		
 	}

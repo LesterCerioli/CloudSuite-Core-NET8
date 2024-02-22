@@ -16,10 +16,6 @@ namespace CloudSuite.Modules.Application.Handlers.Company
 
         public string? RegisterName { get; set; }
 
-        public Address Address { get; set; }
-
-        public Guid AddressId { get; set; }
-
         public CreateCompanyCommand()
         {
             Id = Guid.NewGuid();
@@ -28,11 +24,9 @@ namespace CloudSuite.Modules.Application.Handlers.Company
         public CompanyEntity GetEntity()
         {
             return new CompanyEntity(
-                   this.AddressId,
                    new Cnpj(this.Cnpj),
                    this.FantasyName,
-                   this.RegisterName,
-                   this.Address
+                   this.RegisterName
                 );
         }
 
