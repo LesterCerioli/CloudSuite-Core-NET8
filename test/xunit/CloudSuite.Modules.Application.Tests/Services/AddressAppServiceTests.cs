@@ -244,10 +244,10 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("Salvador", "district1", "igor moreira", "rua das flores")]
-        [InlineData("Sao paulo", "district2", "Beltrão", "rua azul")]
-        [InlineData("Fortaleza", "district3", "francisco coins", "rua twitch")]
-        public async Task Save_ShouldHandleNullRepositoryResult(string city, string district, string contactName, string addressLine1)
+        [InlineData("Salvador", "district1")]
+        [InlineData("Sao paulo", "district2")]
+        [InlineData("Fortaleza", "district3")]
+        public async Task Save_ShouldHandleNullRepositoryResult(string contactName, string addressLine1)
         {
             //Arrange
             var addressRepositoryMock = new Mock<IAddressRepository>();
@@ -282,10 +282,10 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("Salvador", "district1", "igor moreira", "rua das flores")]
-        [InlineData("Sao paulo", "district2", "Beltrão", "rua azul")]
-        [InlineData("Fortaleza", "district3", "francisco coins", "rua twitch")]
-        public async Task Save_ShouldHandleInvalidMappingResult(string city, string district, string contactName, string addressLine1)
+        [InlineData("Salvador", "district1")]
+        [InlineData("Sao paulo", "district2")]
+        [InlineData("Fortaleza", "district3")]
+        public async Task Save_ShouldHandleInvalidMappingResult(string contactName, string addressLine1)
         {
 
             //Arrange
