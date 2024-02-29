@@ -14,7 +14,5 @@ namespace CloudSuite.Modules.Application.Hadlers.Address.Requests
                 Id = Guid.NewGuid();
                 AddressLine1 = addressLine1;
             }
-
-            public CheckAddressExistsByAddressLineRequest() { }
         }
     }

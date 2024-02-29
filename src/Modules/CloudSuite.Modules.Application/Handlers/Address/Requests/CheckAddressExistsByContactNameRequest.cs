@@ -14,7 +14,5 @@ namespace CloudSuite.Modules.Application.Hadlers.Address.Requests
             Id = Guid.NewGuid();
             ContactName = contactName;
         }
-
-        public CheckAddressExistsByContactNameRequest() { }
     }
 }

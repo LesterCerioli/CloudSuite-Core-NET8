@@ -19,6 +19,8 @@ namespace CloudSuite.Modules.Application.Hadlers.Address
             [StringLength(450)]
             public string? AddressLine1 { get; private set; }
 
+            public AddressEntity Address;
+            
             public CityEntity City { get; private set; }
 
             public District District { get; private set; }
