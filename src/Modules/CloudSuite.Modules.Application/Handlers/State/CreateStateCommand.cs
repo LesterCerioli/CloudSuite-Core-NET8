@@ -8,19 +8,19 @@ namespace CloudSuite.Modules.Application.Handlers.State
 {
     public class CreateStateCommand : IRequest<CreateStateResponse>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
         [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
         [StringLength(100)]
-        public string? StateName { get; private set; }
+        public string? StateName { get; set; }
 
         [Required(ErrorMessage = "Este cmapo é de preenchimento obrigatório.")]
 
-        public string? UF { get; private set; }
+        public string? UF { get; set; }
 
-        public CountryEntity Country { get; private set; }
+        public CountryEntity Country { get; set; }
 
-        public Guid CountryId { get; private set; }
+        public Guid CountryId { get; set; }
 
 
         public StateEntity GetEntity()
@@ -29,7 +29,6 @@ namespace CloudSuite.Modules.Application.Handlers.State
                 this.Id,
                 this.UF,
                 this.StateName,
-                this.Country,
                 this.CountryId
                 );
         }
