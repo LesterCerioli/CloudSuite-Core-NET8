@@ -35,7 +35,6 @@ namespace CloudSuite.Modules.Application.Handlers.Country
                         return await Task.FromResult(new CreateCountryResponse(command.Id, "Country already registered."));
                     }
                     await _countryRepository.Add(command.GetEntity());
-
                     return await Task.FromResult(new CreateCountryResponse(command.Id, validationResult));
                 }
                 catch (Exception ex)
