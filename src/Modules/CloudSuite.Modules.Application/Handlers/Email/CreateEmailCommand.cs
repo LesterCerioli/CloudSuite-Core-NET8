@@ -25,6 +25,11 @@ namespace CloudSuite.Modules.Application.Handlers.Email
         public CodeErrorEmail CodeErrorEmail { get; private set; }
 
 
+        public CreateEmailCommand()
+        {
+            Id = Guid.NewGuid();
+        }
+
         public EmailEntity GetEntity()
         {
             return new EmailEntity(
@@ -33,7 +38,7 @@ namespace CloudSuite.Modules.Application.Handlers.Email
                 this.Sender,
                 this.Recipient,
                 this.SentDate,
-                this.IsRead
+                this.IsRead.Value
                 );
         }
 
