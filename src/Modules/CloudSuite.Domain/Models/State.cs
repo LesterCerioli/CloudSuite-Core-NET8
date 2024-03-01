@@ -24,6 +24,15 @@ namespace CloudSuite.Domain.Models
             CountryId = countryId;
         }
 
+        public State(Guid id, string uf, string stateName, Guid countryId)
+        {
+            Id = id;
+            _countries = new List<Country>();
+            UF = uf;
+            StateName = stateName;
+            CountryId = countryId;
+        }
+
         public State()
         {
 

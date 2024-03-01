@@ -24,6 +24,19 @@ namespace CloudSuite.Domain.Models
             IsDeleted = isDeleted;
         }
 
+        public Vendor(Guid userId, string? name, string? slug, string? description, Cnpj cnpj, DateTimeOffset? createdOn, DateTimeOffset? latestUpdatedOn, bool? isActive, bool? isDeleted)
+        {
+            UserId = userId;
+            Name = name;
+            Slug = slug;
+            Description = description;
+            Cnpj = cnpj;
+            CreatedOn = createdOn;
+            LatestUpdatedOn = latestUpdatedOn;
+            IsActive = isActive;
+            IsDeleted = isDeleted;
+        }
+
         public Vendor()
         {
 
