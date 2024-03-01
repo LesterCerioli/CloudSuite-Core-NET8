@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using System.ComponentModel.DataAnnotations;
 using StateEntity = CloudSuite.Domain.Models.State;
-using CountryEntity = CloudSuite.Domain.Models.Country;
 using CloudSuite.Modules.Application.Handlers.State.Responses;
 
 namespace CloudSuite.Modules.Application.Handlers.State
@@ -17,8 +16,6 @@ namespace CloudSuite.Modules.Application.Handlers.State
         [Required(ErrorMessage = "Este cmapo é de preenchimento obrigatório.")]
 
         public string? UF { get; set; }
-
-        public CountryEntity Country { get; set; }
 
         public Guid CountryId { get; set; }
 

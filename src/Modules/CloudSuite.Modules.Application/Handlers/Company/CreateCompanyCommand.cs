@@ -1,9 +1,7 @@
-﻿using CloudSuite.Domain.Models;
-using CloudSuite.Domain.ValueObjects;
+﻿using CloudSuite.Domain.ValueObjects;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 using CompanyEntity = CloudSuite.Domain.Models.Company;
-using AddressEntity = CloudSuite.Domain.Models.Address;
 
 namespace CloudSuite.Modules.Application.Handlers.Company
 {
@@ -21,8 +19,6 @@ namespace CloudSuite.Modules.Application.Handlers.Company
         [Required(ErrorMessage = "Este campo é de preencimento obrigatório.")]
         [MaxLength(100)]
         public string? RegisterName { get; set; }
-
-        public AddressEntity Address { get; set; }
 
         public Guid AddressId { get; set; }
 

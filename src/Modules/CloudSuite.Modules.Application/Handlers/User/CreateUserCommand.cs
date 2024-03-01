@@ -21,9 +21,9 @@ namespace CloudSuite.Modules.Application.Handlers.User
 
         public string? Cpf { get; set; }
 
-        public string? Telephone { get; set; }
+        public string? TelephoneNumber { get; set; }
 
-        public VendorEntity Vendor { get; set; }
+        public string? TelephoneRegion { get; set; }
 
         public bool? IsDeleted { get; set; }
 

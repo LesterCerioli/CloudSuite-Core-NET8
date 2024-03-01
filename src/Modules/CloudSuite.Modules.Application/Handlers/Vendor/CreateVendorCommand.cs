@@ -4,7 +4,6 @@ using CloudSuite.Modules.Application.Handlers.Vendor.Responses;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 using VendorEntity = CloudSuite.Domain.Models.Vendor;
-using EmailEntity = CloudSuite.Domain.Models.Email;
 
 namespace CloudSuite.Modules.Application.Handlers.Vendor
 {
@@ -25,8 +24,6 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor
         public string? Description { get; set; }
 
         public string? Cnpj { get; set; }
-
-        public EmailEntity Email { get; set; }
 
         public Guid EmailId {  get; set; }
 
@@ -50,7 +47,6 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor
                 this.Slug,
                 this.Description,
                 new Cnpj(this.Cnpj),
-                this.EmailId,
                 this.CreatedOn,
                 this.LatestUpdatedOn,
                 this.IsActive.Value,

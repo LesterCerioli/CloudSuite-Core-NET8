@@ -7,7 +7,7 @@ namespace CloudSuite.Modules.Application.Hadlers.Address.Requests
         {
             public Guid Id { get; private set; }
 
-            public string? AddressLine1 { get; private set; }
+            public string? AddressLine1 { get; set; }
 
             public CheckAddressExistsByAddressLineRequest(string addressLine1)
             {

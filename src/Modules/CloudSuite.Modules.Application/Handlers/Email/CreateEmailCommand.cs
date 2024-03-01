@@ -7,22 +7,22 @@ namespace CloudSuite.Modules.Application.Handlers.Email
 {
     public class CreateEmailCommand : IRequest<CreateEmailResponse>
     {
-        public Guid Id { get; set; }
-        public string? Subject { get; private set; }
+        public Guid Id { get; private set; }
+        public string? Subject { get; set; }
 
-        public string? Body { get; private set; }
+        public string? Body { get; set; }
 
-        public string? Sender { get; private set; }
+        public string? Sender { get; set; }
 
-        public string? Recipient { get; private set; } 
+        public string? Recipient { get; set; } 
 
-        public DateTimeOffset? SentDate { get; private set; } 
+        public DateTimeOffset? SentDate { get; set; } 
 
-        public bool? IsRead { get; private set; }
+        public bool? IsRead { get; set; }
 
-        public int? SendAttempts { get; private set; }
+        public int? SendAttempts { get; set; }
 
-        public CodeErrorEmail CodeErrorEmail { get; private set; }
+        public CodeErrorEmail CodeErrorEmail { get; set; }
 
 
         public CreateEmailCommand()

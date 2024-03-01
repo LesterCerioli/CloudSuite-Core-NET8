@@ -17,8 +17,6 @@ namespace CloudSuite.Modules.Application.Hadlers.City
 
         public Guid StateId { get; set; }
 
-        public State State { get; set; }
-
 
         public CreateCityCommand()
         {

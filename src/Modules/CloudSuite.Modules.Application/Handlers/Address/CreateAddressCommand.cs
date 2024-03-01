@@ -17,22 +17,14 @@ namespace CloudSuite.Modules.Application.Hadlers.Address
 
             [Required(ErrorMessage = "The {0} field is required.")]
             [StringLength(450)]
-            public string? AddressLine1 { get; private set; }
+            public string? AddressLine1 { get; set; }
 
-            public AddressEntity Address;
-            
-            public CityEntity City { get; private set; }
-
-            public District District { get; private set; }
-
-            public Guid DistrictId { get; private set; }
+            public Guid DistrictId { get; set; }
 
             public AddressEntity GetEntity()
             {
                 return new AddressEntity(
                     this.Id,
-                    this.City,
-                    this.District,
                     this.ContactName,
                     this.AddressLine1
                     );
