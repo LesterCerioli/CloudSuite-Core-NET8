@@ -30,7 +30,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object
             );          
 
-            var countryEntity = new Country(countryName, code3, isBillingEnabled, isShippingEnabled, isCityEnabled, isZipCodeEnabled, isDistrictEnabled);
+            var countryEntity = new Country(Guid.NewGuid(), countryName, code3, isBillingEnabled, isShippingEnabled, isCityEnabled, isZipCodeEnabled, isDistrictEnabled);
 
             countryRepositoryMock.Setup(repo => repo.GetByName(countryName)).ReturnsAsync(countryEntity);
 

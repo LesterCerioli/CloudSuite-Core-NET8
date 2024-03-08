@@ -36,9 +36,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var country = new Country("Brazil", "BRA", true, true, true, true, true);
+            var country = new Country(Guid.NewGuid(), "Brazil", "BRA", true, true, true, true, true);
 
-            var stateEntity = new State(uf, stateName, country, country.Id);
+            var stateEntity = new State(Guid.NewGuid(), uf, stateName, country, country.Id);
 
             stateRepositoryMock.Setup(repo => repo.GetByName(stateName)).ReturnsAsync(stateEntity);
 
@@ -125,9 +125,9 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var country = new Country("Brazil", "BRA", true, true, true, true, true);
+            var country = new Country(Guid.NewGuid(), "Brazil", "BRA", true, true, true, true, true);
 
-            var stateEntity = new State(uf, stateName, country, country.Id);
+            var stateEntity = new State(Guid.NewGuid(), uf, stateName, country, country.Id);
 
             stateRepositoryMock.Setup(repo => repo.GetByUF(uf)).ReturnsAsync(stateEntity);
 

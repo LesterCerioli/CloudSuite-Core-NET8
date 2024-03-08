@@ -30,13 +30,13 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mediatorHandlerMock.Object,
                 mapperMock.Object
             );
-            var country = new Country("Brazil", "BRA", true, true, true, true, true);
-            var state = new State("Ba", "Bahia", country, country.Id);
-            var city = new City("são paulo", state);
-            var district = new District("fourteen district", "two", "location");
-            var address = new Address(city, district, "albert whesker", "umbrella street");
+            var country = new Country(Guid.NewGuid(), "Brazil", "BRA", true, true, true, true, true);
+            var state = new State(Guid.NewGuid(), "Ba", "Bahia", country, country.Id);
+            var city = new City(Guid.NewGuid(), "são paulo", state);
+            var district = new District(Guid.NewGuid(), "fourteen district", "two", "location");
+            var address = new Address(Guid.NewGuid(), city, district, "albert whesker", "umbrella street");
 
-            var companyEntity = new Company(new Cnpj(cnpj), "company Fantasy", "Fantasy ltda", address);
+            var companyEntity = new Company(Guid.NewGuid(), new Cnpj(cnpj), "company Fantasy", "Fantasy ltda", address);
 
             companyRepositoryMock.Setup(repo => repo.GetByCnpj(new Cnpj(cnpj))).ReturnsAsync(companyEntity);
 
@@ -122,13 +122,13 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mediatorHandlerMock.Object,
                 mapperMock.Object
             );
-            var country = new Country("Brazil", "BRA", true, true, true, true, true);
-            var state = new State("Ba", "Bahia", country, country.Id);
-            var city = new City("são paulo", state);
-            var district = new District("fourteen district", "two", "location");
-            var address = new Address(city, district, "albert whesker", "umbrella street");
+            var country = new Country(Guid.NewGuid(), "Brazil", "BRA", true, true, true, true, true);
+            var state = new State(Guid.NewGuid(), "Ba", "Bahia", country, country.Id);
+            var city = new City(Guid.NewGuid(), "são paulo", state);
+            var district = new District(Guid.NewGuid(), "fourteen district", "two", "location");
+            var address = new Address(Guid.NewGuid(), city, district, "albert whesker", "umbrella street");
 
-            var companyEntity = new Company(new Cnpj(cnpj), "company Fantasy", "Fantasy ltda", address);
+            var companyEntity = new Company(Guid.NewGuid(), new Cnpj(cnpj), "company Fantasy", "Fantasy ltda", address);
 
             companyRepositoryMock.Setup(repo => repo.GetByFantasyName(fantasyName)).ReturnsAsync(companyEntity);
 
@@ -215,13 +215,13 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mediatorHandlerMock.Object,
                 mapperMock.Object
             );
-            var country = new Country("Brazil", "BRA", true, true, true, true, true);
-            var state = new State("Ba", "Bahia", country, country.Id);
-            var city = new City("são paulo", state);
-            var district = new District("fourteen district", "two", "location");
-            var address = new Address(city, district, "albert whesker", "umbrella street");
+            var country = new Country(Guid.NewGuid(), "Brazil", "BRA", true, true, true, true, true);
+            var state = new State(Guid.NewGuid(), "Ba", "Bahia", country, country.Id);
+            var city = new City(Guid.NewGuid(), "são paulo", state);
+            var district = new District(Guid.NewGuid(), "fourteen district", "two", "location");
+            var address = new Address(Guid.NewGuid(), city, district, "albert whesker", "umbrella street");
 
-            var companyEntity = new Company(new Cnpj(cnpj), "company Fantasy", "Fantasy ltda", address);
+            var companyEntity = new Company(Guid.NewGuid(), new Cnpj(cnpj), "company Fantasy", "Fantasy ltda", address);
 
             companyRepositoryMock.Setup(repo => repo.GetByRegisterName(registerName)).ReturnsAsync(companyEntity);
 

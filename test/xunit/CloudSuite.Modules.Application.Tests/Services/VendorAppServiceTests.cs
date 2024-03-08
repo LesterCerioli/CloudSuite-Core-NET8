@@ -38,7 +38,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
             );
 
             var email = new Email("warning", "text message", "apple", "juninho", DateTimeOffset.Now, true, 3, CodeErrorEmail.NetworkError);
-            var userEntity = new User("user name", email, new Cpf("06536709586"), new Telephone("71988890834"), true, "837429834798328347923923847");
+            var userEntity = new User("user name", email, new Cpf("06536709586"), new Telephone("+14","71988890834"), true, "837429834798328347923923847");
 
             var vendorEntity = new Vendor(userEntity.Id, name, slug, description, new Cnpj(cnpj), email, DateTimeOffset.Now, DateTimeOffset.Now, isActive, isDeleted);
 

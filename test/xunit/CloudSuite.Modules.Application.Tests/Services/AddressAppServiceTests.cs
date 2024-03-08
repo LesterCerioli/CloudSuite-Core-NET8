@@ -31,13 +31,13 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
                 mapperMock.Object
             );
 
-                var country = new Country("Brazil", "BRA", true, true, true, true, true);
-                var state = new State("Ba", "Bahia", country, country.Id);
-                var districtentity = new District("fourteen district", "two", "location");
-                var cityEntity = new City("são paulo", state);
+                var country = new Country(Guid.NewGuid(), "Brazil", "BRA", true, true, true, true, true);
+                var state = new State(Guid.NewGuid(), "Ba", "Bahia", country, country.Id);
+                var districtentity = new District(Guid.NewGuid(), "fourteen district", "two", "location");
+                var cityEntity = new City(Guid.NewGuid(), "são paulo", state);
 
 
-            var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);
+            var addressEntity = new Address(Guid.NewGuid(),cityEntity, districtentity, contactName, addressLine1);
 
             addressRepositoryMock.Setup(repo => repo.GetByContactName(contactName)).ReturnsAsync(addressEntity);
 
@@ -126,13 +126,13 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var country = new Country("Brazil", "BRA", true, true, true, true, true);
-            var state = new State("Ba", "Bahia", country, country.Id);
-            var districtentity = new District("fourteen district", "two", "location");
-            var cityEntity = new City("são paulo", state);
+            var country = new Country(Guid.NewGuid(), "Brazil", "BRA", true, true, true, true, true);
+            var state = new State(Guid.NewGuid(), "Ba", "Bahia", country, country.Id);
+            var districtentity = new District(Guid.NewGuid(), "fourteen district", "two", "location");
+            var cityEntity = new City(Guid.NewGuid(), "são paulo", state);
 
 
-            var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);
+            var addressEntity = new Address(Guid.NewGuid(), cityEntity, districtentity, contactName, addressLine1);
 
             addressRepositoryMock.Setup(repo => repo.GetByAddressLine(addressLine1)).ReturnsAsync(addressEntity);
 
@@ -222,13 +222,13 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var country = new Country("Brazil", "BRA", true, true, true, true, true);
-            var state = new State("Ba", "Bahia", country, country.Id);
-            var districtentity = new District("fourteen district", "two", "location");
-            var cityEntity = new City("são paulo", state);
+            var country = new Country(Guid.NewGuid(), "Brazil", "BRA", true, true, true, true, true);
+            var state = new State(Guid.NewGuid(), "Ba", "Bahia", country, country.Id);
+            var districtentity = new District(Guid.NewGuid(), "fourteen district", "two", "location");
+            var cityEntity = new City(Guid.NewGuid(), "são paulo", state);
 
 
-            var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);
+            var addressEntity = new Address(Guid.NewGuid(), cityEntity, districtentity, contactName, addressLine1);
 
             var createAddressCommand = new CreateAddressCommand()
             {
@@ -260,13 +260,13 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var country = new Country("Brazil", "BRA", true, true, true, true, true);
-            var state = new State("Ba", "Bahia", country, country.Id);
-            var districtentity = new District("fourteen district", "two", "location");
-            var cityEntity = new City("são paulo", state);
+            var country = new Country(Guid.NewGuid(), "Brazil", "BRA", true, true, true, true, true);
+            var state = new State(Guid.NewGuid(), "Ba", "Bahia", country, country.Id);
+            var districtentity = new District(Guid.NewGuid(), "fourteen district", "two", "location");
+            var cityEntity = new City(Guid.NewGuid(), "são paulo", state);
 
 
-            var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);
+            var addressEntity = new Address(Guid.NewGuid(), cityEntity, districtentity, contactName, addressLine1);
 
             var createAddressCommand = new CreateAddressCommand()
             {
@@ -299,13 +299,13 @@ namespace CloudSuite.Modules.Cora.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var country = new Country("Brazil", "BRA", true, true, true, true, true);
-            var state = new State("Ba", "Bahia", country, country.Id);
-            var districtentity = new District("fourteen district", "two", "location");
-            var cityEntity = new City("são paulo", state);
+            var country = new Country(Guid.NewGuid(), "Brazil", "BRA", true, true, true, true, true);
+            var state = new State(Guid.NewGuid(), "Ba", "Bahia", country, country.Id);
+            var districtentity = new District(Guid.NewGuid(), "fourteen district", "two", "location");
+            var cityEntity = new City(Guid.NewGuid(), "são paulo", state);
 
 
-            var addressEntity = new Address(cityEntity, districtentity, contactName, addressLine1);
+            var addressEntity = new Address(Guid.NewGuid(), cityEntity, districtentity, contactName, addressLine1);
 
             var createCompanyCommand = new CreateCompanyCommand()
             {

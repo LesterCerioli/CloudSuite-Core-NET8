@@ -21,10 +21,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
     public class UserAppServiceTests
     {
         [Theory]
-        [InlineData("genivaldo lopes", "33803834066", "31987656532", true, "10-10-2023", "02-06-2022", "7654696756", "culture12", "extensionData5")]
-        [InlineData("clara santos", "33803834066", "77988890834", true, "10-10-2023", "11-05-2021", "94387594857", "culture13", "extensionData6")]
-        [InlineData("brenda bittencourt", "12540079032", "21987656785", true, "10-10-2023", "11-12-2023", "876574654", "culture14", "extensionData7")]
-        public async Task GetByCpf_ShouldReturnsCompanyViewModel(string fullname, string cpf, string telephone, bool isDeleted, DateTimeOffset createdOn, DateTimeOffset latestUpdatedOn, string refreshTokenHash, string culture, string? extensionData)
+        [InlineData("genivaldo lopes", "33803834066", "+14", "31987656532", true, "10-10-2023", "02-06-2022", "7654696756", "culture12", "extensionData5")]
+        [InlineData("clara santos", "33803834066", "+15", "77988890834", true, "10-10-2023", "11-05-2021", "94387594857", "culture13", "extensionData6")]
+        [InlineData("brenda bittencourt", "12540079032", "+16", "21987656785", true, "10-10-2023", "11-12-2023", "876574654", "culture14", "extensionData7")]
+        public async Task GetByCpf_ShouldReturnsCompanyViewModel(string fullname, string cpf, string areaCode, string telephone, bool isDeleted, DateTimeOffset createdOn, DateTimeOffset latestUpdatedOn, string refreshTokenHash, string culture, string? extensionData)
         {
             var userRepositoryMock = new Mock<IUserRepository>();
             var mediatorHandlerMock = new Mock<IMediatorHandler>();
@@ -36,16 +36,15 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var email = new Email("warning", "text message", "apple", "juninho", DateTimeOffset.Now, true, 3, CodeErrorEmail.NetworkError);
+            var email = new Email("warning", "text message", "apple", "juninho", DateTimeOffset.Now, true);
 
-            var userEntity = new User(fullname, email, new Cpf(cpf), new Telephone(telephone), isDeleted, refreshTokenHash);
+            var userEntity = new User(fullname, email, new Cpf(cpf), new Telephone(areaCode,telephone), isDeleted, createdOn, latestUpdatedOn, refreshTokenHash, culture, extensionData);
 
             userRepositoryMock.Setup(repo => repo.GetByCpf(new Cpf(cpf))).ReturnsAsync(userEntity);
 
 
             var expectedViewModel = new UserViewModel()
             {
-                Id = userEntity.Id,
                 FullName = fullname,
                 Email = email.Body,
                 Cpf = cpf,
@@ -113,10 +112,10 @@ namespace CloudSuite.Modules.Application.Tests.Services
         }
 
         [Theory]
-        [InlineData("lucas santos", "06536709586", "71987657684", true, "10-10-2023", "11-12-2023", "76578576587", "culture12", "extensionData7")]
-        [InlineData("thiago santos", "06536709586", "77988890834", false, "15-01-2023", "11-12-2020", "4323678980975", "culture13", "extensionData6")]
-        [InlineData("adalberto santos", "06536709586", "81987687690", true, "10-12-2023", "11-12-2022", "3967358098897", "culture14", "extensionData5")]
-        public async Task GetByEmail_ShouldReturnsCompanyViewModel(string fullname, string cpf, string telephone, bool isDeleted, DateTimeOffset createdOn, DateTimeOffset latestUpdatedOn, string refreshTokenHash, string culture, string? extensionData)
+        [InlineData("lucas santos", "06536709586", "+14", "71987657684", true, "10-10-2023", "11-12-2023", "76578576587", "culture12", "extensionData7")]
+        [InlineData("thiago santos", "06536709586", "+14", "77988890834", false, "15-01-2023", "11-12-2020", "4323678980975", "culture13", "extensionData6")]
+        [InlineData("adalberto santos", "06536709586", "+14", "81987687690", true, "10-12-2023", "11-12-2022", "3967358098897", "culture14", "extensionData5")]
+        public async Task GetByEmail_ShouldReturnsCompanyViewModel(string fullname, string cpf, string areaCode, string telephone, bool isDeleted, DateTimeOffset createdOn, DateTimeOffset latestUpdatedOn, string refreshTokenHash, string culture, string? extensionData)
         {
             var userRepositoryMock = new Mock<IUserRepository>();
             var mediatorHandlerMock = new Mock<IMediatorHandler>();
@@ -130,14 +129,13 @@ namespace CloudSuite.Modules.Application.Tests.Services
 
             var email = new Email("warning", "text message", "apple", "juninho", DateTimeOffset.Now, true, 3, CodeErrorEmail.NetworkError);
 
-            var userEntity = new User(fullname, email, new Cpf(cpf), new Telephone(telephone), isDeleted, refreshTokenHash);
+            var userEntity = new User(fullname, email, new Cpf(cpf), new Telephone(areaCode, telephone), isDeleted, createdOn, latestUpdatedOn, refreshTokenHash, culture, extensionData);
 
             userRepositoryMock.Setup(repo => repo.GetByEmail(email)).ReturnsAsync(userEntity);
 
 
             var expectedViewModel = new UserViewModel()
             {
-                Id = userEntity.Id,
                 FullName = fullname,
                 Email = email.Body,
                 Cpf = cpf,

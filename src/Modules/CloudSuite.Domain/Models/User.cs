@@ -21,6 +21,8 @@ namespace CloudSuite.Domain.Models
             CreatedOn = createdOn;
             LatestUpdatedOn = latestUpdatedOn;
             RefreshTokenHash = refreshTokenHash;
+            Culture = culture;
+            ExtensionData = extensionData;
             CreatedOn = DateTimeOffset.Now;
             LatestUpdatedOn = DateTimeOffset.Now;
             _vendors = new List<Vendor>();
@@ -34,6 +36,8 @@ namespace CloudSuite.Domain.Models
             CreatedOn = createdOn;
             LatestUpdatedOn = latestUpdatedOn;
             RefreshTokenHash = refreshTokenHash;
+            Culture = culture;
+            ExtensionData = extensionData;
             CreatedOn = DateTimeOffset.Now;
             LatestUpdatedOn = DateTimeOffset.Now;
             _vendors = new List<Vendor>();
@@ -55,7 +59,6 @@ namespace CloudSuite.Domain.Models
         public Cpf Cpf { get; private set; }
 
         public Telephone Telephone { get; private set; }
-
         
         public bool? IsDeleted { get; private set; }
 
@@ -65,6 +68,10 @@ namespace CloudSuite.Domain.Models
 
         [StringLength(50)]
         public string? RefreshTokenHash { get; private set; }
+
+        public string? Culture {  get; private set; }
+
+        public string? ExtensionData {  get; private set; }
         
         public IList<UserRole> Roles { get; set; } = new List<UserRole>();
     }

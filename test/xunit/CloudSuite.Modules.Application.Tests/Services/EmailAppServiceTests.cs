@@ -35,8 +35,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var emailEntity = new Email(subject, body, sender, recipient, sentDate, isRead, sendAttempts, codeErrorEmail);
-
+            var emailEntity = new Email(subject, body, sender, recipient, sentDate, isRead);
             emailRepositoryMock.Setup(repo => repo.GetByCodeErrorEmail(codeErrorEmail)).ReturnsAsync(emailEntity);
 
 
@@ -47,9 +46,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 Body = body,
                 Sender = sender,
                 Recipient = recipient,
-                SentDate = sentDate,
-                SendAttempts = sendAttempts,
-                CodeErrorEmail = codeErrorEmail2
+                SentDate = sentDate
             };
 
             mapperMock.Setup(mapper => mapper.Map<EmailViewModel>(emailEntity)).Returns(expectedViewModel);
@@ -127,7 +124,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var emailEntity = new Email(subject, body, sender, recipient, sentDate, isRead, sendAttempts, codeErrorEmail);
+            var emailEntity = new Email(subject, body, sender, recipient, sentDate, isRead);
 
             emailRepositoryMock.Setup(repo => repo.GetByRecipient(recipient)).ReturnsAsync(emailEntity);
 
@@ -140,8 +137,6 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 Sender = sender,
                 Recipient = recipient,
                 SentDate = sentDate,
-                SendAttempts = sendAttempts,
-                CodeErrorEmail = codeErrorEmail2
             };
 
             mapperMock.Setup(mapper => mapper.Map<EmailViewModel>(emailEntity)).Returns(expectedViewModel);
@@ -219,7 +214,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var emailEntity = new Email(subject, body, sender, recipient, sentDate, isRead, sendAttempts, codeErrorEmail);
+            var emailEntity = new Email(subject, body, sender, recipient, sentDate, isRead);
 
             emailRepositoryMock.Setup(repo => repo.GetBySender(sender)).ReturnsAsync(emailEntity);
 
@@ -232,8 +227,6 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 Sender = sender,
                 Recipient = recipient,
                 SentDate = sentDate,
-                SendAttempts = sendAttempts,
-                CodeErrorEmail = codeErrorEmail2
             };
 
             mapperMock.Setup(mapper => mapper.Map<EmailViewModel>(emailEntity)).Returns(expectedViewModel);
@@ -321,7 +314,6 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 IsRead = isRead,
                 SendAttempts = sendAttempts,
                 CodeErrorEmail = codeErrorEmail
-
             };
 
             // Act
