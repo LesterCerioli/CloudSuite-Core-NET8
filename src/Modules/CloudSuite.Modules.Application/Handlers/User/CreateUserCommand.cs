@@ -14,11 +14,10 @@ namespace CloudSuite.Modules.Application.Handlers.User
 
         public Guid Id { get; private set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
+        
         public string? FullName { get; set; }
 
-        public EmailEntity Email { get; set; }
-
+        
         public string? Cpf { get; set; }
 
         public string? TelephoneNumber { get; set; }
@@ -31,17 +30,15 @@ namespace CloudSuite.Modules.Application.Handlers.User
 
         public DateTimeOffset? LatestUpdatedOn { get; set; }
 
-        [StringLength(450)]
+        
         public string? RefreshTokenHash { get; set; }
 
-        [StringLength(450)]
+        
         public string? Culture { get; set; }
 
         public string? ExtensionData { get; set; }
 
-        public Guid VendorId { get; set; }
-
-
+        
         public UserEntity GetEntity()
         {
             return new UserEntity(

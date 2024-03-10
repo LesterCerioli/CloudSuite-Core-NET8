@@ -11,20 +11,17 @@ namespace CloudSuite.Modules.Application.Hadlers.Address
     {
             public Guid Id { get; private set; }
 
-            [Required(ErrorMessage = "The {0} field is required.")]
-            [StringLength(100)]
+            
             public string? ContactName { get; private set; }
 
-            [Required(ErrorMessage = "The {0} field is required.")]
-            [StringLength(450)]
+            
             public string? AddressLine1 { get; set; }
 
-            public Guid DistrictId { get; set; }
-
+            
             public AddressEntity GetEntity()
             {
                 return new AddressEntity(
-                    this.Id,
+                    
                     this.ContactName,
                     this.AddressLine1
                     );

@@ -11,22 +11,18 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor
     {
         public Guid Id { get; private set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
+        
         public string? Name { get; set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
+        
         public string? Slug { get; set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(100)]
+        
         public string? Description { get; set; }
 
         public string? Cnpj { get; set; }
 
-        public Guid EmailId {  get; set; }
-
+        
         public DateTimeOffset? CreatedOn { get; set; }
 
         public DateTimeOffset? LatestUpdatedOn { get; set; }
@@ -35,14 +31,11 @@ namespace CloudSuite.Modules.Application.Handlers.Vendor
 
         public bool? IsDeleted { get; set; }
 
-        public Guid UserId { get; private set; }
-
-
-
+        
         public VendorEntity GetEntity()
         {
             return new VendorEntity(
-                this.UserId,
+                
                 this.Name,
                 this.Slug,
                 this.Description,

@@ -10,18 +10,13 @@ namespace CloudSuite.Modules.Application.Handlers.Company
         public Guid Id { get; private set; }
 
         public string? Cnpj { get; set; }
-        public Guid CnpjID { get; set; }
-
-        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
-        [MaxLength(100)]
+                
         public string? FantasyName { get; set; }
 
-        [Required(ErrorMessage = "Este campo é de preencimento obrigatório.")]
-        [MaxLength(100)]
+        
         public string? RegisterName { get; set; }
 
-        public Guid AddressId { get; set; }
-
+        
         public CreateCompanyCommand()
         {
             Id = Guid.NewGuid();
@@ -30,7 +25,7 @@ namespace CloudSuite.Modules.Application.Handlers.Company
         public CompanyEntity GetEntity()
         {
             return new CompanyEntity(
-                   this.AddressId,
+                   
                    new Cnpj(this.Cnpj),
                    this.FantasyName,
                    this.RegisterName

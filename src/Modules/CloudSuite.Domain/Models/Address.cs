@@ -31,6 +31,12 @@ namespace CloudSuite.Domain.Models
             AddressLine1 = adressLine1;
         }
 
+        public Address(string? contactName, string? addressLine1)
+        {
+            ContactName = contactName;
+            AddressLine1 = addressLine1;
+        }
+
         [Required(ErrorMessage = "The {0} field is required.")]
         [StringLength(100)]
         public string? ContactName { get; private set; }

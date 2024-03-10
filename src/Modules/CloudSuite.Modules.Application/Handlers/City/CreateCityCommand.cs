@@ -10,13 +10,10 @@ namespace CloudSuite.Modules.Application.Hadlers.City
 
         public Guid Id { get; private set; }
         
-        [Required(ErrorMessage = "Este campo é de preenchimento obrigatório.")]
-        [MaxLength(100)]
-
+        
         public string? CityName { get; set; }
 
-        public Guid StateId { get; set; }
-
+        
 
         public CreateCityCommand()
         {
@@ -26,7 +23,7 @@ namespace CloudSuite.Modules.Application.Hadlers.City
         public CityEntity GetEntity()
         {
             return new CityEntity(
-                this.StateId,
+                
                 this.CityName
                 );
         }

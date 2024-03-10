@@ -9,12 +9,8 @@ namespace CloudSuite.Modules.Application.Handlers.Country
     {
         public Guid Id { get; private set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
         public string? CountryName { get; set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
         public string? Code3 { get; set; }
 
         public bool? IsBillingEnabled { get; set; }
@@ -27,8 +23,7 @@ namespace CloudSuite.Modules.Application.Handlers.Country
 
         public bool? IsDistrictEnabled { get; set; }
 
-        public Guid StateId { get; set; }
-
+        
         public CreateCountryCommand()
         {
             Id = Guid.NewGuid();
@@ -38,7 +33,7 @@ namespace CloudSuite.Modules.Application.Handlers.Country
         public CountryEntity GetEntity()
         {
             return new CountryEntity(
-                this.Id,
+                
                 this.CountryName,
                 this.Code3,
                 this.IsBillingEnabled.Value,

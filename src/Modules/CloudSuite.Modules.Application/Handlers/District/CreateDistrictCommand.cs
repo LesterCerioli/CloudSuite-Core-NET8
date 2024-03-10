@@ -9,17 +9,12 @@ namespace CloudSuite.Modules.Application.Handlers.District
     {
         public Guid Id { get; set; }
 
-        public Guid StateId { get; set; }
-
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(450)]
         public string? Name { get; set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
+        
         public string? Type { get; set; }
 
-        [Required(ErrorMessage = "The {0} field is required.")]
-        [StringLength(100)]
+        
         public string? Location { get; set; }
 
         public CreateDistrictCommand()
@@ -30,7 +25,7 @@ namespace CloudSuite.Modules.Application.Handlers.District
         public DistrictEntity GetEntity()
         {
             return new DistrictEntity(
-                this.Id,
+                
                 this.Name,
                 this.Type,
                 this.Location
