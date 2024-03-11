@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudSuite.Domain.Contracts.HR_Context
+namespace CloudSuite.Domain.Contracts.Cora_Context
 {
-	internal interface Interface1
+	public interface ITransferRepository
 	{
 	}
 }

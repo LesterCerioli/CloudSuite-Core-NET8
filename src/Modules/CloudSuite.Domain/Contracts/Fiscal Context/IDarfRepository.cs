@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudSuite.Domain.Contracts.Password_Generator_Context
+namespace CloudSuite.Domain.Contracts.Fiscal_Context
 {
-	internal interface Interface1
+	public interface IDarfRepository
 	{
 	}
 }

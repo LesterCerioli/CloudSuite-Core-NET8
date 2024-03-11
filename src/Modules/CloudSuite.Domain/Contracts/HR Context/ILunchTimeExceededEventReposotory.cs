@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudSuite.Domain.Contracts.Subscriptions_Context
+namespace CloudSuite.Domain.Contracts.HR_Context
 {
-	internal class Class1
+	public interface ILunchTimeExceededEventReposotory
 	{
 	}
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CloudSuite.Domain.Contracts.Customers_Context
 {
-	internal interface Interface1
+	public interface ICompanyRepository
 	{
 	}
 }
