@@ -46,7 +46,13 @@ namespace CloudSuite.Domain.Models
             this.value = value;
         }
 
-        [Required(ErrorMessage="Este campo � de preenchimento obrigat�rio.")]
+		public State(string? uF, string? stateName)
+		{
+			UF = uF;
+			StateName = stateName;
+		}
+
+		[Required(ErrorMessage="Este campo � de preenchimento obrigat�rio.")]
         [StringLength(100)]
         public string? StateName { get; private set; }
 
