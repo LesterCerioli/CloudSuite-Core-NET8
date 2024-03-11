@@ -36,7 +36,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var mediaEntity = new Media(caption, fileSize, fileName, mediaType);
+            var mediaEntity = new Media(Guid.NewGuid(), caption, fileSize, fileName, mediaType);
 
             mediaRepositoryMock.Setup(repo => repo.GetByFileName(fileName)).ReturnsAsync(mediaEntity);
 
@@ -123,7 +123,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var mediaEntity = new Media(caption, fileSize, fileName, mediaType);
+            var mediaEntity = new Media(Guid.NewGuid(), caption, fileSize, fileName, mediaType);
 
             mediaRepositoryMock.Setup(repo => repo.GetByFileName(fileName)).ReturnsAsync(mediaEntity);
 

@@ -35,7 +35,7 @@ namespace CloudSuite.Modules.Application.Tests.Services
                 mapperMock.Object
             );
 
-            var districtEntity = new District(name, type, location);
+            var districtEntity = new District(Guid.NewGuid(), name, type, location);
 
             districtRepositoryMock.Setup(repo => repo.GetByName(name)).ReturnsAsync(districtEntity);
 
