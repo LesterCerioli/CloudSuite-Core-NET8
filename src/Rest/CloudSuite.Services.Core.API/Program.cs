@@ -1,12 +1,16 @@
 using AutoMapper;
 using CloudSuite.Domain.Contracts;
+using CloudSuite.Domain.Contracts.PasswordGeneratorContext;
 using CloudSuite.Infrastructure.Context;
 using CloudSuite.Infrastructure.CrossCutting.DependencyInjector;
 using CloudSuite.Infrastructure.CrossCutting.HealthChecks;
 using CloudSuite.Infrastructure.CrossCutting.Middlewares;
 using CloudSuite.Infrastructure.Repositories;
+using CloudSuite.Infrastructure.Repositories.PasswordGeneratorContext;
 using CloudSuite.Modules.Application.Services.Contracts;
+using CloudSuite.Modules.Application.Services.Contracts.PasswirdGeneratorContext;
 using CloudSuite.Modules.Application.Services.Implementations;
+using CloudSuite.Modules.Application.Services.Implementations.PasswordGeneratorContext;
 using CloudSuite.Services.Core.API.Configurations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +52,7 @@ builder.Services.AddTransient<IMediaAppService, MediaAppService>();
 builder.Services.AddTransient<IStateAppService, StateAppService>();
 builder.Services.AddTransient<IUserAppService, UserAppService>();
 builder.Services.AddTransient<IVendorAppService, VendorAppService>();
+builder.Services.AddTransient<IPasswordAppService, PasswordAppService>();
 builder.Services.AddTransient<IMediator, Mediator>();
 builder.Services.AddTransient<IAddressRepository, AddressRepository>();
 builder.Services.AddTransient<ICityRepository, CityRepository>();
@@ -59,20 +64,21 @@ builder.Services.AddTransient<IMediaRepository, MediaRepository>();
 builder.Services.AddTransient<IStateRepository, StateRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IVendorRepository, VendorRepository>();
+builder.Services.AddTransient<IPasswordRepository, PasswordRepository>();
 builder.Services.AddTransient<IMediatorHandler, MediatorHandler>();
 builder.Services.AddSingleton<IMapper>(configuration.CreateMapper());
 
-//builder.Services.AddCors(options =>
-//{
-	//options.AddPolicy("my-cors",
-						  //policy =>
-						  //{
-							  //policy
-							  //.AllowAnyOrigin()
-							  //.AllowAnyHeader()
-							  //.AllowAnyMethod();
-						  //});
-//});
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("my-cors",
+						  policy =>
+						  {
+							  policy
+							  .AllowAnyOrigin()
+							  .AllowAnyHeader()
+							  .AllowAnyMethod();
+						  });
+});
 var app = builder.Build();
 
 
