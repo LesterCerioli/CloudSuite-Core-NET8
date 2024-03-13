@@ -1,11 +1,12 @@
-﻿using CloudSuite.Domain.Models.Password_Generator_Context;
+﻿
+using CloudSuite.Domain.Models.PasswordGeneratorContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudSuite.Domain.Contracts.Password_Generator_Context
+namespace CloudSuite.Domain.Contracts.PasswordGeneratorContext
 {
 	public interface IPasswordRepository
 	{

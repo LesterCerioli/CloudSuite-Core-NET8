@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudSuite.Domain.Models.Password_Generator_Context
+namespace CloudSuite.Domain.Models.PasswordGeneratorContext
 {
 	public class Password : Entity, IAggregateRoot
 	{
@@ -16,12 +16,7 @@ namespace CloudSuite.Domain.Models.Password_Generator_Context
 			CreatedOn = DateTime.Now;
 		}
 
-		public Password(int? caracterNumber, string? senha, DateTimeOffset? createdOn)
-		{
-			CaracterNumber = caracterNumber;
-			Senha = senha;
-			CreatedOn = createdOn;
-		}
+		public Password() { }
 
 		public string? Senha { get; private set; }
 

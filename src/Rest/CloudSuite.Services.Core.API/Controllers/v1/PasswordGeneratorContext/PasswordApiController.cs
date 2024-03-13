@@ -6,7 +6,7 @@ namespace CloudSuite.Services.Core.API.Controllers.v1.PasswordGeneratorContext
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class ValuesController : ControllerBase
+	public class PasswordApiController : ControllerBase
 	{
 		// GET: api/<ValuesController>
 		[HttpGet]
