@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudSuite.Domain.Models.Cora_Context
+namespace CloudSuite.Domain.Enums
 {
-	internal class Class1
-	{
-	}
+    public enum TransactionTypeEnum
+    {
+        TRANSFER = 1,
+        PAYMENT = 2
+    }
 }
