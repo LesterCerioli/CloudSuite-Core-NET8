@@ -60,23 +60,35 @@ namespace CloudSuite.Domain.Models.Cora_Context
             AggregationsCreditTotal = aggregationsCreditTotal;
             AggregationsDebitTotal = aggregationsDebitTotal;
             EntryAmount = entryAmount;
-            HeaderBusiness = headerBusiness;
             HeaderBusinessDocument = headerBusinessDocument;
         }
 
         public DateTimeOffset StartDate {  get; private set; }
+
         public decimal? StartBalance { get; private set; }
+
         public DateTimeOffset? EndDate {  get; private set; }
+
         public decimal? EndBalance { get; private set; }
+
         public Customer Customer {  get; private set; }
+
         public OperationTypeEnum EntryType {  get; private set; }
+
         public Transaction Transaction { get; private set; }
+
         public decimal? AggregationsCreditTotal {  get; private set; }
+
         public decimal? AggregationsDebitTotal {  get; private set; }
+
         public decimal? EntryAmount {  get; private set; }
+
         public string? HeaderBusinessName {  get; private set; }
+
         public string? HeaderBusinessDocument {  get; private set; }
+
         public Guid TransactionId {  get; private set; }
+
         public IReadOnlyCollection<Transaction> Transactions { get { return _transactions.ToArray(); } }
     }
 }

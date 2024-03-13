@@ -1,5 +1,5 @@
 using CloudSuite.Domain.Models;
-using CloudSuite.Domain.Models.Password_Generator_Context;
+using CloudSuite.Domain.Models.PasswordGeneratorContext;
 using CloudSuite.Infrastructure.Mappings.EFCore;
 using CloudSuite.Infrastructure.Mappings.EFCore.Password_Generator;
 using FluentValidation.Results;
@@ -12,8 +12,8 @@ namespace CloudSuite.Infrastructure.Context
     {
         public CoreDbContext(DbContextOptions<CoreDbContext> options)
         {
-            //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            //ChangeTracker.AutoDetectChangesEnabled = false;
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
         public DbSet<Address> Addresses { get; set; }

@@ -13,7 +13,7 @@ namespace CloudSuite.Domain.ValueObjects
             private set
             {
                 if (value < 1)
-                    throw new ArgumentException("O número da página deve ser maior ou igual a 1.");\
+                    throw new ArgumentException("O número da página deve ser maior ou igual a 1.");
                 _pageNumber = value;
             }
         }

@@ -1,4 +1,4 @@
-﻿using CloudSuite.Domain.Models.Password_Generator_Context;
+﻿using CloudSuite.Domain.Models.PasswordGeneratorContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
