@@ -1,3 +1,13 @@
+using AutoMapper;
+using CloudSuite.Domain.Contracts.PasswordGeneratorContext;
+using CloudSuite.Infrastructure.CrossCutting.Middlewares;
+using CloudSuite.Infrastructure.Repositories.PasswordGeneratorContext;
+using CloudSuite.Modules.Application.Services.Contracts.PasswirdGeneratorContext;
+using CloudSuite.Modules.Application.Services.Implementations.PasswordGeneratorContext;
+using CloudSuite.Services.Core.Api.Configurations;
+using MediatR;
+using NetDevPack.Mediator;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +16,35 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//builder.Services.AddMediatR();
+//builder.Services.AddLogger();
+//builder.Services.AddHealthCheckConfigurations();
+//builder.Services.AddSwaggerDocVersion();
+builder.Services.AddTransient<ExceptionHandlingMiddleware>();
+builder.Services.AddDatabaseConfiguration(builder.Configuration);
+
+var configuration = new MapperConfiguration(cfg =>
+{
+});
+
+builder.Services.AddTransient<IPasswordAppService, PasswordAppService>();
+builder.Services.AddTransient<IMediator, Mediator>();
+builder.Services.AddTransient<IPasswordRepository, PasswordRepository>();
+builder.Services.AddTransient<IMediatorHandler, MediatorHandler>();
+builder.Services.AddSingleton<IMapper>(configuration.CreateMapper());
+
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("my-cors",
+						  policy =>
+						  {
+							  policy
+							  .AllowAnyOrigin()
+							  .AllowAnyHeader()
+							  .AllowAnyMethod();
+						  });
+});
+
 
 var app = builder.Build();
 
