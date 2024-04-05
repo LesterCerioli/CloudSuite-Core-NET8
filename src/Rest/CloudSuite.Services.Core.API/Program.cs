@@ -1,9 +1,5 @@
 using AutoMapper;
-using CloudSuite.Domain.Contracts.PasswordGeneratorContext;
 using CloudSuite.Infrastructure.CrossCutting.Middlewares;
-using CloudSuite.Infrastructure.Repositories.PasswordGeneratorContext;
-using CloudSuite.Modules.Application.Services.Contracts.PasswirdGeneratorContext;
-using CloudSuite.Modules.Application.Services.Implementations.PasswordGeneratorContext;
 using CloudSuite.Services.Core.Api.Configurations;
 using MediatR;
 using NetDevPack.Mediator;
@@ -27,9 +23,7 @@ var configuration = new MapperConfiguration(cfg =>
 {
 });
 
-builder.Services.AddTransient<IPasswordAppService, PasswordAppService>();
 builder.Services.AddTransient<IMediator, Mediator>();
-builder.Services.AddTransient<IPasswordRepository, PasswordRepository>();
 builder.Services.AddTransient<IMediatorHandler, MediatorHandler>();
 builder.Services.AddSingleton<IMapper>(configuration.CreateMapper());
 

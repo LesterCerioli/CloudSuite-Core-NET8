@@ -1,5 +1,4 @@
-﻿using CloudSuite.Modules.Application.Handlers.PasswordGeneratorContext;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
