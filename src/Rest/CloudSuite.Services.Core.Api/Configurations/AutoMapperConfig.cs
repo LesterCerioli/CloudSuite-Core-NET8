@@ -1,12 +1,13 @@
-﻿namespace CloudSuite.Services.Core.Api.Configurations
+namespace CloudSuite.Services.Core.API.Configurations
 {
-	public static class AutoMapperConfig
-	{
-		public static void AddAutoMapperConfiguration(this IServiceCollection services)
+    public static class AutoMapperConfig
+    {
+        public static void AddAutoMapperConfiguration(this IServiceCollection services)
 		{
 			if (services == null) throw new ArgumentNullException(nameof(services));
 
 
 		}
-	}
+
+    }
 }
