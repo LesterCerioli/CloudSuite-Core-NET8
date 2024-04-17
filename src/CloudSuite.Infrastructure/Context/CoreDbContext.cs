@@ -1,6 +1,7 @@
 using CloudSuite.Domain.Models;
 using CloudSuite.Infrastructure.Mappings.EFCore;
 using FluentValidation.Results;
+
 using Microsoft.EntityFrameworkCore;
 using NetDevPack.Messaging;
 
@@ -10,8 +11,8 @@ namespace CloudSuite.Infrastructure.Context
     {
         public CoreDbContext(DbContextOptions<CoreDbContext> options)
         {
-            //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            //ChangeTracker.AutoDetectChangesEnabled = false;
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
         public DbSet<Address> Addresses { get; set; }
@@ -34,9 +35,6 @@ namespace CloudSuite.Infrastructure.Context
         public DbSet<Email> Emails { get; set; }
 
         public DbSet<Company> Companies {get; set;}
-
-        
-        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -111,6 +109,7 @@ namespace CloudSuite.Infrastructure.Context
             {
                 c.ToTable("Emails");
             });
+
 
             base.OnModelCreating(modelBuilder);
         }

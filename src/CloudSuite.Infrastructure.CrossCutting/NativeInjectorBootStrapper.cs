@@ -35,6 +35,6 @@ namespace CloudSuite.Infrastructure.CrossCutting
             services.AddScoped<IVendorAppService, VendorAppService>();
 
 
-		}
+        }
 	}
 }
