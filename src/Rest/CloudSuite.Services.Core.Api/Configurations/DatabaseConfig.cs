@@ -1,7 +1,7 @@
-using CloudSuite.Infrastructure.Context;
+﻿using CloudSuite.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace CloudSuite.Services.Core.API.Configurations
+namespace CloudSuite.Services.Core.Api.Configurations
 {
 	public static class DatabaseConfig
 	{
