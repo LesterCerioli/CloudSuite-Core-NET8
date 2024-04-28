@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudSuite.Domain.Models
+namespace CloudSuite.Domain.Contracts
 {
-    public class BearerAuthenticationScheme
+    public interface IMsalAccessTokenRepository
     {
     }
 }

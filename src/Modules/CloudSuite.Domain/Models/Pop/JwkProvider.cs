@@ -9,9 +9,11 @@ namespace CloudSuite.Domain.Models.Pop
 {
     public class JwkProvider
     {
-        public static string ComputeCanonicalJwk(RSAParameters rsaPublicKey)
-        {
-            return $@"{{""{JsonWebKeyParameterNames.E}"":""{Base64UrlHelpers.Encode(rsaPublicKey.Exponent)}"",""{JsonWebKeyParameterNames.Kty}"":""{JsonWebAlgorithmsKeyTypes.RSA}"",""{JsonWebKeyParameterNames.N}"":""{Base64UrlHelpers.Encode(rsaPublicKey.Modulus)}""}}";
-        }
+        private static readonly object JsonWebKeyParameterNames;
+
+        //public static string ComputeCanonicalJwk(RSAParameters rsaPublicKey)
+        //{
+            //return $@"{{""{JsonWebKeyParameterNames.E}"":""{Base64UrlHelpers.Encode(rsaPublicKey.Exponent)}"",""{JsonWebKeyParameterNames.Kty}"":""{JsonWebAlgorithmsKeyTypes.RSA}"",""{JsonWebKeyParameterNames.N}"":""{Base64UrlHelpers.Encode(rsaPublicKey.Modulus)}""}}";
+        //}
     }
 }
