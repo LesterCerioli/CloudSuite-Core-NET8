@@ -3,7 +3,9 @@ using CloudSuite.Domain.Contracts;
 using CloudSuite.Modules.Application.Hadlers.City;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModel;
+using Microsoft.Extensions.Logging;
 using NetDevPack.Mediator;
+using Polly;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
 {
@@ -12,15 +14,18 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 		private readonly ICityRepository _cityRepository;
 		private readonly IMapper _mapper;
 		private readonly IMediatorHandler _mediator;
+		private readonly ILogger<CityAppService> _logger;
 
 		public CityAppService(
             ICityRepository cityRepository,
             IMediatorHandler mediator,
-            IMapper mapper)
+            IMapper mapper,
+			ILogger<CityAppService> logger)
 		{
 			_cityRepository = cityRepository;
 			_mapper = mapper;
 			_mediator = mediator;
+			_logger = logger;
 		}
 
 		public async Task<CityViewModel> GetByCityName(string cityName)
@@ -30,7 +35,18 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 
 		public async Task Save(CreateCityCommand commandCreate)
 		{
-			await _cityRepository.Add(commandCreate.GetEntity());
+			var retryPolicy = Policy.Handle<Exception>()
+				.WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+				onRetry: (exception, timeSpan, retryCount, context) =>
+				{
+					_logger.LogWarning($"Retry {retryCount} of {context.PolicyKey} at {context.OperationKey}: Due to {exception}.");
+				});
+
+			await retryPolicy.ExecuteAsync(async () =>
+			{
+                await _cityRepository.Add(commandCreate.GetEntity());
+				_logger.LogInformation("City added successfully.");
+            });
 		}
 	}
 }

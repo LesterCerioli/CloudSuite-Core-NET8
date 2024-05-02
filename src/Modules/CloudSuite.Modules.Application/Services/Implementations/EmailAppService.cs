@@ -19,15 +19,18 @@ namespace CloudSuite.Modules.Application.Services.Implementations
         private readonly IEmailRepository _emailRepository;
         private readonly IMapper _mapper;
         private readonly IMediatorHandler _mediator;
+		private readonly ILogger<EmailAppService> _logger;
 
         public EmailAppService(
             IEmailRepository emailRepository,
             IMediatorHandler mediator,
-            IMapper mapper)
+            IMapper mapper,
+            ILogger<EmailAppService> logger)
         {
             _emailRepository = emailRepository;
             _mapper = mapper;
             _mediator = mediator;
+			_logger = logger;
         }
 
         public async Task<EmailViewModel> GetByCodeErrorEmail(CodeErrorEmail codeErrorEmail)
@@ -45,7 +48,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			return _mapper.Map<EmailViewModel>(await _emailRepository.GetBySender(sender));
 		}
 
-		public async Task Send(CreateEmailCommand commandCreate)
+		public async Task Save(CreateEmailCommand commandCreate)
 		{
 			await _emailRepository.Add(commandCreate.GetEntity());
 		}
