@@ -4,6 +4,7 @@ using CloudSuite.Domain.Models;
 using CloudSuite.Domain.ValueObjects;
 using CloudSuite.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using Email = CloudSuite.Domain.Models.Email;
 
 namespace CloudSuite.Infrastructure.Repositories
 {

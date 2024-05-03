@@ -8,6 +8,7 @@ using CloudSuite.Modules.Application.ViewModels;
 using Microsoft.Extensions.Logging;
 using NetDevPack.Mediator;
 using Polly;
+using Email = CloudSuite.Domain.Models.Email;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
 {
