@@ -6,6 +6,7 @@ using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;
 using Microsoft.Extensions.Logging;
 using NetDevPack.Mediator;
+using Polly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,10 +54,20 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			GC.SuppressFinalize(this);
 		}
 
-		public async Task Save(CreateEmailCommand commandCreate)
+		public async Task Send(CreateEmailCommand commandCreate)
 		{
+			var retryPolicy = Policy.Handle<Exception>()
+				.WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+				onRetry: (exception, timeSpan, retryCount, context) =>
+				{
+					_logger.LogWarning($"Retry {retryCount} of {context.PolicyKey} at {context.OperationKey}: Due to {exception}");
+				});
 
-			await _emailRepository.Add(commandCreate.GetEntity());
+			await retryPolicy.ExecuteAsync(async () =>
+			{
+                await _emailRepository.Add(commandCreate.GetEntity());
+				_logger.LogInformation("Email added successfully.");
+            });
 		}
 	}
 }

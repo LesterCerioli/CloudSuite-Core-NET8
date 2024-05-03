@@ -46,7 +46,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 
 		public void Dispose()
 		{
-			GC.SuppressFinalize(this););
+			GC.SuppressFinalize(this);
 		}
 
 		public async Task Save(CreateCompanyCommand commandCreate)

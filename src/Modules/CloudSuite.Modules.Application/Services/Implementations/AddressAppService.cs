@@ -1,4 +1,4 @@
-﻿retry using AutoMapper;
+﻿using AutoMapper;
 using CloudSuite.Domain.Contracts;
 using CloudSuite.Modules.Application.Hadlers.Address;
 using CloudSuite.Modules.Application.Services.Contracts;

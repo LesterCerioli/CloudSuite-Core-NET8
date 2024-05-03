@@ -9,8 +9,8 @@ using Polly;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
 {
-	public class DistrictAppService : IDistrictAppService
-	{ 
+    public class DistrictAppService : IDistrictAppService
+    {
         private readonly IDistrictRepository _districtRepository;
         private readonly IMapper _mapper;
         private readonly IMediatorHandler _mediator;
@@ -29,23 +29,23 @@ namespace CloudSuite.Modules.Application.Services.Implementations
         }
 
         public async Task<DistrictViewModel> GetByName(string name)
-		{
-			return _mapper.Map<DistrictViewModel>(await _districtRepository.GetByName(name));
-				
-		}
+        {
+            return _mapper.Map<DistrictViewModel>(await _districtRepository.GetByName(name));
+
+        }
 
         public void Dispose()
         {
             GC.SuppressFinalize(this);
         }
 
-		public async Task Save(CreateDistrictCommand commandCreate)
-		{
+        public async Task Save(CreateDistrictCommand commandCreate)
+        {
             var retryPolicy = Policy.Handle<Exception>()
                 .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
                 onRetry: (exception, timeSpan, retryCount, context) =>
                 {
-                    _logger.LogWarning($"Retry {retryCount} of {context.PolicyKey} at {context.OperationKey}: Due to { exception }");
+                    _logger.LogWarning($"Retry {retryCount} of {context.PolicyKey} at {context.OperationKey}: Due to {exception}");
                 });
 
 
@@ -55,5 +55,6 @@ namespace CloudSuite.Modules.Application.Services.Implementations
                 _logger.LogInformation("District added successfully");
             });
 
-	}
+        }
+    }
 }
