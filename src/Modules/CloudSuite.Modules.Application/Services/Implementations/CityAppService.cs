@@ -33,6 +33,11 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			return _mapper.Map<CityViewModel>(await _cityRepository.GetByCityName(cityName));
 		}
 
+		public  void dispose()
+		{
+			GC.SuppressFinalize(this);
+		}
+
 		public async Task Save(CreateCityCommand commandCreate)
 		{
 			var retryPolicy = Policy.Handle<Exception>()

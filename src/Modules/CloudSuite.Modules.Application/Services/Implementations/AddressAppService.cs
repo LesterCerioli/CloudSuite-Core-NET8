@@ -41,7 +41,7 @@ namespace CloudSuite.Modules.Application.Services.Implementations
         }
 
         
-        public void Dispoise()
+        public void Dispose()
         {
             GC.SuppressFinalize(this);
         }

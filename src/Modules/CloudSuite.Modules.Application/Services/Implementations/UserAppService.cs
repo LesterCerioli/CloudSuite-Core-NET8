@@ -35,6 +35,11 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			return _mapper.Map<UserViewModel>(await _userRepository.GetByEmail(email));
 		}
 
+		public void Dispose()
+		{
+			GC.SuppressFinalize(this);
+		}
+
 		public async Task Save(CreateUserCommand commandCreate)
 		{
 			await _userRepository.Add(commandCreate.GetEntity());

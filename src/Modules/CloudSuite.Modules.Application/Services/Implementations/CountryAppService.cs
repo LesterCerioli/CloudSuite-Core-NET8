@@ -34,6 +34,11 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			return _mapper.Map<CountryViewModel>(await _countryRepository.GetByName(countryName));
 		}
 
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+
 		public async Task Save(CreateCountryCommand commandCreate)
 		{
             var retryPolicy = Policy.Handle<Exception>().

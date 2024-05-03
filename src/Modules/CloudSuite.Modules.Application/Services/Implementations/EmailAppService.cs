@@ -48,8 +48,14 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			return _mapper.Map<EmailViewModel>(await _emailRepository.GetBySender(sender));
 		}
 
+		public void Dispose()
+		{
+			GC.SuppressFinalize(this);
+		}
+
 		public async Task Save(CreateEmailCommand commandCreate)
 		{
+
 			await _emailRepository.Add(commandCreate.GetEntity());
 		}
 	}

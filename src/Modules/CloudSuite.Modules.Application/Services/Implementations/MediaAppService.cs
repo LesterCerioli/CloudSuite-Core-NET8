@@ -33,6 +33,11 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			return _mapper.Map<MediaViewModel>(await _mediaRepository.GetByFileSize(fileSize));
 		}
 
+		public void Dispose()
+		{
+			GC.SuppressFinalize(this);
+		}
+
 		public async Task Save(CreateMediaCommand commandCreate)
 		{
 			await _mediaRepository.Add(commandCreate.GetEntity());

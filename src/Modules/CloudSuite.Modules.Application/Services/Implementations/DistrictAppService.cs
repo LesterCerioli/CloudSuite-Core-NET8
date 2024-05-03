@@ -34,6 +34,11 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 				
 		}
 
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+
 		public async Task Save(CreateDistrictCommand commandCreate)
 		{
             var retryPolicy = Policy.Handle<Exception>()

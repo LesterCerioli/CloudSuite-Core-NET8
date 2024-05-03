@@ -34,6 +34,10 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			return _mapper.Map<StateViewModel>(await _stateRepository.GetByUF(uf));
 		}
 
+		public void Dispose()
+		{
+			GC.SuppressFinalize(this);
+		}
 		public async Task Save(CreateStateCommand commandCreate)
 		{
 			await _stateRepository.Add(commandCreate.GetEntity());

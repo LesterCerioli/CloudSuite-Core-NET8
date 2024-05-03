@@ -44,6 +44,11 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			return _mapper.Map<CompanyViewModel>(await _companyRepository.GetByRegisterName(registerName));
 		}
 
+		public void Dispose()
+		{
+			GC.SuppressFinalize(this););
+		}
+
 		public async Task Save(CreateCompanyCommand commandCreate)
 		{
 			var retryPolicy = Policy.Handle<Exception>()
