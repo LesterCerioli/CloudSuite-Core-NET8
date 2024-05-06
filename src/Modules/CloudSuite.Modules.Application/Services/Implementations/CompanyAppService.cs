@@ -4,7 +4,9 @@ using CloudSuite.Domain.ValueObjects;
 using CloudSuite.Modules.Application.Handlers.Company;
 using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;
+using Microsoft.Extensions.Logging;
 using NetDevPack.Mediator;
+using Polly;
 
 namespace CloudSuite.Modules.Application.Services.Implementations
 {
@@ -13,15 +15,18 @@ namespace CloudSuite.Modules.Application.Services.Implementations
         private readonly ICompanyRepository _companyRepository;
         private readonly IMapper _mapper;
         private readonly IMediatorHandler _mediator;
+		private readonly ILogger<CompanyAppService> _logger;
 
         public CompanyAppService(
             ICompanyRepository companyRepository,
             IMediatorHandler mediator,
-            IMapper mapper)
+            IMapper mapper,
+            ILogger<CompanyAppService> logger)
         {
             _companyRepository = companyRepository;
             _mapper = mapper;
             _mediator = mediator;
+			_logger = logger;
 
         }
         public async Task<CompanyViewModel> GetByCnpj(Cnpj cnpj)
@@ -39,9 +44,25 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			return _mapper.Map<CompanyViewModel>(await _companyRepository.GetByRegisterName(registerName));
 		}
 
+		public void Dispose()
+		{
+			GC.SuppressFinalize(this);
+		}
+
 		public async Task Save(CreateCompanyCommand commandCreate)
 		{
-			await _companyRepository.Add(commandCreate.GetEntity());
+			var retryPolicy = Policy.Handle<Exception>()
+				.WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+				onRetry: (exception, timeSpan, retryCount, context) =>
+				{
+					_logger.LogWarning($"Retry {retryCount} of {context.PolicyKey} at {context.OperationKey}: Due to { exception }.");
+				});
+
+			await retryPolicy.ExecuteAsync(async () =>
+			{
+                await _companyRepository.Add(commandCreate.GetEntity());
+				_logger.LogInformation("Company added successfully");
+            });
 		}
 	}
 }

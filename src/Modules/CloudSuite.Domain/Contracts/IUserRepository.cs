@@ -1,6 +1,6 @@
 using CloudSuite.Domain.Models;
 using CloudSuite.Domain.ValueObjects;
-using Email = CloudSuite.Domain.ValueObjects.Email;
+using Email = CloudSuite.Domain.Models.Email;
 
 namespace CloudSuite.Domain.Contracts
 {

@@ -6,6 +6,7 @@ using CloudSuite.Modules.Application.Services.Contracts;
 using CloudSuite.Modules.Application.ViewModels;
 using Microsoft.Extensions.Logging;
 using NetDevPack.Mediator;
+using Polly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +20,18 @@ namespace CloudSuite.Modules.Application.Services.Implementations
         private readonly IEmailRepository _emailRepository;
         private readonly IMapper _mapper;
         private readonly IMediatorHandler _mediator;
+		private readonly ILogger<EmailAppService> _logger;
 
         public EmailAppService(
             IEmailRepository emailRepository,
             IMediatorHandler mediator,
-            IMapper mapper)
+            IMapper mapper,
+            ILogger<EmailAppService> logger)
         {
             _emailRepository = emailRepository;
             _mapper = mapper;
             _mediator = mediator;
+			_logger = logger;
         }
 
         public async Task<EmailViewModel> GetByCodeErrorEmail(CodeErrorEmail codeErrorEmail)
@@ -45,9 +49,25 @@ namespace CloudSuite.Modules.Application.Services.Implementations
 			return _mapper.Map<EmailViewModel>(await _emailRepository.GetBySender(sender));
 		}
 
+		public void Dispose()
+		{
+			GC.SuppressFinalize(this);
+		}
+
 		public async Task Send(CreateEmailCommand commandCreate)
 		{
-			await _emailRepository.Add(commandCreate.GetEntity());
+			var retryPolicy = Policy.Handle<Exception>()
+				.WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+				onRetry: (exception, timeSpan, retryCount, context) =>
+				{
+					_logger.LogWarning($"Retry {retryCount} of {context.PolicyKey} at {context.OperationKey}: Due to {exception}");
+				});
+
+			await retryPolicy.ExecuteAsync(async () =>
+			{
+                await _emailRepository.Add(commandCreate.GetEntity());
+				_logger.LogInformation("Email added successfully.");
+            });
 		}
 	}
 }
