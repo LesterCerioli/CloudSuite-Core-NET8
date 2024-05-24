@@ -1,8 +1,6 @@
 using AutoMapper;
 using CloudSuite.Infrastructure.CrossCutting.Middlewares;
-using CloudSuite.Services.Core.API.Configurations;
-using MediatR;
-using NetDevPack.Mediator;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,14 +15,13 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddHealthCheckConfigurations();
 //builder.Services.AddSwaggerDocVersion();
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
-builder.Services.AddDatabaseConfiguration(builder.Configuration);
+//builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
 var configuration = new MapperConfiguration(cfg =>
 {
 });
 
-builder.Services.AddTransient<IMediator, Mediator>();
-builder.Services.AddTransient<IMediatorHandler, MediatorHandler>();
+
 builder.Services.AddSingleton<IMapper>(configuration.CreateMapper());
 
 builder.Services.AddCors(options =>
