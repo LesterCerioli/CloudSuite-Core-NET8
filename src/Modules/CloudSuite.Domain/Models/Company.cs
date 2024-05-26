@@ -11,45 +11,19 @@ namespace CloudSuite.Domain.Models
 {
     public class Company : Entity, IAggregateRoot
     {
-        private Cnpj cnpj;
-
-        public Company(Guid id, Cnpj cnpj, string? fantasyName, string? registerName, Address address) {
-            AddressId = id;
-            Cnpj = cnpj;
-            FantasyName = fantasyName;
-            RegisterName = registerName;
-            Address = address;
-        }
-
-        public Company(Guid id, Cnpj cnpj, string? fantasyName, string? registerName)
-        {
-            AddressId = id;
-            Cnpj = cnpj;
-            FantasyName = fantasyName;
-            RegisterName = registerName;
-        }
-
-        public Company(Cnpj cnpj, string? fantasyName, string? registerName)
-        {
-            this.cnpj = cnpj;
-            FantasyName = fantasyName;
-            RegisterName = registerName;
-        }
-
         public Cnpj Cnpj { get; set; }
+        public string FantasyName { get; set; }
+        public string RegisterName { get; set; }
 
-        public Guid CnpjID { get; private set; }
+        public Company() { } // Construtor sem parâmetros
 
-        [Required(ErrorMessage = "Este campo � de preenchimento obrigat�rio.")]
-        [MaxLength(100)]
-        public string? FantasyName { get; private set; }
+        public Company(Cnpj cnpj, string fantasyName, string registerName)
+        {
+            Cnpj = cnpj;
+            FantasyName = fantasyName;
+            RegisterName = registerName;
+        }
 
-        [Required(ErrorMessage = "Este campo � de preencimento obrigat�rio.")]
-        [MaxLength(100)]
-        public string? RegisterName { get; private set; }
 
-        public Address Address { get; private set; }
-
-        public Guid AddressId { get; private set; }
     }
 }

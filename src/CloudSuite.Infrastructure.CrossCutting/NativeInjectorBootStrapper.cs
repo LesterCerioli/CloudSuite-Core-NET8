@@ -16,11 +16,9 @@ namespace CloudSuite.Infrastructure.CrossCutting
             services.AddScoped<ICompanyRepository>();
             services.AddScoped<ICountryRepository>();
             services.AddScoped<IDistrictRepository>();
-            services.AddScoped<IEmailRepository>();
             services.AddScoped<IMediaRepository>();
             services.AddScoped<IStateRepository>();
-            services.AddScoped<IUserRepository>();
-            services.AddScoped<IVendorRepository>();
+            
 
             // Application
             services.AddScoped<ICityAppService, CityAppService>();
@@ -28,11 +26,9 @@ namespace CloudSuite.Infrastructure.CrossCutting
             services.AddScoped<ICompanyAppService, CompanyAppService>();
             services.AddScoped<ICountryAppService, CountryAppService>();
             services.AddScoped<IDistrictAppService, DistrictAppService>();
-            services.AddScoped<IEmailAppService, EmailAppService>();
             services.AddScoped<IMediaAppService, MediaAppService>();
             services.AddScoped<IStateAppService, StateAppService>();
-            services.AddScoped<IUserAppService, UserAppService>();
-            services.AddScoped<IVendorAppService, VendorAppService>();
+            
 
 
         }
