@@ -10,6 +10,7 @@ namespace CloudSuite.Infrastructure.Context
     public class CoreDbContext : DbContext
     {
         public CoreDbContext(DbContextOptions<CoreDbContext> options)
+            : base(options)
         {
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             ChangeTracker.AutoDetectChangesEnabled = false;
@@ -26,15 +27,11 @@ namespace CloudSuite.Infrastructure.Context
         public DbSet<District> Districts { get; set; }
 
         public DbSet<Media> Medias { get; set; }
+               
+                     
+        public DbSet<Company> Companies {get; set;}
 
         
-        public DbSet<User> Users { get; set; }
-
-        public DbSet<Vendor> Vendors { get; set; }
-
-        public DbSet<Email> Emails { get; set; }
-
-        public DbSet<Company> Companies {get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,14 +54,12 @@ namespace CloudSuite.Infrastructure.Context
 
             modelBuilder.ApplyConfiguration(new DistrictEFCoreMapping());
 
-            modelBuilder.ApplyConfiguration(new EmailEFCoreMapping());
-
+            
             modelBuilder.ApplyConfiguration(new MediaEFCoreMapping());
 
-            modelBuilder.ApplyConfiguration(new UserEFCoreMapping());
-
-            modelBuilder.ApplyConfiguration(new VendorEFCoreMapping());
             
+
+                       
             modelBuilder.Entity<Address>(c =>
             {
                 c.ToTable("Addresses");
@@ -95,20 +90,14 @@ namespace CloudSuite.Infrastructure.Context
                 c.ToTable("Medias");
             });
 
-            modelBuilder.Entity<User>(c =>
+            
+                        
+            modelBuilder.Entity<Company>(c =>
             {
-                c.ToTable("Users");
+                c.ToTable("Companies");
             });
 
-            modelBuilder.Entity<Vendor>(c =>
-            {
-                c.ToTable("Vendors");
-            });
-
-            modelBuilder.Entity<Email>(c =>
-            {
-                c.ToTable("Emails");
-            });
+            
 
 
             base.OnModelCreating(modelBuilder);
