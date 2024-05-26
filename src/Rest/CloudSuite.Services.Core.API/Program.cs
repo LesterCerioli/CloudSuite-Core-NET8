@@ -1,44 +1,38 @@
 using AutoMapper;
+using CloudSuite.Infrastructure.Context;
 using CloudSuite.Infrastructure.CrossCutting.Middlewares;
-using CloudSuite.Services.Core.API.Configurations;
-using MediatR;
-using NetDevPack.Mediator;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Configure DbContext with connection string
+builder.Services.AddDbContext<CoreDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddMediatR();
-//builder.Services.AddLogger();
-//builder.Services.AddHealthCheckConfigurations();
-//builder.Services.AddSwaggerDocVersion();
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
-builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
 var configuration = new MapperConfiguration(cfg =>
 {
+    // Mapper configurations
 });
 
-builder.Services.AddTransient<IMediator, Mediator>();
-builder.Services.AddTransient<IMediatorHandler, MediatorHandler>();
 builder.Services.AddSingleton<IMapper>(configuration.CreateMapper());
 
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy("my-cors",
-						  policy =>
-						  {
-							  policy
-							  .AllowAnyOrigin()
-							  .AllowAnyHeader()
-							  .AllowAnyMethod();
-						  });
+    options.AddPolicy("my-cors", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
-
 
 var app = builder.Build();
 
@@ -50,9 +44,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
