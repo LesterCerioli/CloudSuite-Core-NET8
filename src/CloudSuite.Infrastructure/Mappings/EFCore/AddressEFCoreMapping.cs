@@ -11,14 +11,14 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
             builder.HasKey(a => a.Id);
 
             builder.Property(a => a.Id)
-                .HasColumnName("Id");
+                .HasColumnName("id");
 
             builder.Property(a => a.ContactName)
-                .HasColumnName("ContactName")
+                .HasColumnName("contact_name")
                 .HasColumnType("varchar(50)");
 
             builder.Property(a => a.AddressLine1)
-                .HasColumnName("AddressLine")
+                .HasColumnName("address_line")
                 .HasColumnType("varchar(450)");
 
             builder.HasOne(p => p.City)

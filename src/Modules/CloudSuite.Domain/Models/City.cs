@@ -12,28 +12,21 @@ namespace CloudSuite.Domain.Models
     {
         private readonly List<State> _states;
 
-        public City(Guid id, string? cityName, State state)
-        {
-            StateId = id;
-            _states = new List<State>();
-            CityName = cityName;
-            State = state;
-        }
-
         public City(Guid id, string? cityName)
         {
-            StateId = id;
+            
+            _states = new List<State>();
             CityName = cityName;
+            
         }
 
+        
         public City(string? cityName)
         {
             CityName = cityName;
         }
 
-        [Required(ErrorMessage = "Este campo � de preenchimento obrigat�rio.")]
-        [MaxLength(50)]
-
+        
         public string? CityName { get; private set; }
 
         public IReadOnlyCollection<State> States => _states.AsReadOnly();

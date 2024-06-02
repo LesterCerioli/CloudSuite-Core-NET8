@@ -19,7 +19,7 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
                 .IsRequired();
 
             builder.HasOne(p => p.State)
-                .WithMany()
+                .WithMany(p => p.Cities)
                 .HasForeignKey(p => p.StateId)
                 .OnDelete(DeleteBehavior.Restrict);
         }

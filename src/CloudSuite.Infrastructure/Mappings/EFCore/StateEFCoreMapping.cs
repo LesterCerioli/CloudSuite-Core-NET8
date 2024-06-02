@@ -25,9 +25,9 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
                 .IsRequired();
 
             // Relacionamento com Country
-            builder.HasOne(s => s.Country)
-                .WithMany(s => s.States)
-                .HasForeignKey(s => s.CountryId)
+            builder.HasMany(s => s.Cities)
+                .WithOne(c => c.State)
+                .HasForeignKey(c => c.StateId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

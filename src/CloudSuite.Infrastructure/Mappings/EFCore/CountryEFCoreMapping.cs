@@ -11,10 +11,10 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
             builder.HasKey(d => d.Id);
 
             builder.Property(d => d.Id)
-                .HasColumnName("Id");
+                .HasColumnName("id");
 
             builder.Property(d => d.CountryName)
-                .HasColumnName("CountryName")
+                .HasColumnName("country_name")
                 .IsRequired()
                 .HasMaxLength(450)
                 .IsRequired();
@@ -22,7 +22,6 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
             builder.Property(d => d.Code3)
                 .HasColumnName("Code")
                 .HasColumnType("varchar(450)")
-                .IsRequired()
                 .HasMaxLength(450);
 
             builder.Property(d => d.IsBillingEnabled)
@@ -42,9 +41,9 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
                 .HasColumnType("bit");
 
             // Relacionamento com State
-            builder.HasOne(p => p.State)
-                .WithMany()
-                .HasForeignKey(p => p.StateId)
+            builder.HasMany(c => c.States)
+                .WithOne(s => s.Country)
+                .HasForeignKey(s => s.CountryId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

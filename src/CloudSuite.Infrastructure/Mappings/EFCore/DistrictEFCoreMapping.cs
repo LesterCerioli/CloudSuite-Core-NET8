@@ -11,23 +11,22 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
             builder.HasKey(e => e.Id);
 
             builder.Property(e => e.Id)
-                .HasColumnName("Id");
+                .HasColumnName("id");
 
             builder.Property(e => e.Name)
-                .HasColumnName("Name")
+                .HasColumnName("name")
                 .IsRequired()
                 .HasMaxLength(450)
                 .IsRequired();
 
             builder.Property(e => e.Type)
-                .HasColumnName("Type")
-                .HasColumnType("varchar(20)")
-                .IsRequired();
+                .HasColumnName("type")
+                .HasColumnType("varchar(20)");
+                
 
             builder.Property(e => e.Location)
-                .HasColumnName("Location")
+                .HasColumnName("location")
                 .HasColumnType("varchar(100)")
-                .IsRequired()
                 .HasMaxLength(100);
 
             builder.HasOne(p => p.City)
