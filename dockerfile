@@ -1,8 +1,7 @@
 # Etapa 1: Definir a imagem base para execução
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+
 
 # Etapa 2: Definir a imagem base para construção
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
