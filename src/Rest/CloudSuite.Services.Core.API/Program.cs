@@ -6,6 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure Kestrel to listen on HTTP and HTTPS ports
+builder.WebHost.ConfigureKestrel(serverOptions =>{
+    serverOptions.ListenAnyIP(70);
+    serverOptions.ListenAnyIP(443, listenOptions =>{
+        listenOptions.UseHttps();
+    });
+});
+
 // Add services to the container.
 builder.Services.AddControllers();
 
