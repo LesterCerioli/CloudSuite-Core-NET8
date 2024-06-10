@@ -20,30 +20,31 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
                 .IsRequired();
 
             builder.Property(d => d.Code3)
-                .HasColumnName("Code")
+                .HasColumnName("code")
                 .HasColumnType("varchar(450)")
+                .IsRequired()
                 .HasMaxLength(450);
 
             builder.Property(d => d.IsBillingEnabled)
-                .HasColumnName("IsBillingEnabled")
+                .HasColumnName("is_billing_enabled")
                 .HasColumnType("bit");
             builder.Property(d => d.IsShippingEnabled)
-                .HasColumnName("IsShippingEnabled")
+                .HasColumnName("is_shipping_enabled")
                 .HasColumnType("bit");
             builder.Property(d => d.IsCityEnabled)
-                .HasColumnName("IsCityEnabled")
+                .HasColumnName("is_city_enabled")
                 .HasColumnType("bit");
             builder.Property(d => d.IsZipCodeEnabled)
-                .HasColumnName("IsZipCodeEnabled")
+                .HasColumnName("is_zip_code_enabled")
                 .HasColumnType("bit");
             builder.Property(d => d.IsDistrictEnabled)
-                .HasColumnName("IsDistrictEnabled")
+                .HasColumnName("is_dDistrict_enabled")
                 .HasColumnType("bit");
 
             // Relacionamento com State
-            builder.HasMany(c => c.States)
-                .WithOne(s => s.Country)
-                .HasForeignKey(s => s.CountryId)
+            builder.HasOne(p => p.State)
+                .WithMany()
+                .HasForeignKey(p => p.StateId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

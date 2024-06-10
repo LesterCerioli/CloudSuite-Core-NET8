@@ -62,39 +62,39 @@ namespace CloudSuite.Infrastructure.Context
                        
             modelBuilder.Entity<Address>(c =>
             {
-                c.ToTable("Addresses");
+                c.ToTable("mscore_addresses");
             });
 
             modelBuilder.Entity<State>(c =>
             {
-                c.ToTable("States");
+                c.ToTable("mscore_states");
             });
 
             modelBuilder.Entity<City>(c =>
             {
-                c.ToTable("Cities");
+                c.ToTable("mscore_cities");
             });
 
             modelBuilder.Entity<Country>(c =>
             {
-                c.ToTable("Coumtries");
+                c.ToTable("mscore_coumtries");
             });
 
             modelBuilder.Entity<District>(c =>
             {
-                c.ToTable("Districts");
+                c.ToTable("mscore_districts");
             });
 
             modelBuilder.Entity<Media>(c =>
             {
-                c.ToTable("Medias");
+                c.ToTable("mscore_medias");
             });
 
             
                         
             modelBuilder.Entity<Company>(c =>
             {
-                c.ToTable("Companies");
+                c.ToTable("mscore_companies");
             });
 
             

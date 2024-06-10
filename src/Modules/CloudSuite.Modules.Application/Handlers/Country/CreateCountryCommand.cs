@@ -9,10 +9,21 @@ namespace CloudSuite.Modules.Application.Handlers.Country
     {
         public Guid Id { get; private set; }
 
-        public string CountryName { get; set; }
-        public string Code3 { get; set; }
-        
+        public string? CountryName { get; set; }
 
+        public string? Code3 { get; set; }
+
+        public bool? IsBillingEnabled { get; set; }
+
+        public bool? IsShippingEnabled { get; set; }
+
+        public bool? IsCityEnabled { get; set; }
+
+        public bool? IsZipCodeEnabled { get; set; }
+
+        public bool? IsDistrictEnabled { get; set; }
+
+        
         public CreateCountryCommand()
         {
             Id = Guid.NewGuid();
@@ -24,8 +35,12 @@ namespace CloudSuite.Modules.Application.Handlers.Country
             return new CountryEntity(
                 
                 this.CountryName,
-                this.Code3
-                           
+                this.Code3,
+                this.IsBillingEnabled.Value,
+                this.IsShippingEnabled.Value,
+                this.IsCityEnabled.Value,
+                this.IsZipCodeEnabled.Value,
+                this.IsDistrictEnabled.Value
                 );
         }
     }

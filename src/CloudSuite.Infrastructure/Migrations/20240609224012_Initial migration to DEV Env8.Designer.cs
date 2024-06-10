@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CloudSuite.Infrastructure.Migrations
 {
     [DbContext(typeof(CoreDbContext))]
-    [Migration("20240602014228_Initial migration to Production Env-updating tables")]
-    partial class InitialmigrationtoProductionEnvupdatingtables
+    [Migration("20240609224012_Initial migration to DEV Env8")]
+    partial class InitialmigrationtoDEVEnv8
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,7 +45,7 @@ namespace CloudSuite.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("contact_name");
+                        .HasColumnName("contactName");
 
                     b.Property<Guid>("DistrictId")
                         .HasColumnType("uniqueidentifier");
@@ -56,7 +56,7 @@ namespace CloudSuite.Infrastructure.Migrations
 
                     b.HasIndex("DistrictId");
 
-                    b.ToTable("Addresses", (string)null);
+                    b.ToTable("mscore_addresses", (string)null);
                 });
 
             modelBuilder.Entity("CloudSuite.Domain.Models.City", b =>
@@ -64,15 +64,16 @@ namespace CloudSuite.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("id");
 
                     b.Property<Guid?>("AddressId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CityName")
                         .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("CityName");
+                        .HasColumnName("city_name");
 
                     b.Property<Guid?>("DistrictId")
                         .HasColumnType("uniqueidentifier");
@@ -88,7 +89,7 @@ namespace CloudSuite.Infrastructure.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("Cities", (string)null);
+                    b.ToTable("mscore_cities", (string)null);
                 });
 
             modelBuilder.Entity("CloudSuite.Domain.Models.Company", b =>
@@ -110,7 +111,7 @@ namespace CloudSuite.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Companies", (string)null);
+                    b.ToTable("mscore_companies", (string)null);
                 });
 
             modelBuilder.Entity("CloudSuite.Domain.Models.Country", b =>
@@ -124,7 +125,7 @@ namespace CloudSuite.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(450)
                         .HasColumnType("varchar(450)")
-                        .HasColumnName("Code");
+                        .HasColumnName("code");
 
                     b.Property<string>("CountryName")
                         .IsRequired()
@@ -132,29 +133,39 @@ namespace CloudSuite.Infrastructure.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("country_name");
 
-                    b.Property<bool>("IsBillingEnabled")
+                    b.Property<bool?>("IsBillingEnabled")
                         .HasColumnType("bit")
-                        .HasColumnName("IsBillingEnabled");
+                        .HasColumnName("is_billing_enabled");
 
-                    b.Property<bool>("IsCityEnabled")
+                    b.Property<bool?>("IsCityEnabled")
                         .HasColumnType("bit")
-                        .HasColumnName("IsCityEnabled");
+                        .HasColumnName("is_city_enabled");
 
-                    b.Property<bool>("IsDistrictEnabled")
+                    b.Property<bool?>("IsDistrictEnabled")
                         .HasColumnType("bit")
-                        .HasColumnName("IsDistrictEnabled");
+                        .HasColumnName("is_dDistrict_enabled");
 
-                    b.Property<bool>("IsShippingEnabled")
+                    b.Property<bool?>("IsShippingEnabled")
                         .HasColumnType("bit")
-                        .HasColumnName("IsShippingEnabled");
+                        .HasColumnName("is_shipping_enabled");
 
-                    b.Property<bool>("IsZipCodeEnabled")
+                    b.Property<bool?>("IsZipCodeEnabled")
                         .HasColumnType("bit")
-                        .HasColumnName("IsZipCodeEnabled");
+                        .HasColumnName("is_zip_code_enabled");
+
+                    b.Property<Guid>("StateId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("StateId1")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Coumtries", (string)null);
+                    b.HasIndex("StateId");
+
+                    b.HasIndex("StateId1");
+
+                    b.ToTable("mscore_coumtries", (string)null);
                 });
 
             modelBuilder.Entity("CloudSuite.Domain.Models.District", b =>
@@ -193,7 +204,7 @@ namespace CloudSuite.Infrastructure.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Districts", (string)null);
+                    b.ToTable("mscore_districts", (string)null);
                 });
 
             modelBuilder.Entity("CloudSuite.Domain.Models.Media", b =>
@@ -201,32 +212,32 @@ namespace CloudSuite.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
+                        .HasColumnName("id");
 
                     b.Property<string>("Caption")
                         .IsRequired()
                         .HasMaxLength(450)
                         .HasColumnType("varchar(100)")
-                        .HasColumnName("Caption");
+                        .HasColumnName("caption");
 
                     b.Property<string>("FileName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(100)")
-                        .HasColumnName("FileName");
+                        .HasColumnName("file_name");
 
                     b.Property<int?>("FileSize")
                         .IsRequired()
                         .HasColumnType("int")
-                        .HasColumnName("FileSize");
+                        .HasColumnName("file_size");
 
                     b.Property<int>("MediaType")
                         .HasColumnType("int")
-                        .HasColumnName("MediaType");
+                        .HasColumnName("media_type");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medias", (string)null);
+                    b.ToTable("mscore_medias", (string)null);
                 });
 
             modelBuilder.Entity("CloudSuite.Domain.Models.State", b =>
@@ -260,7 +271,7 @@ namespace CloudSuite.Infrastructure.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("States", (string)null);
+                    b.ToTable("mscore_states", (string)null);
                 });
 
             modelBuilder.Entity("CloudSuite.Domain.Models.Address", b =>
@@ -293,7 +304,7 @@ namespace CloudSuite.Infrastructure.Migrations
                         .HasForeignKey("DistrictId");
 
                     b.HasOne("CloudSuite.Domain.Models.State", "State")
-                        .WithMany("Cities")
+                        .WithMany()
                         .HasForeignKey("StateId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -316,7 +327,7 @@ namespace CloudSuite.Infrastructure.Migrations
 
                             b1.HasKey("CompanyId");
 
-                            b1.ToTable("Companies");
+                            b1.ToTable("mscore_companies");
 
                             b1.WithOwner()
                                 .HasForeignKey("CompanyId");
@@ -324,6 +335,21 @@ namespace CloudSuite.Infrastructure.Migrations
 
                     b.Navigation("Cnpj")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CloudSuite.Domain.Models.Country", b =>
+                {
+                    b.HasOne("CloudSuite.Domain.Models.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CloudSuite.Domain.Models.State", null)
+                        .WithMany("Countries")
+                        .HasForeignKey("StateId1");
+
+                    b.Navigation("State");
                 });
 
             modelBuilder.Entity("CloudSuite.Domain.Models.District", b =>
@@ -380,7 +406,7 @@ namespace CloudSuite.Infrastructure.Migrations
 
             modelBuilder.Entity("CloudSuite.Domain.Models.State", b =>
                 {
-                    b.Navigation("Cities");
+                    b.Navigation("Countries");
                 });
 #pragma warning restore 612, 618
         }

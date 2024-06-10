@@ -14,7 +14,7 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
                 .HasColumnName("id");
 
             builder.Property(a => a.ContactName)
-                .HasColumnName("contact_name")
+                .HasColumnName("contactName")
                 .HasColumnType("varchar(50)");
 
             builder.Property(a => a.AddressLine1)

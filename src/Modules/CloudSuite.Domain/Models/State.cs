@@ -12,31 +12,58 @@ namespace CloudSuite.Domain.Models
 {
     public class State : Entity, IAggregateRoot
     {
-        public string StateName { get; private set; }
-        public string UF { get; private set; }
-        public Guid CountryId { get; private set; }
+        private readonly List<Country> _countries;
+        private object value;
 
-        // Propriedade de navegação para Country
-        public Country Country { get; private set; }
-
-        // Propriedade de navegação para Cidades
-        public IReadOnlyCollection<City> Cities { get; private set; }
-
-        protected State() { }
-
-        public State(Guid id, string stateName, string uf, Guid countryId)
+        public State(Guid id, string uf, string stateName, Country country, Guid countryId)
         {
             Id = id;
-            StateName = stateName;
+            _countries = new List<Country>();
             UF = uf;
+            StateName = stateName;
+            Country = country;
             CountryId = countryId;
-            Cities = new List<City>();
         }
 
-        public State(string? uF, string? stateName)
+        public State(Guid id, string uf, string stateName, Guid countryId)
+        {
+            Id = id;
+            _countries = new List<Country>();
+            UF = uf;
+            StateName = stateName;
+            CountryId = countryId;
+        }
+
+        public State()
+        {
+
+        }
+
+        public State(string? uF, string? stateName, object value)
         {
             UF = uF;
             StateName = stateName;
+            this.value = value;
         }
+
+		public State(string? uF, string? stateName)
+		{
+			UF = uF;
+			StateName = stateName;
+		}
+
+		[Required(ErrorMessage="Este campo � de preenchimento obrigat�rio.")]
+        [StringLength(100)]
+        public string? StateName { get; private set; }
+
+        [Required(ErrorMessage = "Este cmapo � de preenchimento obrigat�rio.")]
+
+        public string? UF { get; private set; }
+
+        public Country Country { get; private set; }
+
+        public Guid CountryId { get; private set; }
+
+        public IReadOnlyCollection<Country> Countries => _countries.AsReadOnly();
     }
 }
