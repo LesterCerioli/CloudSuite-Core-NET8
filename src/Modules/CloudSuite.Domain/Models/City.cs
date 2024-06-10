@@ -31,6 +31,8 @@ namespace CloudSuite.Domain.Models
             CityName = cityName;
         }
 
+        
+
         [Required(ErrorMessage = "Este campo � de preenchimento obrigat�rio.")]
         [MaxLength(50)]
 
