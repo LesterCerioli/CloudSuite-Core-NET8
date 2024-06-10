@@ -11,10 +11,10 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
             builder.HasKey(b => b.Id);
 
             builder.Property(b => b.Id)
-                .HasColumnName("Id");
+                .HasColumnName("id");
 
             builder.Property(b => b.CityName)
-                .HasColumnName("CityName")
+                .HasColumnName("city_name")
                 .HasColumnType("varchar(50)")
                 .IsRequired();
 

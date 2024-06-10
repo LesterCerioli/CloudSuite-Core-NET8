@@ -11,24 +11,24 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
             builder.HasKey(g => g.Id);
 
             builder.Property(g => g.Id)
-                .HasColumnName("Id");
+                .HasColumnName("id");
 
             builder.Property(g => g.Caption)
-                .HasColumnName("Caption")
+                .HasColumnName("caption")
                 .IsRequired()
                 .HasMaxLength(450);
 
             builder.Property(g => g.FileSize)
-                .HasColumnName("FileSize")
+                .HasColumnName("file_size")
                 .IsRequired();
 
             builder.Property(g => g.FileName)
-                .HasColumnName("FileName")
+                .HasColumnName("file_name")
                 .IsRequired()
                 .HasMaxLength(50);
 
             builder.Property(g => g.MediaType)
-                .HasColumnName("MediaType")
+                .HasColumnName("media_type")
                 .IsRequired()
                 .HasColumnType("int"); // Tipo de dado para a enumeração MediaType
         }

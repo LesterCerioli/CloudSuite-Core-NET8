@@ -11,18 +11,18 @@ namespace CloudSuite.Infrastructure.Mappings.EFCore
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Id)
-                .HasColumnName("Id");
+                .HasColumnName("id");
 
             builder.OwnsOne(p => p.Cnpj)
-                            .Property(p => p.CnpjNumber).HasColumnName("CNPJNumber").HasMaxLength(11).IsRequired();
+                            .Property(p => p.CnpjNumber).HasColumnName("cnpj_number").HasMaxLength(11).IsRequired();
 
             builder.Property(c => c.FantasyName)
-                .HasColumnName("FantasyName")
+                .HasColumnName("fantasy_name")
                 .HasColumnType("varchar(100)")
                 .IsRequired();
 
             builder.Property(c => c.RegisterName)
-                .HasColumnName("RegisterName")
+                .HasColumnName("register_name")
                 .HasColumnType("varchar(100)")
                 .IsRequired();
         }
