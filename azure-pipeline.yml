@@ -9,11 +9,12 @@ pr:
       - develop
 
 jobs:
-- job: PR_Commit_Message_Check
-  displayName: 'Check Commit Message Format'
+- job: PR_Semantic_Commit_Check
+  displayName: 'Check Semantic Commit Messages'
   pool:
     vmImage: 'ubuntu-latest'
   steps:
+  - checkout: self
   - script: |
       # Fetch the PR's commits
       git fetch origin refs/pull/$(Build.PullRequestId)/merge
@@ -21,12 +22,12 @@ jobs:
       # Extract commit messages
       commit_messages=$(git log --format=%s refs/pull/$(Build.PullRequestId)/merge)
 
-      # Check each commit message against the specified format
+      # Check each commit message against the semantic commit format
       invalid_messages=0
       for message in $commit_messages; do
-        if [[ ! $message =~ ^feat\(#\d+\):.* ]]; then
-          echo "Invalid commit message format: $message"
-          echo "Commit message format should be: 'feat(#id): message'"
+        if [[ ! $message =~ ^((feat|fix|docs|style|refactor|perf|test|chore)(\([^()]+\))?: .{1,})(\n|$) ]]; then
+          echo "Invalid semantic commit message format: $message"
+          echo "Commit message format should be: '<type>(<scope>): <description>'"
           echo "Please fix the commit message and try again."
           ((invalid_messages++))
         fi
@@ -36,4 +37,4 @@ jobs:
       if [ $invalid_messages -gt 0 ]; then
         exit 1
       fi
-    displayName: 'Check Commit Messages'
+    displayName: 'Check Semantic Commit Messages'
