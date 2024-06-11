@@ -1,5 +1,5 @@
 # Fetch the work item ID associated with the pull request
-$workItemId = az boards work item show --id <PULL_REQUEST_ID> --query id --output tsv
+$workItemId = az boards work item show --id "<PULL_REQUEST_ID>" --query id --output tsv
 
 # Check if work item ID is retrieved successfully
 if (-not $workItemId) {
