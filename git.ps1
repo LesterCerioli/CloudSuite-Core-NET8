@@ -1,3 +1,9 @@
+# Check if BUILD_PULLREQUEST_ID environment variable is set
+if (-not $env:BUILD_PULLREQUEST_ID) {
+    Write-Host "BUILD_PULLREQUEST_ID environment variable is not set. Unable to fetch PR commits."
+    exit 1
+}
+
 # Fetch the PR's commits
 git fetch origin refs/pull/$env:BUILD_PULLREQUEST_ID/merge
 
