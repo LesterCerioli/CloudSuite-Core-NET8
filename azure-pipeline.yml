@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    exclude:
+      - '*'
+
+pr:
+  branches:
+    include:
+      - '*'
+
+jobs:
+- job: PR_Commit_Message_Check
+  displayName: 'Check Commit Message Format'
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: |
+      # Fetch the PR's commits
+      git fetch origin refs/pull/$(Build.PullRequestId)/merge
+
+      # Extract commit messages
+      commit_messages=$(git log --format=%s refs/pull/$(Build.PullRequestId)/merge)
+
+      # Check each commit message against the specified format
+      for message in $commit_messages; do
+        if [[ ! $message =~ ^feat\(#\d+\):.* ]]; then
+          echo "Invalid commit message format: $message"
+          echo "Commit message format should be: 'feat(#id): message'"
+          echo "Please fix the commit message and try again."
+          exit 1
+        fi
+      done
+    displayName: 'Check Commit Messages'
