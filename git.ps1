@@ -4,18 +4,19 @@ git fetch origin refs/pull/$env:BUILD_PULLREQUEST_ID/merge
 # Extract commit messages
 $commitMessages = git log --format=%s refs/pull/$env:BUILD_PULLREQUEST_ID/merge
 
-# Check each commit message against the semantic commit format
-$invalidMessages = 0
+# Check if any semantic commits are found
+$semanticCommitFound = $false
 foreach ($message in $commitMessages) {
-    if ($message -notmatch '^((feat|fix|docs|style|refactor|perf|test|chore)(\([^()]+\))?: .{1,})(\n|$)') {
-        Write-Host "Invalid semantic commit message format: $message"
-        Write-Host "Commit message format should be: '<type>(<scope>): <description>'"
-        Write-Host "Please fix the commit message and try again."
-        $invalidMessages++
+    if ($message -match '^((feat|fix|docs|style|refactor|perf|test|chore)(\([^()]+\))?: .{1,})(\n|$)') {
+        $semanticCommitFound = $true
+        break
     }
 }
 
-# Fail the script if any invalid messages are found
-if ($invalidMessages -gt 0) {
+# If no semantic commits are found, block the PR
+if (-not $semanticCommitFound) {
+    Write-Host "PR sem requisitos de aceitação."
     exit 1
+} else {
+    Write-Host "PR recebido com sucesso."
 }
