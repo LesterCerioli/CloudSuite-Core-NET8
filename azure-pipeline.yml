@@ -6,7 +6,7 @@ trigger:
 pr:
   branches:
     include:
-      - '*'
+      - develop
 
 jobs:
 - job: PR_Commit_Message_Check
@@ -22,12 +22,18 @@ jobs:
       commit_messages=$(git log --format=%s refs/pull/$(Build.PullRequestId)/merge)
 
       # Check each commit message against the specified format
+      invalid_messages=0
       for message in $commit_messages; do
         if [[ ! $message =~ ^feat\(#\d+\):.* ]]; then
           echo "Invalid commit message format: $message"
           echo "Commit message format should be: 'feat(#id): message'"
           echo "Please fix the commit message and try again."
-          exit 1
+          ((invalid_messages++))
         fi
       done
+
+      # Fail the job if any invalid messages are found
+      if [ $invalid_messages -gt 0 ]; then
+        exit 1
+      fi
     displayName: 'Check Commit Messages'
