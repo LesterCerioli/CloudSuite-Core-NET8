@@ -1,8 +1,8 @@
 # Fetch the PR's commits
-git fetch origin refs/pull/$(Build.PullRequestId)/merge
+git fetch origin refs/pull/$env:BUILD_PULLREQUEST_ID/merge
 
 # Extract commit messages
-$commitMessages = git log --format=%s refs/pull/$(Build.PullRequestId)/merge
+$commitMessages = git log --format=%s refs/pull/$env:BUILD_PULLREQUEST_ID/merge
 
 # Check each commit message against the semantic commit format
 $invalidMessages = 0
