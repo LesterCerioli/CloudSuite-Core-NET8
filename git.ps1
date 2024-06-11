@@ -1,8 +1,15 @@
-# Check if BUILD_PULLREQUEST_ID environment variable is set
-if (-not $env:BUILD_PULLREQUEST_ID) {
-    Write-Host "BUILD_PULLREQUEST_ID environment variable is not set. Unable to fetch PR commits."
+# Fetch the work item ID associated with the pull request
+$workItemId = az boards work item show --id <PULL_REQUEST_ID> --query id --output tsv
+
+# Check if work item ID is retrieved successfully
+if (-not $workItemId) {
+    Write-Host "Failed to retrieve the work item ID associated with the pull request."
     exit 1
 }
+
+# Set the work item ID as the BUILD_PULLREQUEST_ID environment variable
+$env:BUILD_PULLREQUEST_ID = $workItemId
+Write-Host "BUILD_PULLREQUEST_ID set to: $workItemId"
 
 # Fetch the PR's commits
 git fetch origin refs/pull/$env:BUILD_PULLREQUEST_ID/merge
