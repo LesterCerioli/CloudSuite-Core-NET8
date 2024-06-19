@@ -18,13 +18,16 @@ RUN apt-get update && apt-get install -y docker-ce-cli
 
 # Copiar o script Groovy para configurar o administrador
 COPY init.groovy.d /var/jenkins_home/init.groovy.d
-RUN chown -R jenkins:jenkins /var/jenkins_home/init.groovy.d
+
+# Configurar permissões para o diretório Jenkins
+RUN chown -R jenkins:jenkins /var/jenkins_home && \
+    chmod -R 755 /var/jenkins_home
 
 # Voltar para o usuário Jenkins
 USER jenkins
 
 # Instalar plugins Jenkins necessários
-RUN jenkins-plugin-cli --plugins "blueocean docker-workflow"
+RUN jenkins-plugin-cli --plugins "blueocean docker-workflow azure-credentials azure-vm-agents azure-app-service azure-artifact-manager"
 
 # Expor a porta 8080
 EXPOSE 8080
