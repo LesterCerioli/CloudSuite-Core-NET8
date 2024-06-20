@@ -38,6 +38,5 @@ namespace CloudSuite.Core.Messaging.RabbitMq
                 Console.WriteLine($" [x] Sent {message}");
             }
         }
-
     }
 }
