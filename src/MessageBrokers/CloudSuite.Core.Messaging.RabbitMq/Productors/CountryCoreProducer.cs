@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CloudSuite.Core.Messaging.RabbitMq.Productors
 {
-    internal class CountryCoreProducer
+    public class CountryCoreProducer
     {
     }
 }

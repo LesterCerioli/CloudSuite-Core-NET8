@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
 {
-    internal class DistrictCoreConsumer
+    public class DistrictCoreConsumer
     {
     }
 }

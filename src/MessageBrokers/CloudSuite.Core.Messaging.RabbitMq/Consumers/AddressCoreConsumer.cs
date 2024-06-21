@@ -33,8 +33,8 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
             _channel = _connection.CreateModel();
 
             _channel.ExchangeDeclare(exchange: _settings.ExchangeName, type: "direct");
-            _channel.QueueDeclare(queue: _settings.QueueName_Core, durable: true, exclusive: false, autoDelete: false, arguments: null);
-            _channel.QueueBind(queue: _settings.QueueName_Core, exchange: _settings.ExchangeName, routingKey: _settings.RoutingKey_Core);
+            _channel.QueueDeclare(queue: _settings.QueueName_Address_Core, durable: true, exclusive: false, autoDelete: false, arguments: null);
+            _channel.QueueBind(queue: _settings.QueueName_Address_Core, exchange: _settings.ExchangeName, routingKey: _settings.RoutingKey_Address_Core);
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -62,7 +62,7 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
                 }
             };
 
-            _channel.BasicConsume(queue: _settings.QueueName_Core, autoAck: false, consumer: consumer);
+            _channel.BasicConsume(queue: _settings.QueueName_Address_Core, autoAck: false, consumer: consumer);
 
             return Task.CompletedTask;
         }
