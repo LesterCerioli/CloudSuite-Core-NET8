@@ -18,14 +18,15 @@ namespace CloudSuite.Core.Messaging.RabbitMq
 
         public string? ExchangeName { get; set; }
 
-        public string? QueueName { get; set; }
+        public string? QueueNameAddressCore { get; set; }
 
-        public string? RoutingKey_Customer { get; set; }
+        public string? RoutingKeyCustomerCore { get; set; }
 
-        public string? RoutingKey_Core { get; set; }
+        
+        public string? QueueNameCustomerContext { get; set; }
 
-        public string? QueueName_Customer { get; set; }
+        public string? QueueName_Company_Core { get; set; }
 
-        public string? QueueName_Core { get; set; }
+        public string? QueueName_City_Core { get; set; }
     }
 }

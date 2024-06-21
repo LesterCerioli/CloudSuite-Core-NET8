@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace CloudSuite.Core.Messaging.RabbitMq.Productors
 {
-    public class CityCoreProducer
+    internal class StateCoreProducer
     {
-        public CityCoreProducer(RabbitMqSettings settings)
-        {
-
-        }
     }
 }
