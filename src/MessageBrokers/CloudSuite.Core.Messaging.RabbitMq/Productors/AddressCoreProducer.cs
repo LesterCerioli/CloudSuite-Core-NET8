@@ -24,13 +24,14 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Productors
                 UserName = _settings.UserName,
                 Password = _settings.Password,
                 VirtualHost = _settings.VirtualHost
+                
             };
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
 
             _channel.ExchangeDeclare(exchange: _settings.ExchangeName, type: "direct");
-            _channel.QueueDeclare(queue: _settings.QueueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
-            _channel.QueueBind(queue: _settings.QueueName, exchange: _settings.ExchangeName, routingKey: _settings.RoutingKey_Core);
+            _channel.QueueDeclare(queue: _settings.QueueName_Address_Core, durable: true, exclusive: false, autoDelete: false, arguments: null);
+            
         }
 
         public void Publish(string message)
@@ -40,7 +41,7 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Productors
             properties.Persistent = true;
 
             _channel.BasicPublish(exchange: _settings.ExchangeName,
-                                  routingKey: _settings.RoutingKey_Core,
+                                  routingKey: _settings.RoutingKey_Address_Core,
                                   basicProperties: properties,
                                   body: body);
         }
