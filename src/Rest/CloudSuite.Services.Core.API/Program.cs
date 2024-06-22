@@ -1,21 +1,28 @@
 using AutoMapper;
 using CloudSuite.Infrastructure.Context;
 using CloudSuite.Infrastructure.CrossCutting.Middlewares;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure Kestrel to listen on HTTP and HTTPS ports
-//builder.WebHost.ConfigureKestrel(serverOptions =>{
-    //serverOptions.ListenAnyIP(80);
-    //serverOptions.ListenAnyIP(443, listenOptions =>{
-        //listenOptions.UseHttps();
-    //});
-//});
-
 // Add services to the container.
 builder.Services.AddControllers();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.Authority = "https://your-authorization-server.com";
+            options.Audience = "your-api-audience";
+        });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.DefaultPolicy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser()
+        .Build();
+});
 
 // Configure DbContext with connection string
 builder.Services.AddDbContext<CoreDbContext>(options =>
@@ -23,7 +30,6 @@ builder.Services.AddDbContext<CoreDbContext>(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 var configuration = new MapperConfiguration(cfg =>
 {
@@ -49,9 +55,24 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting(); // Ensure routing is configured before authentication and authorization
+
+app.UseCors("my-cors");
+
+// Use the exception handling middleware
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+app.UseAuthentication();
 app.UseAuthorization();
-app.MapControllers();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
+
 app.Run();
