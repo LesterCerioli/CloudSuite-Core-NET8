@@ -1,14 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Runtime;
 using System.Text;
-using System.Threading.Channels;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
@@ -27,19 +24,18 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
 
             var factory = new ConnectionFactory()
             {
-                HostName = _settings.HostName,
-                UserName = _settings.UserName,
-                Password = _settings.Password,
-                VirtualHost = _settings.VirtualHost
+                HostName = _settings.RabbitMqConfiguration.HostName,
+                UserName = _settings.RabbitMqConfiguration.UserName,
+                Password = _settings.RabbitMqConfiguration.Password,
+                VirtualHost = _settings.RabbitMqConfiguration.VirtualHost
             };
 
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
 
-            _channel.ExchangeDeclare(exchange: _settings.ExchangeName, type: "direct");
-            _channel.QueueDeclare(queue: _settings.QueueName_City_Core, durable: true, exclusive: false, autoDelete: false, arguments: null);
-            _channel.QueueBind(queue: _settings.QueueName_City_Core, exchange: _settings.ExchangeName, routingKey: _settings.RountingKey_City_Core);
-            
+            _channel.ExchangeDeclare(exchange: _settings.RabbitMqConfiguration.ExchangeName, type: "direct");
+            _channel.QueueDeclare(queue: _settings.RabbitMqConfiguration.Queues["City"], durable: true, exclusive: false, autoDelete: false, arguments: null);
+            _channel.QueueBind(queue: _settings.RabbitMqConfiguration.Queues["City"], exchange: _settings.RabbitMqConfiguration.ExchangeName, routingKey: _settings.RabbitMqConfiguration.RoutingKeys["City"]);
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -66,7 +62,7 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
                 }
             };
 
-            _channel.BasicConsume(queue: _settings.QueueName_City_Core, autoAck: false, consumer: consumer);
+            _channel.BasicConsume(queue: _settings.RabbitMqConfiguration.Queues["City"], autoAck: false, consumer: consumer);
 
             return Task.CompletedTask;
         }

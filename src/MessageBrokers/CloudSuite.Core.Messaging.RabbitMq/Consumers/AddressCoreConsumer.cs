@@ -1,10 +1,11 @@
-﻿using Microsoft.Extensions.Options;
-using RabbitMQ.Client.Events;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
@@ -23,18 +24,18 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
 
             var factory = new ConnectionFactory()
             {
-                HostName = _settings.HostName,
-                UserName = _settings.UserName,
-                Password = _settings.Password,
-                VirtualHost = _settings.VirtualHost
+                HostName = _settings.RabbitMqConfiguration.HostName,
+                UserName = _settings.RabbitMqConfiguration.UserName,
+                Password = _settings.RabbitMqConfiguration.Password,
+                VirtualHost = _settings.RabbitMqConfiguration.VirtualHost
             };
 
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
 
-            _channel.ExchangeDeclare(exchange: _settings.ExchangeName, type: "direct");
-            _channel.QueueDeclare(queue: _settings.QueueName_Address_Core, durable: true, exclusive: false, autoDelete: false, arguments: null);
-            _channel.QueueBind(queue: _settings.QueueName_Address_Core, exchange: _settings.ExchangeName, routingKey: _settings.RoutingKey_Address_Core);
+            _channel.ExchangeDeclare(exchange: _settings.RabbitMqConfiguration.ExchangeName, type: "direct");
+            _channel.QueueDeclare(queue: _settings.RabbitMqConfiguration.Queues["Address"], durable: true, exclusive: false, autoDelete: false, arguments: null);
+            _channel.QueueBind(queue: _settings.RabbitMqConfiguration.Queues["Address"], exchange: _settings.RabbitMqConfiguration.ExchangeName, routingKey: _settings.RabbitMqConfiguration.RoutingKeys["Address"]);
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -57,12 +58,12 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, "Error processing message");
-                    
+
                     _channel.BasicNack(deliveryTag: ea.DeliveryTag, multiple: false, requeue: true);
                 }
             };
 
-            _channel.BasicConsume(queue: _settings.QueueName_Address_Core, autoAck: false, consumer: consumer);
+            _channel.BasicConsume(queue: _settings.RabbitMqConfiguration.Queues["Address"], autoAck: false, consumer: consumer);
 
             return Task.CompletedTask;
         }
@@ -70,7 +71,6 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
         private async Task ProcessMessageAsync(string message)
         {
             _logger.LogInformation($"Received message: {message}");
-            
 
             await Task.Delay(500); // Simulate some asynchronous processing
             _logger.LogInformation($"Processed message: {message}");
