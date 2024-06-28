@@ -10,6 +10,7 @@ namespace CloudSuite.Services.Core.Api.Controllers.V1.Core
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CityApiController : ControllerBase
     {
         private readonly ILogger<CityApiController> _logger;
@@ -21,7 +22,7 @@ namespace CloudSuite.Services.Core.Api.Controllers.V1.Core
             _mediator = mediator;
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost("create")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -38,6 +39,7 @@ namespace CloudSuite.Services.Core.Api.Controllers.V1.Core
             }
         }
 
+        [Authorize]
         [HttpGet]
         [Route("exists/city/{cityName}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -1,0 +1,13 @@
+# Dockerfile for RabbitMQ
+
+FROM rabbitmq:3-management
+
+# Set environment variables for RabbitMQ
+ENV RABBITMQ_DEFAULT_USER=user
+ENV RABBITMQ_DEFAULT_PASS=password
+
+# Expose ports for RabbitMQ and management
+EXPOSE 5672 15672
+
+# Define the default command
+CMD ["rabbitmq-server"]

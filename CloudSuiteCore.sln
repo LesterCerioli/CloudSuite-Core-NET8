@@ -29,7 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rest", "Rest", "{A9DAC9E0-8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudSuite.Services.Core.API", "src\Rest\CloudSuite.Services.Core.API\CloudSuite.Services.Core.API.csproj", "{DEF79552-45AC-4122-8B82-3C275DA1C742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSuite.Commons", "src\Modules\CloudSuite.Commons\CloudSuite.Commons.csproj", "{5502BC0B-3434-4C4A-8C0D-357C6EEAFBDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudSuite.Commons", "src\Modules\CloudSuite.Commons\CloudSuite.Commons.csproj", "{5502BC0B-3434-4C4A-8C0D-357C6EEAFBDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessagBrokers", "MessagBrokers", "{54478F0D-A1C6-49C1-A8AC-AA3A11EA7635}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudSuite.Core.Messaging.RabbitMq", "src\MessageBrokers\CloudSuite.Core.Messaging.RabbitMq\CloudSuite.Core.Messaging.RabbitMq.csproj", "{C767E87D-E14E-4425-A632-88C3D2019094}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,10 @@ Global
 		{5502BC0B-3434-4C4A-8C0D-357C6EEAFBDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5502BC0B-3434-4C4A-8C0D-357C6EEAFBDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5502BC0B-3434-4C4A-8C0D-357C6EEAFBDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C767E87D-E14E-4425-A632-88C3D2019094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C767E87D-E14E-4425-A632-88C3D2019094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C767E87D-E14E-4425-A632-88C3D2019094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C767E87D-E14E-4425-A632-88C3D2019094}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +98,8 @@ Global
 		{A9DAC9E0-8E7F-4AF9-B882-DB0CB2559F8E} = {9F10FB4D-715C-4A5F-B74D-811E36F047D6}
 		{DEF79552-45AC-4122-8B82-3C275DA1C742} = {A9DAC9E0-8E7F-4AF9-B882-DB0CB2559F8E}
 		{5502BC0B-3434-4C4A-8C0D-357C6EEAFBDC} = {0948BA51-4F09-44C8-81C2-4DC2E7127154}
+		{54478F0D-A1C6-49C1-A8AC-AA3A11EA7635} = {9F10FB4D-715C-4A5F-B74D-811E36F047D6}
+		{C767E87D-E14E-4425-A632-88C3D2019094} = {54478F0D-A1C6-49C1-A8AC-AA3A11EA7635}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9E15588-0F8A-4F48-94B2-85426D3D2B65}

@@ -1,4 +1,0 @@
-<SonarQubeAnalysisProperties  xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
-  <Property Name="sonar.host.url">http://localhost:9000</Property>
-  <Property Name="foxtrot">Xaulili30425441</Property>
-</SonarQubeAnalysisProperties>
