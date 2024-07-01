@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace CloudSuite.Core.Messaging.RabbitMq.Productors
 {
-    public class StateCoreProducer : IDisposable
+    public class VendorCoreProducer : IDisposable
     {
+
         private readonly RabbitMqSettings _settings;
         private readonly IConnection _connection;
         private readonly IModel _channel;
 
-        public StateCoreProducer(RabbitMqSettings settings)
+        public VendorCoreProducer(RabbitMqSettings settings)
         {
             _settings = settings;
             var factory = new ConnectionFactory()
@@ -28,8 +29,8 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Productors
             _channel = _connection.CreateModel();
 
             _channel.ExchangeDeclare(exchange: _settings.RabbitMqConfiguration.ExchangeName, type: "direct");
-            _channel.QueueDeclare(queue: _settings.RabbitMqConfiguration.Queues["State"], durable: true, exclusive: false, autoDelete: false, arguments: null);
-            _channel.QueueBind(queue: _settings.RabbitMqConfiguration.Queues["State"], exchange: _settings.RabbitMqConfiguration.ExchangeName, routingKey: _settings.RabbitMqConfiguration.RoutingKeys["State"]);
+            _channel.QueueDeclare(queue: _settings.RabbitMqConfiguration.Queues["Vendor"], durable: true, exclusive: false, autoDelete: false, arguments: null);
+            _channel.QueueBind(queue: _settings.RabbitMqConfiguration.Queues["Vendor"], exchange: _settings.RabbitMqConfiguration.ExchangeName, routingKey: _settings.RabbitMqConfiguration.RoutingKeys["Vendor"]);
         }
 
         public void Publish(string message)
@@ -39,7 +40,7 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Productors
             properties.Persistent = true;
 
             _channel.BasicPublish(exchange: _settings.RabbitMqConfiguration.ExchangeName,
-                                  routingKey: _settings.RabbitMqConfiguration.RoutingKeys["State"],
+                                  routingKey: _settings.RabbitMqConfiguration.RoutingKeys["Vendor"],
                                   basicProperties: properties,
                                   body: body);
         }
