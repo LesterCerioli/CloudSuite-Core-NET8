@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
-using RabbitMQ.Client.Events;
 using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
 {
-    public class StateCoreConsumer : BackgroundService
+    public class MediaCoreConsumer : BackgroundService
     {
         private readonly RabbitMqSettings _settings;
-        private readonly ILogger<StateCoreConsumer> _logger;
+        private readonly ILogger<MediaCoreConsumer> _logger;
         private readonly IConnection _connection;
         private readonly IModel _channel;
 
-        public StateCoreConsumer(IOptions<RabbitMqSettings> options, ILogger<StateCoreConsumer> logger)
+        public MediaCoreConsumer(IOptions<RabbitMqSettings> options, ILogger<MediaCoreConsumer> logger)
         {
             _settings = options.Value;
             _logger = logger;
@@ -33,8 +33,8 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
             _channel = _connection.CreateModel();
 
             _channel.ExchangeDeclare(exchange: _settings.RabbitMqConfiguration.ExchangeName, type: "direct");
-            _channel.QueueDeclare(queue: _settings.RabbitMqConfiguration.Queues["State"], durable: true, exclusive: false, autoDelete: false, arguments: null);
-            _channel.QueueBind(queue: _settings.RabbitMqConfiguration.Queues["State"], exchange: _settings.RabbitMqConfiguration.ExchangeName, routingKey: _settings.RabbitMqConfiguration.RoutingKeys["State"]);
+            _channel.QueueDeclare(queue: _settings.RabbitMqConfiguration.Queues["Media"], durable: true, exclusive: false, autoDelete: false, arguments: null);
+            _channel.QueueBind(queue: _settings.RabbitMqConfiguration.Queues["Media"], exchange: _settings.RabbitMqConfiguration.ExchangeName, routingKey: _settings.RabbitMqConfiguration.RoutingKeys["Media"]);
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -62,7 +62,7 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Consumers
                 }
             };
 
-            _channel.BasicConsume(queue: _settings.RabbitMqConfiguration.Queues["State"], autoAck: false, consumer: consumer);
+            _channel.BasicConsume(queue: _settings.RabbitMqConfiguration.Queues["Media"], autoAck: false, consumer: consumer);
 
             return Task.CompletedTask;
         }
