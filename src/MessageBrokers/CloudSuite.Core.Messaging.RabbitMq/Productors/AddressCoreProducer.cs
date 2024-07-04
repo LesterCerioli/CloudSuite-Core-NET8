@@ -29,7 +29,7 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Productors
                 _channel = _connection.CreateModel();
 
                 _channel.ExchangeDeclare(exchange: _settings.RabbitMqConfiguration.ExchangeName, type: "direct");
-                _channel.QueueDeclare(queue: _settings.RabbitMqConfiguration.Queues["AddressCore"], durable: true, exclusive: false, autoDelete: false, arguments: null);
+                _channel.QueueDeclare(queue: _settings.RabbitMqConfiguration.Queues["Address"], durable: true, exclusive: false, autoDelete: false, arguments: null);
             }
             catch (Exception ex)
             {
@@ -48,7 +48,7 @@ namespace CloudSuite.Core.Messaging.RabbitMq.Productors
                 properties.Persistent = true;
 
                 _channel.BasicPublish(exchange: _settings.RabbitMqConfiguration.ExchangeName,
-                                      routingKey: _settings.RabbitMqConfiguration.RoutingKeys["AddressCore"],
+                                      routingKey: _settings.RabbitMqConfiguration.RoutingKeys["Address"],
                                       basicProperties: properties,
                                       body: body);
             }
