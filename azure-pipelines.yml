@@ -1,0 +1,13 @@
+trigger:
+  branches:
+    include:
+      - '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - script: |
+      python validate_pr.py "$(Build.SourceVersionMessage)"
+    displayName: 'Validar commit message'
+  # Outros passos da sua pipeline aqui
