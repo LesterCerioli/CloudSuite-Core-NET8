@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CloudSuite.Core.Messaging.RabbitMq.Productors
 {
-    public class CityCoreProducer
+    public class CityCoreProducer : IDisposable
     {
         private readonly RabbitMqSettings _settings;
         private readonly IConnection _connection;
