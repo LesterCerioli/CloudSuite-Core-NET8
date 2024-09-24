@@ -1,4 +1,4 @@
-
+CREATE DATABASE cloudsuite_core_db;
 
 CREATE TABLE IF NOT EXISTS addresses(
     id SERIAL PRIMARY KEY,
